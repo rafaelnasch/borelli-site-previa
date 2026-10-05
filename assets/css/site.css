@@ -437,6 +437,9 @@ html:not(.js) .table-wrap{ overflow-x:auto; overscroll-behavior-x:contain; }
 .olho figcaption::before{ content:""; width:32px; height:1px; background:currentColor; flex:none; }
 /* Citação longa de norma: o olho continua, com letra menor */
 .olho--longo blockquote p{ font-size:clamp(20px,.571vw + 17.77px,26px); line-height:1.42; text-wrap:pretty; }
+/* Citação literal de norma com mais de 100 palavras: o olho longo continua (filete, aspas e crédito), mas o
+   texto sai em Lexend reta, no corpo de leitura, para não virar uma tela inteira de itálico no celular */
+.olho--norma blockquote p{ font-family:var(--texto); font-style:normal; font-weight:300; font-size:var(--t-leitura); line-height:1.6; }
 /* A "Palavra da casa": cartaz tipográfico, no máximo um por página, com crédito e data. Um tamanho
    só em todo o site: o do título de seção da marca (60 no computador, 36 no celular) */
 .olho--cartaz blockquote p{ font-size:var(--t-h2); line-height:1.06; letter-spacing:-.01em; }
@@ -916,6 +919,12 @@ html:not(.js) .docs-acoes,html:not(.js) .docs-estado{ display:none; }
 .guia-texto :is(h2,h3) + *{ margin-top:var(--e-4); }
 .guia-texto > :is(.olho,.nota,.alerta,.modelo,.table-wrap,.fontes,.resumo,figure,.forma-svg,.grafico,.ferramenta,details:first-of-type){ margin-top:var(--e-6); }
 .guia-texto details + details{ margin-top:0; }
+.guia-texto > .olho + *{ margin-top:var(--e-6); }
+/* O crédito do olho no guia (órgão e número da norma, às vezes longo): o fio fica na primeira linha e o texto
+   usa a largura toda; a marca [conferir antes de publicar] desce para a linha de baixo */
+.guia-texto .olho figcaption{ display:block; }
+.guia-texto .olho figcaption::before{ display:inline-block; vertical-align:middle; margin:0 12px 0 0; position:relative; top:-.12em; }
+.guia-texto .olho figcaption .pendente{ display:block; margin-top:8px; }
 .guia-texto .table-wrap{ font-size:var(--t-apoio); }
 .guia-texto .sanfona > summary{ min-height:64px; font-size:18px; line-height:1.4; }
 .guia-texto .sanfona-corpo{ font-size:var(--t-corpo); font-weight:300; }
@@ -924,13 +933,13 @@ html:not(.js) .docs-acoes,html:not(.js) .docs-estado{ display:none; }
 .guia-texto > .ferramenta{ margin-block:var(--e-7); }
 /* Blocos do Markdown da casa */
 .fontes{ padding-top:var(--e-4); border-top:1px solid var(--f-linha); font-size:var(--t-legenda); line-height:1.6; font-weight:400; color:var(--f-apoio); }
-.resumo{ padding:4px 0 4px var(--e-5); border-left:2px solid var(--f-linha-destaque); font-size:var(--t-apoio); line-height:1.65; font-weight:400; }
+.resumo{ padding:4px 0 4px var(--e-5); border-left:2px solid var(--f-linha-destaque); font-size:clamp(16px,.4vw + 14.5px,17px); line-height:1.65; font-weight:400; }
 :is(.fontes,.resumo) > strong:first-child{ display:block; margin-bottom:8px; font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
 :is(.fontes,.resumo) > * + *{ margin-top:8px; }
 :is(.fontes,.resumo) > strong:first-child + *{ margin-top:0; }
 /* Modelo de mensagem: texto para copiar; os campos [[assim]] viram <var class="preencher"> */
 .modelo{ display:grid; gap:var(--e-4); padding:var(--e-5); border:1px solid var(--f-linha-destaque); background:var(--f-fundo); }
-.modelo-texto{ font-size:var(--t-apoio); line-height:1.65; font-weight:400; }
+.modelo-texto{ font-size:clamp(16px,.4vw + 14.5px,17px); line-height:1.65; font-weight:400; }
 .modelo-texto > * + *{ margin-top:10px; }
 var.preencher{ font-style:normal; font-weight:500; color:var(--f-titulo); background:var(--f-painel); padding:0 .2em; }
 .copiar{ justify-self:start; display:inline-flex; align-items:center; gap:10px; min-height:48px; padding:12px 20px; border:1px solid var(--f-btn-linha); font:500 13px/1.3 var(--texto); letter-spacing:.12em; text-transform:uppercase; color:var(--f-titulo); transition:background-color var(--t-rapida) ease; }
@@ -1015,18 +1024,18 @@ var.preencher{ font-style:normal; font-weight:500; color:var(--f-titulo); backgr
 .rodape-cols .rotulo{ display:block; margin-bottom:var(--e-3); }
 .rodape-lista li{ font-size:15px; line-height:1.5; font-weight:400; color:var(--f-texto); }
 .rodape-lista li + li{ margin-top:2px; }
-.rodape-lista a{ display:inline-flex; align-items:center; min-height:32px; color:var(--f-texto); text-decoration:none; transition:color var(--t-rapida) ease; }
+.rodape-lista a{ display:inline-flex; align-items:center; min-height:32px; min-width:48px; color:var(--f-texto); text-decoration:none; transition:color var(--t-rapida) ease; }
 .rodape-lista a:hover{ color:var(--champanhe); text-decoration:underline; text-underline-offset:.2em; }
 .rodape-areas{ margin-top:var(--e-7); padding-top:var(--e-4); border-top:1px solid var(--f-linha); }
 .rodape-areas ul{ margin-top:var(--e-2); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); column-gap:var(--e-6); }
-.rodape-areas a{ display:inline-flex; align-items:center; min-height:40px; font-size:14px; line-height:1.3; font-weight:400; color:var(--f-texto); text-decoration:none; transition:color var(--t-rapida) ease; }
+.rodape-areas a{ display:inline-flex; align-items:center; min-height:40px; min-width:48px; font-size:14px; line-height:1.3; font-weight:400; color:var(--f-texto); text-decoration:none; transition:color var(--t-rapida) ease; }
 .rodape-areas a:hover{ color:var(--champanhe); text-decoration:underline; text-underline-offset:.2em; }
 .c18-rod-doc-id{ display:flex; flex-direction:column; gap:var(--e-3); margin-top:var(--e-7); padding-top:var(--e-5); border-top:1px solid var(--f-linha-destaque); }
 .c18-rod-doc-id .id-oab{ font-size:var(--t-apoio); color:var(--f-texto); }
 .site-rodape .aviso-pub{ max-width:100ch; }
 .c18-rod-doc-base{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0 var(--e-5); margin-top:var(--e-5); padding-top:var(--e-2); border-top:1px solid var(--f-linha); font-size:var(--t-legenda); color:var(--f-apoio); }
 .c18-rod-doc-base nav{ display:flex; flex-wrap:wrap; gap:0 var(--e-5); }
-.c18-rod-doc-base a{ display:inline-flex; align-items:center; min-height:48px; color:var(--f-titulo); }
+.c18-rod-doc-base a{ display:inline-flex; align-items:center; min-height:48px; min-width:48px; color:var(--f-titulo); }
 
 /* ---------- 26. Páginas do sistema (obrigado, 404) ---------- */
 .obrigado-caixa{ max-width:640px; margin-inline:auto; }
@@ -1089,6 +1098,8 @@ var.preencher{ font-style:normal; font-weight:500; color:var(--f-titulo); backgr
 }
 @media (min-width:641px) and (max-width:1024px){
   .site-busca{ display:inline-block; }
+  /* os dez temas da Família em duas colunas (em uma, sobrava o lado direito vazio) */
+  .at-familia .at-temas{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--calha); }
   .historia-grade{ grid-template-columns:repeat(12,minmax(0,1fr)); }
   .historia-grade > .historia-foto{ grid-column:1 / span 5!important; grid-row:1 / span 2!important; margin:12px 12px 0; }
   .historia-grade > .historia-cab,.historia-grade > .historia-texto{ grid-column:6 / -1!important; }
@@ -1206,8 +1217,16 @@ var.preencher{ font-style:normal; font-weight:500; color:var(--f-titulo); backgr
   .table-wrap.matriz{ border-right:1px solid var(--f-linha-destaque); }
   .matriz-dica{ display:flex; }
 }
+@media (max-width:430px){
+  /* até 430 px, os dez temas da Família em uma coluna (em duas, "Investigação de paternidade" quebrava em três linhas) */
+  .at-familia .at-temas{ grid-template-columns:minmax(0,1fr); }
+}
 @media (max-width:380px){
   .site-marca .marca{ --l:120px; width:120px; }
+  /* percurso grande: o numeral sobe para a linha de cima, e o texto da etapa ganha a largura do numeral */
+  .percurso--grande > li{ grid-template-columns:20px minmax(0,1fr); }
+  .percurso--grande .percurso-n{ grid-column:2; grid-row:1; font-size:22px; line-height:1.1; }
+  .percurso--grande .percurso-corpo{ grid-column:2; grid-row:2; margin-top:4px; }
   .site-fale{ padding:0 12px; }
   .card,.painel{ padding:20px 16px; }
   .tempo-item{ grid-template-columns:minmax(0,1fr); gap:var(--e-2); }

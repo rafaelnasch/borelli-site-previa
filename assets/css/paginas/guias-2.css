@@ -9,9 +9,7 @@
       Losango cheio = no rol com diretriz; losango vazado = fora do rol pelo nome. Não é promessa de
       cobertura: é o que está escrito no Anexo I da RN 465/2021.
    3. Ritmo do texto: intertítulo de terceiro nível seguido de selo e ficha.
-   4. Citação literal longa de norma (.olho--norma): para os textos de mais de 100 palavras, o olho
-      longo continua (filete, aspas e crédito), mas o texto sai em Lexend reta, no corpo de leitura,
-      para não virar uma tela inteira de itálico no celular.
+   4. (A citação literal longa de norma, .olho--norma, subiu para o site.css, seção 9: vale para todos os guias.)
    5. Celular: o nome da cirurgia na tabela do alto (que vira cartão) é alvo de toque de 48 px. */
 
 /* ---------- 1. Ficha de cada cirurgia ---------- */
@@ -29,9 +27,6 @@
 /* ---------- 3. Ritmo ---------- */
 .guia-texto h3 + .cir-rol + .cir-ficha{ margin-top:var(--e-4); }
 .guia-texto .cir-ficha + h3{ margin-top:var(--e-7); }
-
-/* ---------- 4. Citação literal longa de norma ---------- */
-.olho--norma blockquote p{ font-family:var(--texto); font-style:normal; font-weight:300; font-size:var(--t-leitura); line-height:1.6; }
 
 @media (max-width:640px){
   .cir-ficha > div{ grid-template-columns:minmax(0,1fr); gap:6px; padding:14px 0; }

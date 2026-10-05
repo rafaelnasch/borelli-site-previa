@@ -16,12 +16,9 @@
 /* Ferramenta de prazos dentro da coluna de 680 px: tipo e data empilhados, para o select mostrar o nome inteiro */
 .guia-texto .prazos-form{ grid-template-columns:minmax(0,1fr); }
 
-/* ---------- 2. Citação literal de norma (figure.olho.olho--longo.olho--norma) ----------
-   O olho longo do site, um pouco mais contido, porque o guia cita várias normas seguidas */
-.guia-texto .olho--norma{ padding-top:var(--e-5); }
-.guia-texto .olho--norma blockquote p{ font-size:clamp(19px,.381vw + 17.51px,23px); line-height:1.45; }
-.guia-texto .olho--norma figcaption{ margin-top:var(--e-3); }
-.guia-texto .olho--norma + p,.guia-texto .olho--norma + .table-wrap{ margin-top:var(--e-6); }
+/* ---------- 2. Citação literal de norma ----------
+   É o olho longo do sistema (figure.olho.olho--longo; com mais de 100 palavras, também .olho--norma), o
+   mesmo de todos os guias: site.css, seções 9 e 21. Nada a acrescentar aqui. */
 
 /* ---------- 3. Glossário em texto (dl.termos, um div.termo por termo, com id para link direto) ---------- */
 .guia-texto .termos{ border-top:1px solid var(--f-linha-destaque); }

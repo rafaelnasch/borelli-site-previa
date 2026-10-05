@@ -84,7 +84,7 @@
         return;
       }
       /* perfil (@nome ou endereço do Instagram) */
-      var perfil = /^@?([a-z0-9._]{2,30})$/.exec(minusculo.replace(/^https?:\/\/(www\.)?instagram\.com\//, '').replace(/\/.*$/, ''));
+      var perfil = /^@?([a-z0-9._]{2,30})$/.exec(minusculo.replace(/^(https?:\/\/)?(www\.)?instagram\.com\//, '').replace(/\/.*$/, ''));
       if (perfil && /[a-z]/.test(perfil[1]) && !/^\d+$/.test(perfil[1].replace(/\./g, ''))) {
         if (perfil[1] === oficial.instagram) mostra('ok', 'Este é o perfil oficial da Borelli Advocacia.', 'O perfil @' + oficial.instagram + ' está na lista de canais oficiais.', false);
         else mostra('nao', 'Este perfil não está na lista de canais oficiais.', 'Os canais oficiais da Borelli Advocacia são estes:', true);

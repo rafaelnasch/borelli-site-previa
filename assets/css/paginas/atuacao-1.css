@@ -5,17 +5,17 @@
    Entra pela ficha "estilos". Usa só os tokens e os campos do site.css;
    tudo funciona sem :has() e sem JavaScript.
 
-    1. Índice /atuacao/: os grupos (h3 com a cara do rótulo), a ordem das partes, em duas colunas
-       no computador, e os temas da família em duas colunas no tablet
+    1. Índice /atuacao/: os grupos (h3 com a cara do rótulo) e a ordem das partes, em duas colunas
+       no computador (os temas da família, duas colunas no tablet e uma até 430 px, estão no site.css,
+       porque a home usa a mesma grade)
     1b. Parte 01: a lista de situações com toque de 48 px
     2. Parte 02 em grupos (plano de saúde e SUS): saltos, cabeçalho do grupo, tese longa, a linha
        de apoio da tese (.tese-nota: o que não é órgão e número sai da legenda em caixa alta)
     (o quadro de dois lados iguais, .contraste--par, e os três prazos, .tres-prazos, passaram
      para o area.css, porque outras áreas também usam)
     5. Perguntas frequentes em grupos
-    6. Celular (saltos da parte 02 com o rótulo em linha própria; título do grupo acima das
-       regras; temas da família em uma coluna até 430 px)
-   O JS que abre a regra recolhida quando um link aponta para ela: ferramentas/regra-ancora.js
+    6. Celular (saltos da parte 02 com o rótulo em linha própria; título do grupo acima das regras)
+   A regra recolhida no celular abre sozinha quando um link aponta para ela: site.js, seção 11.
    ===================================================================== */
 
 /* ---------- 1. Índice: a ordem das partes ---------- */
@@ -29,10 +29,6 @@
 .at-ordem .ferr-aviso{ margin-top:var(--e-5); }
 /* Os três grupos são h3 (navegação por títulos), com a mesma cara do rótulo */
 .at-cab h3.rotulo{ margin:0; text-wrap:wrap; }
-/* Tablet: os dez temas da família em duas colunas (em uma, sobrava o lado direito vazio) */
-@media (min-width:641px) and (max-width:1024px){
-  .at-familia .at-temas{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--calha); }
-}
 
 /* ---------- 1b. Parte 01: situações de que a página trata (links de 48 px) ---------- */
 .situacoes{ gap:0; }
@@ -75,9 +71,4 @@
   .regra-grupo-t{ font-size:28px; }
   .regra-saltos{ column-gap:20px; row-gap:0; }
   .regra-saltos .rotulo{ flex-basis:100%; padding-top:8px; }
-}
-/* Índice: até 430 px, os dez temas da família em uma coluna (em duas, "Investigação de
-   paternidade" e outros quebravam em duas ou três linhas e encostavam no item de baixo) */
-@media (max-width:430px){
-  .at-familia .at-temas{ grid-template-columns:minmax(0,1fr); }
 }

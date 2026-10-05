@@ -15,9 +15,12 @@
        o WhatsApp como botão de um toque, com a mensagem neutra, e o e-mail)
     7. Sanfona: a pergunta do endereço (#faq-...) abre sozinha
     8. Índice "Nesta página": a parte atual destacada, a barra recolhível no celular
-    9. Lista de documentos: marca, guarda no navegador, imprime e copia
+    9. Lista de documentos: marca, guarda no navegador, imprime e copia (data-unidade
+       troca a palavra do contador: "item|itens" no roteiro para a conversa com o médico)
    10. Pílulas dos procedimentos (o que cada cirurgia é)
-   11. Regras numeradas da parte 02: recolhíveis no celular (a primeira aberta)
+   11. Regras numeradas da parte 02: recolhíveis no celular (a primeira aberta, e as que
+       têm data-regra-aberta); o link ou o endereço que aponta para dentro de uma regra fechada
+       abre a regra antes da rolagem
    12. Lista de guias: filtro por tema
    13. Modelo de mensagem: botão "Copiar texto"
    14. window.borelliAtualiza(raiz) e window.Borelli (utilitários para as ferramentas)
@@ -674,6 +677,9 @@
   $$('[data-documentos]').forEach(function (raiz) {
     var chave = 'borelli-docs:' + (raiz.getAttribute('data-documentos') || window.location.pathname);
     var titulo = raiz.getAttribute('data-titulo') || 'Documentos';
+    /* a palavra do contador: "documento|documentos" (padrão) ou a da lista, como "item|itens" */
+    var unidade = (raiz.getAttribute('data-unidade') || 'documento|documentos').split('|');
+    var umItem = unidade[0], variosItens = unidade[1] || unidade[0];
     var caixas = $$('input[type="checkbox"]', raiz);
     if (!caixas.length) return;
     var contagem = $('[data-documentos-contagem]', raiz);
@@ -683,7 +689,7 @@
     var marcadas = function () { return caixas.filter(function (c) { return c.checked; }); };
     var atualiza = function () {
       var n = marcadas().length;
-      if (contagem) contagem.textContent = n + ' de ' + caixas.length + (caixas.length === 1 ? ' documento marcado' : ' documentos marcados');
+      if (contagem) contagem.textContent = n + ' de ' + caixas.length + ' ' + (caixas.length === 1 ? umItem + ' marcado' : variosItens + ' marcados');
       if (progresso) progresso.parentNode.style.setProperty('--progresso', (n / caixas.length).toFixed(3));
       caixas.forEach(function (c) { var item = c.closest('.doc-item'); if (item) item.classList.toggle('marcado', c.checked); });
     };
@@ -828,8 +834,13 @@
 
   /* ---------- 11. Regras numeradas (parte 02 da área): recolhíveis no celular ----------
      Até 640 px, o título de cada regra vira um botão que abre e fecha o texto dela (a primeira fica
-     aberta); "Onde está" continua à vista. No computador, e sem JavaScript, tudo aberto, como no
-     desenho do protótipo A. O texto continua inteiro na página (busca, impressão, assistentes de IA). */
+     aberta, e também a que tem data-regra-aberta no li.regra); "Onde está" continua à vista. No
+     computador, e sem JavaScript, tudo aberto, como no desenho do protótipo A. O texto continua inteiro
+     na página (busca, impressão, assistentes de IA). Um link da própria página que aponta para dentro de
+     uma regra fechada ("Veja na parte 02", a lista de situações da parte 01), ou o endereço que já chega
+     com essa âncora, abre a regra antes da rolagem: a pessoa chega ao texto, não só ao título.
+     O título da regra (h3.regra-t) não leva grifo nem span solto: no celular, os filhos dele passam para
+     o botão, que é uma grade de três colunas (número, texto e seta). */
   var celular = midia('(max-width: 640px)');
   var regras = [];
   $$('ol.regras').forEach(function (lista, l) {
@@ -839,7 +850,7 @@
       var corpo = $('.regra-corpo', li);
       if (!t || !corpo) return;
       if (!corpo.id) corpo.id = 'regra-' + (l + 1) + '-' + (i + 1);
-      regras.push({ li: li, t: t, corpo: corpo, aberta: i === 0, botao: null });
+      regras.push({ li: li, t: t, corpo: corpo, aberta: i === 0 || li.hasAttribute('data-regra-aberta'), botao: null });
     });
   });
   var mostraRegra = function (r) {
@@ -876,11 +887,38 @@
   var aplicaRegras = function () {
     regras.forEach(function (r) { if (celular.matches) ligaRegra(r); else desligaRegra(r); });
   };
+  /* abre a regra fechada que contém o alvo da âncora; devolve o alvo quando abriu */
+  var abreRegraDoAlvo = function (hash) {
+    if (!hash || hash.length < 2) return null;
+    var alvo = null;
+    try { alvo = doc.getElementById(decodeURIComponent(hash.replace(/^#/, ''))); } catch (e) { alvo = null; }
+    var li = alvo && alvo.closest ? alvo.closest('li.regra') : null;
+    if (!li) return null;
+    for (var k = 0; k < regras.length; k++) {
+      var r = regras[k];
+      if (r.li === li) {
+        if (!r.botao || r.aberta) return null;
+        r.aberta = true;
+        mostraRegra(r);
+        return alvo;
+      }
+    }
+    return null;
+  };
   if (regras.length) {
     aplicaRegras();
     aoMudar(celular, aplicaRegras);
     /* a impressão sai com tudo aberto, mesmo no celular */
     window.addEventListener('beforeprint', function () { regras.forEach(function (r) { if (r.botao && !r.aberta) { r.aberta = true; mostraRegra(r); } }); });
+    /* o clique abre a regra antes de o navegador rolar até a âncora */
+    doc.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (a) abreRegraDoAlvo(a.getAttribute('href'));
+    });
+    window.addEventListener('hashchange', function () { abreRegraDoAlvo(window.location.hash); });
+    /* o endereço que já chega com a âncora: a rolagem do navegador aconteceu com a regra fechada */
+    var chegou = abreRegraDoAlvo(window.location.hash);
+    if (chegou && chegou.scrollIntoView) chegou.scrollIntoView();
   }
 
   /* ---------- 12. Lista de guias: filtro por tema ---------- */
