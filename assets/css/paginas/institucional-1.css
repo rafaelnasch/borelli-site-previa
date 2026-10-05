@@ -103,9 +103,7 @@
   /* corpo de leitura com pelo menos 17 px no computador (DIREÇÃO, correção 10) */
   .inst-frente p,.inst-margem-lista > li,.inst-valores > li > span:last-child,.adv-cartao-nota,.adv-atendimento > p:not(.assina-sinal),.inst-id-nota,.inst-id .ficha-tec dd{ font-size:17px; }
   .inst-temas{ grid-template-columns:repeat(5,minmax(0,1fr)); }   /* dez temas: duas linhas de cinco */
-  /* "Leia também" com uma coluna só (os guias já estão no corpo): ocupa a largura toda, em duas colunas */
-  .leia-grade > div:only-child{ grid-column:1 / -1; }
-  .leia-grade > div:only-child .leia-lista{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--e-7); }
+  /* ("Leia também" com uma coluna só: a regra subiu para o site.css, seção 22) */
 }
 @media (min-width:768px) and (max-width:1024px){
   /* tablet: a foto continua ao lado do texto, e a margem ao lado da coluna principal */
