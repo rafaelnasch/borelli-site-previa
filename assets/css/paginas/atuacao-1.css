@@ -1,0 +1,64 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/atuacao-1.css
+   Componentes de três páginas: o índice /atuacao/ e as áreas
+   /atuacao/medicamentos-de-alto-custo/ e /atuacao/bariatrica/.
+   Entra pela ficha "estilos". Usa só os tokens e os campos do site.css;
+   tudo funciona sem :has() e sem JavaScript.
+
+    1. Índice /atuacao/: a ordem das partes, em duas colunas no computador
+    2. Parte 02 em grupos (plano de saúde e SUS): saltos, cabeçalho do grupo, tese longa
+    (o quadro de dois lados iguais, .contraste--par, e os três prazos, .tres-prazos, passaram
+     para o area.css, porque outras áreas também usam)
+    5. Perguntas frequentes em grupos
+    6. Celular (saltos da parte 02 com o rótulo em linha própria; temas da família em uma
+       coluna abaixo de 380 px)
+   O JS que abre a regra recolhida quando um link aponta para ela: ferramentas/regra-ancora.js
+   ===================================================================== */
+
+/* ---------- 1. Índice: a ordem das partes ---------- */
+.at-ordem-lista{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--calha); margin-top:var(--e-7); }
+.at-ordem-lista > li{ padding-bottom:var(--e-6); }
+.at-ordem-lista > li::after{ display:none; }
+.at-ordem-lista.percurso::after{ display:none; }
+.at-ordem-lista .percurso-n{ font-size:30px; line-height:1; }
+.at-ordem-lista .percurso-t{ font-size:18px; }
+.at-ordem .ferr-aviso{ margin-top:var(--e-5); }
+
+/* ---------- 2. Parte 02 em grupos ---------- */
+.regra-saltos{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 24px; }
+.regra-saltos .rotulo{ flex:none; }
+.regra-saltos a{ display:inline-flex; align-items:center; gap:10px; min-height:48px; font:500 15px/1.3 var(--texto); color:var(--f-link); text-decoration:none; }
+.regra-saltos a::before{ content:""; flex:none; width:7px; height:7px; transform:rotate(45deg); border:1.5px solid var(--f-losango); }
+.regra-saltos a:hover{ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.2em; }
+.regra-grupo{ margin-top:var(--e-8)!important; scroll-margin-top:calc(var(--cab-h, 96px) + 24px); }
+.regra-grupo-cab{ display:flex; flex-direction:column; gap:10px; padding-top:var(--e-5); border-top:2px solid var(--f-linha-destaque); }
+.regra-grupo-t{ font-family:var(--display); font-weight:500; font-size:var(--t-h3); line-height:1.12; color:var(--f-titulo); max-width:18em; }
+.regra-grupo-apoio{ max-width:var(--leitura); font-size:var(--t-leitura); line-height:1.6; color:var(--f-texto); }
+.regra-grupo > .c18-tese{ margin-top:var(--e-6); }
+/* Tese longa (mais de 40 palavras, como a tese 2 da ADI 7.265): letra menor, como o .olho--longo do sistema */
+.c18-tese--longa p{ font-size:clamp(19px,.429vw + 16.8px,22px); line-height:1.45; text-wrap:pretty; }
+.regra-grupo > .regras{ margin-top:var(--e-6)!important; }
+.regra-ponte{ margin-top:var(--e-7)!important; max-width:var(--leitura); }
+.regra-corpo > .lista-num{ max-width:var(--leitura); margin-block:18px!important; }
+.regra-corpo > .lista-num > li{ font-size:var(--t-leitura); line-height:1.5; color:var(--f-texto); }
+.regra-corpo .regra-cita p + p{ margin-top:.5em; }
+.regra-corpo [id]{ scroll-margin-top:calc(var(--cab-h, 96px) + 24px); }
+.regras > .regra[id]{ scroll-margin-top:calc(var(--cab-h, 96px) + 24px); }
+
+/* ---------- 5. Perguntas em grupos ---------- */
+.faq > .faq-grupo{ display:block; padding:var(--e-6) 0 var(--e-2); border-bottom:1px solid var(--f-linha-destaque); }
+.faq > .faq-grupo:first-child{ padding-top:var(--e-3); }
+
+/* ---------- 6. Celular ---------- */
+@media (max-width:640px){
+  .at-ordem-lista{ grid-template-columns:minmax(0,1fr); }
+  .at-ordem-lista .percurso-n{ font-size:26px; }
+  .regra-grupo-t{ font-size:var(--t-h4); }
+  .regra-saltos{ column-gap:20px; row-gap:0; }
+  .regra-saltos .rotulo{ flex-basis:100%; padding-top:8px; }
+}
+/* Índice: abaixo de 380 px, os dez temas da família em uma coluna (em duas, "Investigação de
+   paternidade" quebrava em três linhas e as linhas encostavam umas nas outras) */
+@media (max-width:380px){
+  .at-familia .at-temas{ grid-template-columns:minmax(0,1fr); }
+}

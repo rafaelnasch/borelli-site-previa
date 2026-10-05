@@ -1,0 +1,302 @@
+[
+ {
+  "termo": "Arquivado",
+  "explicacao": "O processo foi guardado no sistema e não tem mais andamento. \"Arquivado definitivamente\" costuma indicar que ele terminou. \"Arquivado provisoriamente\" indica que está parado à espera de alguma coisa e pode voltar a andar. Para você: Veja qual das duas formas aparece. Se ainda havia algo pendente no seu processo, pergunte ao advogado responsável o motivo do arquivamento.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Ato ordinatório",
+  "explicacao": "Registro feito pelo servidor da vara, sem precisar do juiz, para o processo andar: juntar um documento ou abrir prazo para uma das partes se manifestar, a chamada \"vista\" (CPC, arts. 152, VI, e 203, § 4º). Para você: É rotina e não é decisão do juiz. Às vezes abre um prazo, que em geral é do advogado.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Audiência de conciliação",
+  "explicacao": "Encontro, presencial ou por vídeo, para as partes tentarem um acordo com a ajuda de um conciliador (CPC, art. 334, § 7º). Ela não acontece se as duas partes disserem expressamente que não querem acordo (art. 334, § 4º, I). Para você: Se for marcada, confirme com o seu advogado se você precisa participar e de que forma. Faltar sem justificativa pode gerar multa de até 2% do valor da causa ou do valor pedido no processo (art. 334, § 8º). No Juizado Especial Cível, a falta do autor a qualquer audiência encerra o processo sem julgar o pedido, e ele só pode ficar isento das custas se provar que a falta decorreu de força maior (Lei 9.099/1995, art. 51, I e § 2º).",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Baixa",
+  "explicacao": "Tem dois sentidos. Depois de um recurso, \"baixa\" ou \"baixa dos autos\" (os autos são o conjunto dos documentos do processo) quer dizer que o processo voltou do tribunal para a vara de origem. \"Baixa definitiva\" indica que o processo foi encerrado naquela unidade. Para você: A baixa do tribunal para a vara costuma ser só o retorno do processo para a fase seguinte.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Certidão",
+  "explicacao": "Documento em que um servidor da Justiça confirma um fato do processo, como o fim de um prazo ou o trânsito em julgado. Para você: É um registro. Não é uma decisão.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Citação",
+  "explicacao": "O ato que chama o réu para fazer parte do processo e apresentar a defesa (CPC, art. 238). É feita de preferência por meio eletrônico (art. 246). Em regra, as empresas são obrigadas a manter cadastro no Domicílio Judicial Eletrônico, do Conselho Nacional de Justiça, e a citação eletrônica é feita por ele (Resolução CNJ 455/2022, arts. 16 e 18). Se a empresa não confirmar o recebimento em 3 dias úteis, a citação é feita por outro meio, como o correio ou o oficial de justiça (CPC, art. 246, § 1º-A). Para você: Nos processos contra o plano, é a operadora sendo chamada oficialmente. O prazo da defesa começa em datas que a lei define: em geral, a partir da audiência de conciliação, do pedido do réu para cancelá-la ou, nos demais casos, da data ligada à forma da citação (CPC, arts. 231 e 335).",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Concluso",
+  "explicacao": "O processo foi entregue ao juiz para ele se manifestar (CPC, art. 228). Ainda não há decisão. Para você: Em regra, o próximo passo é do juiz. Se surgir um fato novo, como um novo relatório médico, avise o advogado responsável.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Concluso para decisão",
+  "explicacao": "O processo está com o juiz para ele decidir uma questão, como um pedido de liminar. Também aparecem \"concluso para despacho\" (uma ordem de andamento) e \"concluso para sentença\" (a decisão que encerra a primeira fase). Para você: O registro diz o tipo de manifestação esperada do juiz. Não diz qual será a decisão.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Contestação",
+  "explicacao": "A defesa do réu, nos processos de saúde em geral a operadora, apresentada em 15 dias úteis (CPC, arts. 335 e 219). Para você: É comum a contestação discordar de todos os pedidos. Ela é a versão da outra parte, não uma decisão.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Decurso de prazo",
+  "explicacao": "Registro automático de que um prazo terminou, também escrito como \"decorrido prazo\". Pode ser o prazo de qualquer uma das partes, inclusive da operadora, ou um prazo em que não havia nada obrigatório a fazer. Para você: Sozinho, o registro não quer dizer que alguém perdeu um prazo. Leia de quem era o prazo: o nome costuma vir no próprio registro. Na dúvida, pergunte ao advogado responsável.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Emenda à petição inicial",
+  "explicacao": "O juiz pede ao autor que corrija ou complete o pedido inicial em 15 dias úteis, dizendo o que falta (CPC, art. 321). Para você: É comum. O seu advogado pode pedir a você um documento, como um relatório médico atualizado ou um comprovante de renda.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Intimação",
+  "explicacao": "Aviso oficial de um ato do processo, para alguém saber ou fazer alguma coisa (CPC, art. 269). Na maior parte das vezes é dirigida ao advogado, pelo Diário de Justiça Eletrônico Nacional ou pelo sistema do processo. Para você: Muitas intimações abrem prazo para o advogado e não pedem nada de você. Quando a intimação é para você, pessoalmente, ela chega por meio eletrônico, pelo correio ou por oficial de justiça.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Juntada",
+  "explicacao": "Um documento foi anexado ao processo: uma petição, um laudo, um comprovante (CPC, art. 203, § 4º). Para você: O que importa é o documento juntado, não o registro da juntada.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Laudo pericial",
+  "explicacao": "O relatório escrito do perito, com as respostas às perguntas do processo (CPC, art. 473). As partes têm 15 dias para se manifestar sobre ele (art. 477, § 1º). O juiz não fica preso às conclusões, mas precisa explicar por que as aceitou ou não (art. 479). Para você: O laudo é uma prova importante. Ele não é a sentença.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Mandado",
+  "explicacao": "Ordem escrita do juiz cumprida por um oficial de justiça, como o mandado para intimar a operadora a cumprir uma liminar. Para você: \"Mandado expedido\" quer dizer que a ordem foi emitida. \"Juntada de mandado cumprido\" quer dizer que ela foi entregue, e alguns prazos começam a contar dessa data (CPC, art. 231, II).",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Perícia",
+  "explicacao": "Exame feito por um profissional nomeado pelo juiz, o perito, para responder a perguntas técnicas (CPC, arts. 464 e 465). Nos processos de saúde, em geral um médico. As partes podem indicar um assistente técnico e apresentar perguntas, os quesitos, em 15 dias (art. 465, § 1º). Para você: Se a perícia incluir um exame seu, leve na data marcada os exames, os relatórios e os documentos médicos.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Petição inicial",
+  "explicacao": "O documento que abre o processo: conta os fatos, explica o direito e diz o que se pede ao juiz (CPC, art. 319). Para você: É com ela que o processo recebe um número.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Prazo em dias úteis",
+  "explicacao": "Os prazos processuais contados em dias consideram só os dias úteis (CPC, art. 219; nos Juizados, Lei 9.099/1995, art. 12-A). De 20 de dezembro a 20 de janeiro, esses prazos ficam suspensos (CPC, art. 220), mas os juízes seguem trabalhando e pedidos urgentes continuam a ser analisados (arts. 220, § 1º, e 214, II). Para você: Um prazo de 15 dias costuma levar três semanas ou mais no calendário.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Processo eletrônico",
+  "explicacao": "O processo tramita em sistema digital, sem papel (Lei 11.419/2006). Os \"autos\" são o conjunto dos documentos do processo. O número segue um padrão nacional de 20 dígitos, no formato NNNNNNN-DD.AAAA.J.TR.OOOO, que indica o ano de início, o ramo da Justiça, o tribunal e a unidade de origem (Resolução CNJ 65/2008). Para você: É com esse número que se consulta o processo no site do tribunal.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Remessa",
+  "explicacao": "Os autos, o conjunto dos documentos do processo, foram enviados de um setor ou órgão para outro: da vara para o tribunal depois de um recurso, para a contadoria fazer cálculos, para o Ministério Público dar parecer. Para você: É um deslocamento do processo, não uma decisão.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Réplica",
+  "explicacao": "A resposta do autor à contestação, em 15 dias úteis, quando a defesa traz fatos novos ou questões processuais (CPC, arts. 350 e 351). Para você: É o seu advogado rebatendo a defesa da outra parte. Em geral não depende de você, salvo se faltar algum documento.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Segredo de justiça",
+  "explicacao": "Só as partes e seus advogados consultam o processo e pedem certidões (CPC, art. 189, § 1º). A lei já prevê o segredo nos processos de família, como divórcio, alimentos e guarda (art. 189, II), e também nos processos em que há dados protegidos pela intimidade (art. 189, III), o que pode incluir informações de saúde. Para você: Nos processos de saúde, é o juiz quem verifica se é o caso de segredo.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Sobrestado",
+  "explicacao": "O processo está suspenso, à espera de outra coisa: por exemplo, do julgamento de um tema repetitivo no Superior Tribunal de Justiça ou no Supremo Tribunal Federal sobre a mesma questão (CPC, art. 1.037, II), ou do resultado de outro processo (art. 313, V). Para você: O processo volta a andar quando o motivo da suspensão termina.",
+  "categoria": "andamento"
+ },
+ {
+  "termo": "Acórdão",
+  "explicacao": "A decisão tomada por um grupo de julgadores de um tribunal (CPC, art. 204). Para você: É o nome do julgamento de um recurso pelo grupo de julgadores do tribunal, chamado turma ou câmara.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Decisão interlocutória",
+  "explicacao": "Decisão do juiz no meio do processo, que resolve uma questão sem encerrar a fase (CPC, art. 203, § 2º). A decisão sobre o pedido de liminar é um exemplo. Para você: Algumas delas podem ser levadas ao tribunal por agravo de instrumento.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Decisão monocrática",
+  "explicacao": "Decisão tomada por um só julgador do tribunal, o relator, sem o grupo (CPC, art. 932). Para você: Contra ela cabe agravo interno, para que o grupo de julgadores examine a questão (art. 1.021).",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Deferido",
+  "explicacao": "O juiz aceitou o pedido. \"Deferido em parte\" quer dizer que aceitou uma parte dele. Para você: O que importa é saber o que foi aceito e qual é o próximo passo, como a operadora ser intimada para cumprir.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Despacho",
+  "explicacao": "Uma ordem do juiz para o processo andar, como \"cite-se\" ou \"intime-se\" (CPC, art. 203, § 3º). Não decide o pedido. Para você: Em geral, só leva o processo para a próxima etapa.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Extinção sem resolução do mérito",
+  "explicacao": "O processo terminou sem que o juiz decidisse o pedido, por um motivo processual, como a desistência ou a falta de um requisito (CPC, art. 485). Em regra, a ação pode ser proposta de novo, corrigido o problema e pagas as custas e os honorários do processo anterior, com exceções previstas na lei (arts. 485, V, e 486). Para você: Não é o mesmo que \"improcedente\".",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Homologação de acordo",
+  "explicacao": "O juiz confirma por sentença o acordo feito entre as partes (CPC, art. 334, § 11, e art. 487, III, b). Para você: O acordo homologado passa a valer como decisão judicial.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Improcedente",
+  "explicacao": "O juiz rejeitou o pedido (CPC, art. 487, I). Para você: Em regra, cabe apelação em 15 dias úteis. O advogado responsável explica se ela faz sentido no seu caso.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Indeferido",
+  "explicacao": "O juiz não aceitou o pedido, naquele momento. Para você: Um pedido indeferido, como uma liminar, não encerra o processo. Em regra ele segue, e a decisão pode ser revista em recurso.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Liminar",
+  "explicacao": "Decisão provisória que pode ser dada no começo do processo, às vezes antes de ouvir a outra parte, quando há urgência (CPC, art. 9º, parágrafo único, I, e art. 300, § 2º). Pode ser mantida, modificada ou revogada (art. 296). Para você: Vale enquanto o processo segue. Não é a decisão final.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Liminar revogada",
+  "explicacao": "A decisão provisória deixou de valer, por ordem do juiz ou do tribunal (CPC, art. 296). Para você: Converse com o advogado responsável sobre os efeitos no seu caso. A lei prevê que quem obteve a medida pode ter de responder pelo prejuízo que ela causou à outra parte em certas situações, como uma sentença desfavorável (art. 302, I).",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Parcialmente procedente",
+  "explicacao": "O juiz aceitou uma parte do que foi pedido e rejeitou outra (CPC, art. 487, I). As despesas do processo são divididas na proporção (art. 86). Para você: Leia o que foi aceito, o que foi negado e se cabe recurso de cada parte.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Procedente",
+  "explicacao": "O juiz aceitou o pedido (CPC, art. 487, I). Para você: A sentença ainda pode ser objeto de recurso. Ela só fica definitiva com o trânsito em julgado.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Sentença",
+  "explicacao": "A decisão do juiz que encerra a primeira fase do processo (CPC, art. 203, § 1º). Para você: Pode caber recurso. Se a sentença confirma, concede ou revoga uma liminar, em regra ela produz efeitos logo depois de publicada, mesmo com apelação. O tribunal pode suspender esses efeitos a pedido de quem recorreu (art. 1.012, § 1º, V, e §§ 3º e 4º).",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Trânsito em julgado",
+  "explicacao": "Não cabe mais nenhum recurso: a decisão ficou definitiva (CPC, art. 502). A decisão de mérito só pode ser desfeita em hipóteses excepcionais, por ação rescisória, em regra em até 2 anos (arts. 966 e 975). Para você: Costuma aparecer como \"certidão de trânsito em julgado\". Depois dele, o que foi decidido pode ser exigido em caráter definitivo, na fase de cumprimento de sentença.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Tutela antecipada",
+  "explicacao": "Um tipo de tutela de urgência que antecipa, de forma provisória, o efeito do que foi pedido, como a autorização de um procedimento antes da sentença (CPC, art. 294, parágrafo único). Para você: Quando é dada no começo do processo, também é chamada de liminar.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Tutela de urgência",
+  "explicacao": "Decisão provisória pedida quando há urgência. O juiz a concede quando há elementos que mostram a probabilidade do direito e o perigo de dano ou o risco ao resultado do processo (CPC, art. 300). Ele pode exigir uma caução, uma garantia (como depósito, bem ou fiança) que cubra eventual prejuízo da outra parte, e pode dispensá-la de quem não tem condições de oferecê-la (art. 300, § 1º). Para você: \"Tutela de urgência\", \"tutela antecipada\" e \"liminar\" aparecem muitas vezes juntas. As três são decisões provisórias.",
+  "categoria": "decisões"
+ },
+ {
+  "termo": "Agravo de instrumento",
+  "explicacao": "Recurso ao tribunal contra certas decisões tomadas no meio do processo, como a que concede ou nega uma liminar (CPC, art. 1.015, I). O prazo é de 15 dias úteis (art. 1.003, § 5º). Para você: Se a operadora recorrer de uma liminar, o tribunal reexamina a decisão provisória, e o processo continua na vara. Ao receber o agravo, o relator pode suspender a liminar ou conceder o que foi negado, até o julgamento do recurso (CPC, art. 1.019, I).",
+  "categoria": "recursos"
+ },
+ {
+  "termo": "Apelação",
+  "explicacao": "Recurso contra a sentença, julgado pelo tribunal, com prazo de 15 dias úteis (CPC, arts. 1.009 e 1.003, § 5º). Em regra, suspende os efeitos da sentença (art. 1.012). Para você: Há exceções. A sentença que confirma, concede ou revoga uma liminar produz efeitos desde a publicação, salvo se o tribunal suspender esses efeitos a pedido de quem recorreu (art. 1.012, § 1º, V, e §§ 3º e 4º).",
+  "categoria": "recursos"
+ },
+ {
+  "termo": "Contrarrazões",
+  "explicacao": "A resposta ao recurso da outra parte, em 15 dias úteis (CPC, art. 1.010, § 1º, e art. 1.003, § 5º). Para você: Quando a operadora recorre, é por meio delas que o seu advogado responde.",
+  "categoria": "recursos"
+ },
+ {
+  "termo": "Efeito suspensivo",
+  "explicacao": "Quando um recurso tem efeito suspensivo, a decisão recorrida fica sem produzir efeitos até o julgamento. A regra geral é que o recurso não suspende a decisão, salvo previsão da lei ou decisão do relator (CPC, art. 995). A apelação é uma das exceções (art. 1.012). Para você: A pergunta útil é: a decisão continua valendo durante o recurso? A resposta muda conforme o recurso e a decisão.",
+  "categoria": "recursos"
+ },
+ {
+  "termo": "Embargos de declaração",
+  "explicacao": "Pedido ao próprio juiz ou tribunal para esclarecer uma decisão obscura ou contraditória, suprir uma omissão ou corrigir um erro material (CPC, art. 1.022). O prazo é de 5 dias úteis (art. 1.023). Para você: Eles interrompem o prazo dos outros recursos, que recomeça do zero depois do julgamento dos embargos (art. 1.026).",
+  "categoria": "recursos"
+ },
+ {
+  "termo": "Recurso especial",
+  "explicacao": "Recurso ao Superior Tribunal de Justiça (STJ) contra decisão de tribunal que contrarie lei federal ou a interprete de forma diferente de outro tribunal (Constituição, art. 105, III). O STJ não reexamina provas (Súmula 7). Nos recursos contra decisões de tribunal publicadas depois de 03/09/2026, quando a Lei 15.484/2026 entrou em vigor, o recurso precisa mostrar, em tópico próprio, que a questão é relevante além do interesse das partes (CPC, art. 1.035-A, §§ 1º e 2º; Lei 15.484/2026, art. 4º). Em alguns casos a lei já presume essa relevância, como quando a decisão contraria a jurisprudência dominante do STJ (Constituição, art. 105, § 3º). Para você: O equivalente no Supremo Tribunal Federal (STF) é o recurso extraordinário, para questões da Constituição (Constituição, art. 102, III).",
+  "categoria": "recursos"
+ },
+ {
+  "termo": "Recurso inominado",
+  "explicacao": "Nome usado na prática para o recurso contra a sentença do Juizado Especial Cível, que julga causas de até 40 salários mínimos (Lei 9.099/1995, arts. 3º, I, e 41). O prazo é de 10 dias úteis, e quem julga é uma turma de três juízes (arts. 41, § 1º, 42 e 12-A). Para você: No Juizado, o primeiro grau não cobra custas, mas o recurso exige o pagamento delas, o preparo, em 48 horas, salvo para quem tem gratuidade da justiça (arts. 54 e 42, § 1º). Se o recurso for rejeitado, quem recorreu paga custas e honorários de 10% a 20% (art. 55). Contra a decisão da turma do Juizado não cabe recurso especial ao STJ (Súmula 203 do STJ) [conferir antes de publicar: texto da Súmula 203 no site do STJ, pendência 3].",
+  "categoria": "recursos"
+ },
+ {
+  "termo": "Autor",
+  "explicacao": "Quem entra com a ação. Nos processos contra o plano, em geral o beneficiário. Quando é uma criança, ela é representada pelos pais ou pelo responsável legal. Para você: Nas movimentações, você aparece como autora ou autor, ou como \"parte autora\".",
+  "categoria": "pessoas e papéis"
+ },
+ {
+  "termo": "Desembargador",
+  "explicacao": "O título de quem julga no Tribunal de Justiça, o segundo grau da Justiça estadual (Lei Complementar 35/1979, art. 34). O desembargador que conduz um recurso é o relator. Para você: \"Concluso ao relator\" quer dizer que o recurso está com o desembargador responsável por ele.",
+  "categoria": "pessoas e papéis"
+ },
+ {
+  "termo": "Juiz e vara",
+  "explicacao": "O juiz de primeiro grau conduz o processo desde o começo e dá a sentença. A vara é a unidade em que ele atua, também chamada de juízo, e a comarca é o território que ela atende. Para você: Os despachos, as decisões e a sentença do primeiro grau saem da vara.",
+  "categoria": "pessoas e papéis"
+ },
+ {
+  "termo": "Ministério Público",
+  "explicacao": "Instituição que atua em certos processos como fiscal da ordem jurídica, isto é, para zelar pelo cumprimento da lei, com prazo de 30 dias para se manifestar, por exemplo quando há interesse de criança ou de pessoa considerada incapaz pela lei (CPC, art. 178, II). Para você: Em processos de crianças, como os de terapias para o autismo (TEA), é comum o processo ir ao Ministério Público para parecer.",
+  "categoria": "pessoas e papéis"
+ },
+ {
+  "termo": "Réu",
+  "explicacao": "Contra quem a ação é proposta. Nos processos de saúde, em geral a operadora do plano. Para você: Nas movimentações, aparece também como \"parte ré\" ou \"requerida\".",
+  "categoria": "pessoas e papéis"
+ },
+ {
+  "termo": "Tribunal",
+  "explicacao": "O órgão que julga os recursos: o Tribunal de Justiça do estado, no segundo grau; o Superior Tribunal de Justiça (STJ), para questões de lei federal; e o Supremo Tribunal Federal (STF), para questões da Constituição. No STJ e no STF, os julgadores são ministros (Constituição, arts. 101 e 104). Para você: Um processo pode passar por mais de um tribunal antes de terminar.",
+  "categoria": "pessoas e papéis"
+ },
+ {
+  "termo": "Alvará",
+  "explicacao": "Ordem do juiz que autoriza retirar um valor depositado em conta judicial, também chamada de mandado de levantamento. Pode ser substituída por transferência eletrônica para a conta indicada (CPC, art. 906, parágrafo único). Para você: Valor depositado em juízo só é liberado com ordem do juiz. Mensagem que promete liberar valor do seu processo mediante pagamento é sinal do golpe do falso advogado. Antes de responder, confirme pelos canais oficiais do escritório que cuida do seu processo ou consulte o processo no site do tribunal.",
+  "categoria": "dinheiro e custas"
+ },
+ {
+  "termo": "Bloqueio de valores",
+  "explicacao": "Ordem do juiz, enviada aos bancos pelo Sisbajud, sistema do Conselho Nacional de Justiça, que torna indisponível dinheiro do devedor até o valor da dívida, sem aviso prévio a ele (CPC, art. 854). Para você: Depende de pedido de quem tem o crédito e de decisão do juiz. Aparece em geral na fase de cumprimento de sentença.",
+  "categoria": "dinheiro e custas"
+ },
+ {
+  "termo": "Cumprimento de sentença",
+  "explicacao": "A fase em que se exige o que foi decidido (CPC, art. 513). Quando a condenação é a pagar, o devedor é intimado para pagar em 15 dias; se não pagar, somam-se multa de 10% e honorários de 10% (art. 523, § 1º). Pode ser provisório, enquanto há recurso sem efeito suspensivo (art. 520). Para você: É nesta fase que aparecem termos como bloqueio de valores e alvará.",
+  "categoria": "dinheiro e custas"
+ },
+ {
+  "termo": "Custas",
+  "explicacao": "Valores pagos à Justiça pelos atos do processo, conforme a tabela de cada tribunal. Cada parte adianta as despesas dos atos que pede, e a sentença manda o vencido reembolsar o vencedor (CPC, art. 82). Para você: Quem tem gratuidade da justiça não adianta as custas (art. 98, § 1º, I).",
+  "categoria": "dinheiro e custas"
+ },
+ {
+  "termo": "Gratuidade da justiça (justiça gratuita)",
+  "explicacao": "Instituto do Código de Processo Civil: quem não tem recursos suficientes pode pedir ao juiz para não adiantar as custas e as despesas do processo (CPC, art. 98, caput e § 1º). Para pessoa física, a declaração de falta de recursos se presume verdadeira, e ter advogado particular não impede o pedido (art. 99, §§ 3º e 4º). Para você: Quem decide é o juiz. Ele só pode negar o pedido se houver no processo sinais de que a falta de recursos não existe e, antes de negar, precisa dar a você a chance de comprovar (art. 99, § 2º). Se você perder, a cobrança dos honorários do advogado da outra parte fica suspensa (art. 98, § 3º). A gratuidade trata das despesas do processo e não muda os honorários combinados em contrato com o advogado. As multas processuais continuam devidas (art. 98, § 4º).",
+  "categoria": "dinheiro e custas"
+ },
+ {
+  "termo": "Honorários de sucumbência",
+  "explicacao": "Valor que a sentença manda a parte vencida pagar ao advogado da parte vencedora, em regra entre 10% e 20% da condenação, do ganho econômico obtido com o processo ou do valor da causa (CPC, art. 85, § 2º). Pertencem ao advogado (art. 85, § 14; Lei 8.906/1994, art. 23) e não se confundem com os honorários combinados em contrato. Para você: Se o pedido for rejeitado, você pode ser condenado a pagar os honorários do advogado da outra parte. Com gratuidade da justiça, essa cobrança fica suspensa e só pode ser feita se, nos 5 anos seguintes ao trânsito em julgado, ficar provado que a falta de recursos acabou (art. 98, § 3º).",
+  "categoria": "dinheiro e custas"
+ },
+ {
+  "termo": "Multa diária (astreintes)",
+  "explicacao": "Multa fixada pelo juiz para pressionar o cumprimento de uma ordem, como autorizar um procedimento (CPC, art. 537). É devida desde o descumprimento e enquanto ele durar (§ 4º). Vai para a parte que tem a ordem a seu favor (§ 2º). O juiz pode alterar o valor ou a frequência (§ 1º). Para você: A finalidade da multa é fazer a ordem ser cumprida. O valor depositado só é levantado depois do trânsito em julgado da sentença favorável (§ 3º).",
+  "categoria": "dinheiro e custas"
+ }
+]

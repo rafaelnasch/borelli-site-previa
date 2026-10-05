@@ -1,0 +1,21 @@
+/* Guias do grupo 1 (negativa por escrito, junta médica, relatório médico, quanto tempo demora, preciso ir
+   ao fórum, reparadora depois da caneta, golpe do falso advogado). Carregado pela ficha "estilos" de cada
+   guia. Só acrescenta o que o site.css não traz para a coluna de leitura de 680 px. */
+
+/* Citação literal de norma ou de tese no corpo do guia: o componente .c18-tese (seção 9 do site.css), com o
+   mesmo respiro do olho. O olho grande fica para a frase da casa (o cartaz). */
+.guia-texto > .guia-tese{ margin-top:var(--e-6); margin-bottom:var(--e-6); }
+.guia-texto > .guia-tese + *{ margin-top:0; }
+.guia-tese p{ font-size:clamp(19px,.381vw + 17.51px,23px); line-height:1.42; text-wrap:pretty; }
+
+/* O cartaz (frase da casa) no meio do texto: respiro maior em cima e embaixo. */
+.guia-texto > .olho--cartaz{ margin-top:var(--e-7); margin-bottom:var(--e-7); }
+.guia-texto > .olho--cartaz + *{ margin-top:0; }
+
+/* Tabela de consulta do guia: a primeira coluna (o caso ou a fase) em peso de rótulo. */
+.guia-texto .consulta td:first-child{ font-weight:500; color:var(--f-titulo); }
+
+@media (max-width:640px){
+  .guia-texto > .guia-tese{ margin-top:var(--e-5); margin-bottom:var(--e-5); padding-left:18px; }
+  .guia-texto > .olho--cartaz{ margin-top:var(--e-6); margin-bottom:var(--e-6); }
+}

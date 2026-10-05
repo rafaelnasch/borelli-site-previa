@@ -1,0 +1,14 @@
+/* ESCRITÓRIO */
+Nome: Borelli Advocacia
+Razão social: Caico Borelli Sociedade Individual de Advocacia
+Advogado responsável: Caico Borelli · OAB/CE 24.895
+Advogada: Thaís Cruz · OAB/CE 24.202
+Contato: atendimento@advborelli.com.br
+Cidade: Fortaleza, CE, Brasil
+
+/* SITE */
+Atualizado em: 2026/10/05
+Idioma: português do Brasil
+Padrões: HTML, CSS e JavaScript sem dependências
+Fontes: Newsreader e Lexend (SIL Open Font License)
+Ícones: Lucide (licença ISC)

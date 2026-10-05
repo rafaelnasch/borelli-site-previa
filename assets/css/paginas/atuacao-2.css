@@ -1,0 +1,14 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/atuacao-2.css
+   Componentes das áreas de urgência e internação e de cancelamento do plano
+   (carregado pela ficha "estilos"). Usa só os tokens e os campos do site.css.
+
+   Os três prazos da urgência (.tres-prazos) e o quadro de dois lados iguais
+   do cancelamento (.contraste--par) são do area.css (componentes da área).
+
+    1. .rotulo-lista: o rótulo que abre uma lista dentro do texto da parte
+   ===================================================================== */
+
+/* ---------- 1. Rótulo de lista ---------- */
+.parte-texto > .rotulo-lista{ margin-top:var(--e-6); }
+.parte-texto > .rotulo-lista + .c18-lista{ margin-top:var(--e-4); }

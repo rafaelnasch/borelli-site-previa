@@ -1,0 +1,427 @@
+{
+ "ferramenta": "prazos-maximos-ans",
+ "versao_dados": "2026-10-05",
+ "conferido_em": "2026-10-05",
+ "norma": {
+  "nome": "Resolução Normativa ANS nº 566, de 29 de dezembro de 2022",
+  "ementa": "Dispõe sobre a garantia de atendimento dos beneficiários de plano privado de assistência à saúde.",
+  "publicacao": "Diário Oficial da União nº 1, Seção 1, 02/01/2023, páginas 94 e 95",
+  "vigencia_desde": "2023-02-01",
+  "status_em_2026_10_05": "em vigor",
+  "revogou": [
+   "Resolução Normativa nº 259, de 17 de junho de 2011",
+   "Resolução Normativa nº 268, de 1º de setembro de 2011",
+   "art. 3º da Resolução Normativa nº 334, de 1º de agosto de 2013"
+  ],
+  "retificacoes": [
+   {
+    "data_dou": "2023-01-17",
+    "pagina": 29,
+    "o_que_mudou": "art. 3º, incisos XII, XV, XVI e XVII; art. 3º, § 4º; art. 6º",
+    "url": "https://www.in.gov.br/web/dou/-/retificacao-458237786"
+   },
+   {
+    "data_dou": "2023-02-03",
+    "pagina": 35,
+    "o_que_mudou": "art. 3º, § 5º (remissão ao inciso XII)",
+    "url": "https://www.in.gov.br/web/dou/-/retificacao-462032158"
+   }
+  ],
+  "alteracoes": [
+   {
+    "norma": "Resolução Normativa ANS nº 595, de 19 de dezembro de 2023",
+    "dispositivo": "art. 3º, § 6º (contracepção)",
+    "publicacao": "Diário Oficial da União nº 241, Seção 1, 20/12/2023, página 163",
+    "vigencia": "2024-01-01",
+    "afeta_prazos": true,
+    "url": "https://www.in.gov.br/web/dou/-/resolucao-normativa-ans-n-595-de-19-de-dezembro-de-2023-532179037"
+   },
+   {
+    "norma": "Resolução Normativa ANS nº 665, de 26 de fevereiro de 2026",
+    "dispositivo": "art. 1º, § 2º (regiões de saúde)",
+    "vigencia": "2026-03-02",
+    "afeta_prazos": false,
+    "url": "https://www.in.gov.br/web/dou/-/resolucao-normativa-ans-n-665-de-26-de-fevereiro-de-2026-689264565"
+   }
+  ],
+  "url_dou": "https://www.in.gov.br/web/dou/-/resolucao-normativa-ans-n-566-de-29-de-dezembro-de-2022-455439257",
+  "url_ans": "https://www.gov.br/ans/pt-br/assuntos/consumidor/prazos-maximos-de-atendimento"
+ },
+ "unidade": "dias úteis",
+ "contagem": {
+  "inicio": "data da demanda pelo serviço ou procedimento",
+  "fim": "efetiva realização do atendimento",
+  "referencia": "RN 566/2022, art. 3º, § 1º",
+  "texto_literal": "§ 1º Os prazos estabelecidos neste artigo são contados a partir da data da demanda pelo serviço ou procedimento até a sua efetiva realização.",
+  "dias_uteis_definicao": "A RN 566/2022 não define dias úteis. A ferramenta deve excluir sábados, domingos e feriados nacionais e avisar que feriados estaduais e municipais podem alterar a conta. [conferir antes de publicar]",
+  "excecao_dias_corridos": "Contracepção: a data-limite nunca passa de 30 dias corridos da demanda (RN 566/2022, art. 3º, § 6º, incluído pela RN 595/2023)."
+ },
+ "resultado": {
+  "texto_fixo": "Data-limite pela RN 566/2022 ([referência do inciso]): [data]. Vale para atendimentos do Rol da ANS cobertos pelo seu plano, depois das carências, na cidade do pedido dentro da área do contrato, em qualquer prestador habilitado da rede. Feriados do seu estado ou da sua cidade podem mudar a conta. Se houve junta médica, o prazo pode ter ficado suspenso por 3 dias úteis. Esta data mostra o que diz a norma. Não é promessa de atendimento.",
+  "texto_urgencia": "Atendimento imediato (RN 566/2022, art. 3º, XVII).",
+  "aviso_junta": "Se houve junta médica, o prazo pode ter ficado suspenso por 3 dias úteis, uma única vez (RN 424/2017, art. 4º, §§ 2º e 3º).",
+  "regras": [
+   "Nenhum botão de contato nem convite junto ao resultado; o bloco de canais oficiais fica no rodapé.",
+   "O cálculo roda no navegador, sem enviar nem guardar os dados escolhidos (dado de saúde, LGPD)."
+  ]
+ },
+ "regras_gerais": [
+  {
+   "regra": "O prazo vale para qualquer prestador da rede habilitado no município, não para um profissional específico escolhido pelo beneficiário.",
+   "referencia": "RN 566/2022, art. 3º, § 2º"
+  },
+  {
+   "regra": "O prazo da consulta de retorno fica a critério do profissional que atende.",
+   "referencia": "RN 566/2022, art. 3º, § 3º"
+  },
+  {
+   "regra": "Exames, terapias e hospital-dia classificados no Rol como alta complexidade seguem o prazo de 21 dias úteis.",
+   "referencia": "RN 566/2022, art. 3º, § 5º (retificado em 03/02/2023)"
+  },
+  {
+   "regra": "Métodos e técnicas de contracepção seguem os prazos do art. 3º, sem passar de 30 dias corridos.",
+   "referencia": "RN 566/2022, art. 3º, § 6º (incluído pela RN 595/2023); Lei nº 9.263/1996, art. 9º, § 2º"
+  },
+  {
+   "regra": "A operadora deve assegurar o acesso no município da demanda (onde o beneficiário busca o atendimento), desde que dentro da área geográfica de abrangência e da área de atuação do produto.",
+   "referencia": "RN 566/2022, art. 1º, § 1º, III, e art. 2º"
+  },
+  {
+   "regra": "A autorização, quando necessária, deve sair a tempo de cumprir o prazo.",
+   "referencia": "RN 566/2022, art. 11"
+  },
+  {
+   "regra": "A operadora deve fornecer número de protocolo.",
+   "referencia": "RN 566/2022, art. 12; RN 623/2024, art. 10"
+  },
+  {
+   "regra": "Os prazos valem para os serviços e procedimentos do Rol da ANS cobertos pelo plano, conforme a segmentação contratada, depois de cumpridas as carências do contrato.",
+   "referencia": "RN 566/2022, art. 2º; página oficial da ANS sobre prazos máximos (atualizada em 28/07/2026)"
+  },
+  {
+   "regra": "Se houver junta médica ou odontológica, ela não pode fazer ultrapassar os prazos. Os prazos ficam suspensos por 3 dias úteis, uma única vez, quando o desempatador pede exames complementares ou quando o beneficiário comunica a ausência à junta presencial. Urgência e emergência não admitem junta.",
+   "referencia": "RN 424/2017, art. 3º, I, e art. 4º, §§ 1º a 3º; RN 623/2024, art. 12, §§ 3º e 4º"
+  }
+ ],
+ "itens": [
+  {
+   "id": "consulta-basica",
+   "grupo": "Consultas médicas",
+   "rotulo": "Consulta básica: pediatria, clínica médica, cirurgia geral, ginecologia e obstetrícia",
+   "rotulo_curto": "Consulta básica",
+   "prazo_dias_uteis": 7,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso I",
+   "texto_literal": "I - consulta básica - pediatria, clínica médica, cirurgia geral, ginecologia e obstetrícia: em até sete dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "consulta-demais-especialidades",
+   "grupo": "Consultas médicas",
+   "rotulo": "Consulta nas demais especialidades médicas",
+   "rotulo_curto": "Consulta em outras especialidades",
+   "prazo_dias_uteis": 14,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso II",
+   "texto_literal": "II - consulta nas demais especialidades médicas: em até quatorze dias úteis;",
+   "observacao": "Inclui, por exemplo, cirurgia plástica, endocrinologia, dermatologia. O retorno fica a critério do profissional (art. 3º, § 3º)."
+  },
+  {
+   "id": "fonoaudiologo",
+   "grupo": "Consultas e sessões com outros profissionais",
+   "rotulo": "Consulta ou sessão com fonoaudiólogo",
+   "rotulo_curto": "Fonoaudiólogo",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso III",
+   "texto_literal": "III - consulta/sessão com fonoaudiólogo: em até dez dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "nutricionista",
+   "grupo": "Consultas e sessões com outros profissionais",
+   "rotulo": "Consulta ou sessão com nutricionista",
+   "rotulo_curto": "Nutricionista",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso IV",
+   "texto_literal": "IV - consulta/sessão com nutricionista: em até dez dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "psicologo",
+   "grupo": "Consultas e sessões com outros profissionais",
+   "rotulo": "Consulta ou sessão com psicólogo",
+   "rotulo_curto": "Psicólogo",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso V",
+   "texto_literal": "V - consulta/sessão com psicólogo: em até dez dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "terapeuta-ocupacional",
+   "grupo": "Consultas e sessões com outros profissionais",
+   "rotulo": "Consulta ou sessão com terapeuta ocupacional",
+   "rotulo_curto": "Terapeuta ocupacional",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso VI",
+   "texto_literal": "VI - consulta/sessão com terapeuta ocupacional: em até dez dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "fisioterapeuta",
+   "grupo": "Consultas e sessões com outros profissionais",
+   "rotulo": "Consulta ou sessão com fisioterapeuta",
+   "rotulo_curto": "Fisioterapeuta",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso VII",
+   "texto_literal": "VII - consulta/sessão com fisioterapeuta: em até dez dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "enfermeiro-obstetra",
+   "grupo": "Consultas e sessões com outros profissionais",
+   "rotulo": "Consulta ou sessão com enfermeiro obstetra ou obstetriz",
+   "rotulo_curto": "Enfermeiro obstetra ou obstetriz",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso VIII",
+   "texto_literal": "VIII - consulta/sessão com enfermeiro obstetra ou obstetriz: em até dez dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "cirurgiao-dentista",
+   "grupo": "Odontologia",
+   "rotulo": "Consulta e procedimentos em consultório ou clínica com cirurgião-dentista",
+   "rotulo_curto": "Dentista",
+   "prazo_dias_uteis": 7,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso IX",
+   "texto_literal": "IX - consulta e procedimentos realizados em consultório/clínica com cirurgião-dentista: em até sete dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "laboratorio-analises-clinicas",
+   "grupo": "Exames e terapias",
+   "rotulo": "Exames de laboratório de análises clínicas, sem internação (regime ambulatorial)",
+   "rotulo_curto": "Exame de laboratório",
+   "prazo_dias_uteis": 3,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso X",
+   "texto_literal": "X - serviços de diagnóstico por laboratório de análises clínicas em regime ambulatorial: em até três dias úteis;",
+   "observacao": "Se o procedimento estiver classificado no Rol da ANS como de alta complexidade, o prazo passa a ser o do inciso XII: 21 dias úteis (art. 3º, § 5º)."
+  },
+  {
+   "id": "demais-diagnostico-terapia",
+   "grupo": "Exames e terapias",
+   "rotulo": "Demais exames e terapias sem internação (regime ambulatorial)",
+   "rotulo_curto": "Outros exames e terapias",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso XI",
+   "texto_literal": "XI - demais serviços de diagnóstico e terapia em regime ambulatorial: em até dez dias úteis;",
+   "observacao": "Se o procedimento estiver classificado no Rol da ANS como de alta complexidade, o prazo passa a ser o do inciso XII: 21 dias úteis (art. 3º, § 5º)."
+  },
+  {
+   "id": "alta-complexidade",
+   "grupo": "Cirurgias, internações e alta complexidade",
+   "rotulo": "Procedimentos de alta complexidade (PAC), assim listados no Rol da ANS",
+   "rotulo_curto": "Alta complexidade (PAC)",
+   "prazo_dias_uteis": 21,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso XII",
+   "texto_literal": "XII - procedimentos de alta complexidade - PAC: em até vinte e um dias úteis;",
+   "observacao": "Redação dada pela retificação publicada no DOU de 17/01/2023. Quais procedimentos são de alta complexidade é definido no Rol de Procedimentos e Eventos em Saúde da ANS (art. 3º, § 4º)."
+  },
+  {
+   "id": "internacao-eletiva",
+   "grupo": "Cirurgias, internações e alta complexidade",
+   "rotulo": "Internação eletiva (programada, sem urgência)",
+   "rotulo_curto": "Internação programada",
+   "prazo_dias_uteis": 21,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso XIII",
+   "texto_literal": "XIII - atendimento em regime de internação eletiva: em até 21 (vinte e um) dias úteis;",
+   "observacao": null
+  },
+  {
+   "id": "hospital-dia",
+   "grupo": "Cirurgias, internações e alta complexidade",
+   "rotulo": "Hospital-dia (você fica no hospital só durante o dia, sem passar a noite)",
+   "rotulo_curto": "Hospital-dia",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso XIV",
+   "texto_literal": "XIV - atendimento em regime de hospital-dia: em até dez dias úteis;",
+   "observacao": "Se o procedimento estiver classificado no Rol da ANS como de alta complexidade, o prazo passa a ser o do inciso XII: 21 dias úteis (art. 3º, § 5º)."
+  },
+  {
+   "id": "antineoplasico-oral-domiciliar",
+   "grupo": "Tratamento de câncer",
+   "rotulo": "Remédio oral contra o câncer, para uso em casa, com os remédios que controlam efeitos colaterais e os que apoiam o tratamento",
+   "rotulo_curto": "Quimioterapia oral em casa",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso XV",
+   "texto_literal": "XV - tratamentos antineoplásicos domiciliares de uso oral, incluindo medicamentos para o controle de efeitos adversos relacionados ao tratamento e adjuvantes: em até dez dias úteis, podendo ser realizado de maneira fracionada por ciclo;",
+   "observacao": "O fornecimento pode ser fracionado por ciclo. Redação dada pela retificação publicada no DOU de 17/01/2023."
+  },
+  {
+   "id": "continuidade-pos-internacao-cancer",
+   "grupo": "Tratamento de câncer",
+   "rotulo": "Remédio oral contra o câncer, radioterapia e hemoterapia (tratamento com sangue ou derivados), quando continuam um tratamento feito na internação",
+   "rotulo_curto": "Câncer: continuidade após internação",
+   "prazo_dias_uteis": 10,
+   "imediato": false,
+   "referencia": "RN 566/2022, art. 3º, inciso XVI",
+   "texto_literal": "XVI - tratamentos antineoplásicos ambulatoriais e domiciliares de uso oral, procedimentos radioterápicos para tratamento de câncer e hemoterapia, na qualidade de procedimentos cuja necessidade esteja relacionada à continuidade da assistência prestada em âmbito de internação hospitalar: em até dez úteis, cujo fornecimento poderá ser realizado de maneira fracionada por ciclo; e",
+   "observacao": "O texto da retificação de 17/01/2023 traz 'em até dez úteis' (sem a palavra 'dias'); a página oficial da ANS, atualizada em 28/07/2026, informa 10 dias úteis. O fornecimento pode ser fracionado por ciclo."
+  },
+  {
+   "id": "urgencia-emergencia",
+   "grupo": "Urgência e emergência",
+   "rotulo": "Urgência e emergência",
+   "rotulo_curto": "Urgência e emergência",
+   "prazo_dias_uteis": null,
+   "imediato": true,
+   "referencia": "RN 566/2022, art. 3º, inciso XVII",
+   "texto_literal": "XVII - urgência e emergência: imediato.",
+   "observacao": "Inciso incluído pela retificação publicada no DOU de 17/01/2023. Nas situações dos arts. 4º, § 3º, e 6º, parágrafo único, não há necessidade de autorização prévia. A carência para urgência e emergência não pode passar de 24 horas (Lei nº 9.656/1998, art. 12, V, c)."
+  },
+  {
+   "id": "contracepcao",
+   "grupo": "Contracepção",
+   "rotulo": "Método ou técnica de contracepção",
+   "rotulo_curto": "Contracepção",
+   "prazo_dias_uteis": null,
+   "imediato": false,
+   "teto_dias_corridos": 30,
+   "calculo": "Aplicar o prazo do inciso correspondente ao atendimento (por exemplo, consulta, procedimento ou internação) e limitar a data-limite a 30 dias corridos da demanda; mostrar a data menor. Se o usuário não indicar o atendimento, mostrar só o teto de 30 dias corridos.",
+   "referencia": "RN 566/2022, art. 3º, § 6º (incluído pela RN 595/2023, em vigor desde 01/01/2024); Lei nº 9.263/1996, art. 9º, § 2º (incluído pela Lei nº 14.443/2022)",
+   "texto_literal": "§ 6º A disponibilização de qualquer método e técnica de contracepção deverá observar os prazos máximos previstos neste artigo, não podendo ultrapassar 30 dias corridos, conforme previsto no art. 9º, § 2º da Lei nº 9.263, de 1996, incluído pela Lei nº 14.443, de 2002.",
+   "observacao": "O texto da RN 595 escreve 'Lei nº 14.443, de 2002'; o ano correto da lei é 2022."
+  }
+ ],
+ "prazos_de_resposta": {
+  "norma": "Resolução Normativa ANS nº 623, de 17 de dezembro de 2024 (em vigor desde 01/07/2025; retificada no DOU de 23/12/2024 nos arts. 23, 24 e Anexo II; alterada pelas RN 638/2025 e 641/2025 em pontos que não mudam o art. 12)",
+  "itens": [
+   {
+    "id": "resposta-urgencia",
+    "rotulo": "Pedido de urgência ou emergência",
+    "prazo_dias_uteis": null,
+    "imediato": true,
+    "referencia": "RN 623/2024, art. 12, I"
+   },
+   {
+    "id": "resposta-geral",
+    "rotulo": "Demais pedidos, quando não houver resposta imediata",
+    "prazo_dias_uteis": 5,
+    "imediato": false,
+    "contagem": "a partir da data da solicitação",
+    "referencia": "RN 623/2024, art. 12, II, a"
+   },
+   {
+    "id": "resposta-pac-internacao",
+    "rotulo": "Pedido de procedimento de alta complexidade ou de internação eletiva",
+    "prazo_dias_uteis": 10,
+    "imediato": false,
+    "contagem": "a partir da data da solicitação",
+    "referencia": "RN 623/2024, art. 12, II, b"
+   },
+   {
+    "id": "resposta-prazo-menor",
+    "rotulo": "Se o prazo de atendimento da RN 566 for menor que o prazo de resposta, a resposta deve vir dentro do prazo da RN 566",
+    "prazo_dias_uteis": null,
+    "imediato": false,
+    "referencia": "RN 623/2024, art. 12, § 1º"
+   },
+   {
+    "id": "negativa-por-escrito",
+    "rotulo": "Negativa reduzida a termo, com motivo e cláusula ou dispositivo legal, dentro do prazo de resposta e independentemente de solicitação, em qualquer canal",
+    "prazo_dias_uteis": null,
+    "imediato": false,
+    "referencia": "RN 623/2024, art. 14, caput e §§ 1º e 2º"
+   },
+   {
+    "id": "reanalise-ouvidoria",
+    "rotulo": "Reanálise de negativa pela Ouvidoria da operadora (prazo ordinário)",
+    "prazo_dias_uteis": 7,
+    "imediato": false,
+    "contagem": "contados do requerimento de reanálise do beneficiário",
+    "referencia": "RN 623/2024, art. 16, § 1º, III"
+   }
+  ],
+  "junta_medica": {
+   "regra": "A junta não pode fazer ultrapassar os prazos de garantia de atendimento. Suspensão de 3 dias úteis, uma única vez, quando o desempatador pede exames complementares ou quando o beneficiário comunica a ausência à junta presencial. Urgência e emergência não admitem junta.",
+   "suspensao_dias_uteis": 3,
+   "maximo_suspensoes": 1,
+   "referencia": "RN 424/2017, art. 3º, I, art. 4º, §§ 1º a 3º, art. 15, § 3º, art. 16, parágrafo único; RN 623/2024, art. 12, §§ 3º e 4º",
+   "status": "RN 424/2017 citada como vigente pela RN 623/2024. [conferir antes de publicar] o texto consolidado no site da ANS."
+  },
+  "observacao": "O prazo de resposta não se confunde com o prazo de realização do atendimento (RN 623/2024, art. 12, § 4º). Respostas genéricas como 'em análise' não são admitidas (art. 12, § 5º)."
+ },
+ "se_o_prazo_nao_for_cumprido": [
+  {
+   "id": "indisponibilidade-alternativa",
+   "rotulo": "Há prestador da rede no município, mas sem vaga no prazo: atendimento em prestador fora da rede no mesmo município ou em prestador da rede ou fora dela em município limítrofe; a operadora paga o prestador não credenciado diretamente",
+   "referencia": "RN 566/2022, art. 4º, I e II, e § 1º"
+  },
+  {
+   "id": "indisponibilidade-transporte",
+   "rotulo": "Sem prestador disponível, da rede ou não, no município nem nos limítrofes: a operadora deve garantir o transporte de ida e volta até um prestador apto, respeitados os prazos",
+   "referencia": "RN 566/2022, art. 4º, § 2º"
+  },
+  {
+   "id": "inexistencia-alternativa",
+   "rotulo": "Não existe prestador, da rede ou não, no município: atendimento em prestador da rede ou fora dela em município limítrofe ou na região de saúde; nesses casos a operadora fica desobrigada do transporte",
+   "referencia": "RN 566/2022, art. 5º, I e II, e § 2º; RN 665/2026 (regiões de saúde)"
+  },
+  {
+   "id": "inexistencia-transporte",
+   "rotulo": "Não existe prestador nem nos limítrofes nem na região de saúde: a operadora deve garantir o transporte de ida e volta até um prestador apto, respeitados os prazos",
+   "referencia": "RN 566/2022, art. 5º, § 1º"
+  },
+  {
+   "id": "transporte-condicoes",
+   "rotulo": "Meio de transporte a critério da operadora, compatível com a condição de saúde; extensão ao acompanhante de menores de 18, maiores de 60, pessoas com deficiência e com necessidades especiais (estas com declaração médica), quando o Rol prevê acompanhante; não se aplica a procedimentos do Rol com diretriz que dispense o transporte",
+   "referencia": "RN 566/2022, arts. 7º, 8º e 9º"
+  },
+  {
+   "id": "reembolso-integral",
+   "rotulo": "Se a operadora não garantiu a alternativa e o beneficiário pagou: reembolso integral, inclusive do transporte. Com livre escolha, valem os limites do contrato, salvo procedimento fora da cláusula de reembolso ou contrato sem tabela (reembolso integral). Coparticipação pode ser descontada.",
+   "prazo_dias": 30,
+   "tipo_dias": "a norma não especifica dias úteis",
+   "contagem": "da data da solicitação de reembolso",
+   "referencia": "RN 566/2022, art. 10, caput e §§ 1º a 3º"
+  },
+  {
+   "id": "nip-assistencial",
+   "rotulo": "Reclamação na ANS (NIP assistencial): prazo para a operadora adotar as medidas para resolver",
+   "prazo_dias_uteis": 5,
+   "contagem": "a partir do primeiro dia útil seguinte à notificação da operadora",
+   "referencia": "RN 483/2022, art. 10, I e § 2º"
+  },
+  {
+   "id": "retorno-a-ans",
+   "rotulo": "Prazo para o beneficiário informar à ANS se o problema foi resolvido, contado do fim do prazo da operadora; sem retorno, presume-se resolvido, mas a reclamação pode ser reaberta a qualquer tempo",
+   "prazo_dias": 10,
+   "tipo_dias": "a norma diz 'dez dias subsequentes', sem 'úteis'; orientar contagem em dias corridos, por segurança",
+   "referencia": "RN 483/2022, art. 12, caput e § 1º (redação da RN 657/2025)"
+  },
+  {
+   "id": "protocolo-na-reclamacao",
+   "rotulo": "O número de protocolo da operadora ajuda, mas a falta dele não impede o registro da reclamação na ANS",
+   "referencia": "RN 483/2022, art. 6º, §§ 3º e 7º (redação da RN 657/2025, em vigor desde 01/05/2026)"
+  }
+ ],
+ "canais_ans": {
+  "disque_ans": "0800 701 9656",
+  "deficiencia_auditiva": "0800 021 2105",
+  "horario": "segunda a sexta-feira, exceto feriados nacionais, das 8h às 20h",
+  "url": "https://www.gov.br/ans/pt-br/canais_atendimento/canais-de-atendimento-ao-consumidor-1"
+ },
+ "aviso": "Conteúdo informativo. Não constitui promessa de resultado, prazo ou valor. Cada caso é analisado individualmente."
+}

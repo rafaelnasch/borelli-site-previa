@@ -1,0 +1,88 @@
+{
+ "ferramenta": "calculadora-de-carencias",
+ "versao_dados": "2026-10-05",
+ "conferido_em": "2026-10-05",
+ "aviso": "Esta ferramenta mostra os prazos máximos de carência da Lei 9.656/1998 e o limite de 24 meses da cobertura parcial temporária. O seu contrato pode prever prazos menores, e é ele que vale dentro desse limite. Nos planos contratados antes de 2 de janeiro de 1999 e não adaptados à lei, vale o contrato. A ferramenta não analisa o seu caso. Conteúdo informativo. Não constitui promessa de resultado, prazo ou valor. Cada caso é analisado individualmente.",
+ "data_base": {
+  "rotulo": "Data de início do plano",
+  "ajuda": "Use a data de início de vigência do contrato. Se a proposta foi assinada antes, confira as duas datas. Elas estão no contrato, na proposta de adesão ou na carteirinha.",
+  "pendencia": "[conferir antes de publicar] O escritório define se a contagem parte da assinatura da proposta ou do início de vigência (pendência F6).",
+  "referencia": "STJ, Súmula 597 (\"contado da data da contratação\"); RN 558/2022, art. 2º, II (\"a partir da data da contratação ou adesão\")"
+ },
+ "carencias": [
+  {
+   "tipo": "Urgência e emergência",
+   "prazo": 24,
+   "unidade": "horas",
+   "base_legal": "Lei 9.656/1998, art. 12, V, c; STJ, Súmula 597",
+   "observacao": "Emergência: risco imediato de vida ou de lesões irreparáveis, caracterizado em declaração do médico assistente. Urgência: acidentes pessoais ou complicações no processo gestacional (Lei 9.656/1998, art. 35-C). A regra da Súmula 597 foi levada pelo STJ a julgamento repetitivo, junto com o limite de tempo de internação (Tema 1.314). Até 5 de outubro de 2026 não havia decisão, e os recursos sobre o tema estavam suspensos. O que o plano cobre durante a carência, depois das 24 horas, depende do tipo de plano e tem regra própria."
+  },
+  {
+   "tipo": "Parto a termo",
+   "prazo": 300,
+   "unidade": "dias",
+   "base_legal": "Lei 9.656/1998, art. 12, V, a",
+   "observacao": "Parto no tempo esperado da gestação. Segundo a ANS, o prazo de 300 dias não se aplica a parto prematuro nem ao decorrente de complicações no processo gestacional. Complicações no processo gestacional são urgência (Lei 9.656/1998, art. 35-C, II). Vale para planos com obstetrícia."
+  },
+  {
+   "tipo": "Demais casos (consultas, exames, terapias, cirurgias e internações)",
+   "prazo": 180,
+   "unidade": "dias",
+   "base_legal": "Lei 9.656/1998, art. 12, V, b",
+   "observacao": "Prazo máximo. O contrato pode prever menos. Se o procedimento for ligado a uma doença preexistente declarada e houver cobertura parcial temporária, veja o limite de 24 meses."
+  }
+ ],
+ "cobertura_parcial_temporaria": {
+  "tipo": "Cobertura parcial temporária (CPT) para doença ou lesão preexistente declarada",
+  "prazo_maximo": 24,
+  "unidade": "meses",
+  "base_legal": "Lei 9.656/1998, art. 11; RN ANS 558/2022, art. 2º, II, e art. 7º",
+  "observacao": "Para a doença declarada, só existe se a operadora ofereceu na contratação (RN 558/2022, art. 6º, § 2º). Na alegação de omissão, a operadora pode oferecer CPT pelos meses que faltam para completar 24 meses (art. 15, I). Suspende só cirurgias, leitos de alta tecnologia e procedimentos de alta complexidade ligados à doença declarada. Pode ser menor que 24 meses: confira a data de término na carteirinha (art. 13). Depois do prazo, a cobertura é integral e a operadora não pode mais alegar doença preexistente (art. 7º)."
+ },
+ "situacoes_sem_carencia": [
+  {
+   "situacao": "Plano coletivo empresarial com 30 ou mais participantes, com pedido de ingresso em até 30 dias da assinatura do contrato ou do vínculo com a empresa",
+   "efeito": "Sem carência e sem CPT ou agravo",
+   "base_legal": "RN ANS 557/2022, arts. 6º e 7º"
+  },
+  {
+   "situacao": "Plano coletivo por adesão, com ingresso em até 30 dias da assinatura do contrato coletivo ou em até 30 dias do aniversário do contrato, nas condições da norma",
+   "efeito": "Sem carência (pode haver CPT ou agravo)",
+   "base_legal": "RN ANS 557/2022, arts. 17 e 18"
+  },
+  {
+   "situacao": "Recém-nascido, filho natural ou adotivo, inscrito em até 30 dias do nascimento ou da adoção, em plano com obstetrícia",
+   "efeito": "Sem carência, e sem alegação de doença preexistente, CPT ou agravo",
+   "base_legal": "Lei 9.656/1998, art. 12, III, b; RN ANS 558/2022, art. 20"
+  },
+  {
+   "situacao": "Filho adotivo menor de 12 anos",
+   "efeito": "Aproveita as carências já cumpridas por quem adotou",
+   "base_legal": "Lei 9.656/1998, art. 12, VII"
+  },
+  {
+   "situacao": "Troca de plano pela portabilidade de carências, cumpridos os requisitos",
+   "efeito": "Sem novas carências e sem nova CPT, salvo para coberturas que o plano de origem não tinha (até 300 dias para parto, 180 dias para as demais, 24 horas para urgência e emergência) e salvo, na portabilidade por fim de vínculo, o tempo de carência que faltava quando a permanência no plano de origem era menor que 300 dias (art. 8º, § 3º). Sem o cancelamento do plano antigo em 5 dias, o plano novo pode exigir carências e, segundo a ANS, CPT",
+   "base_legal": "RN ANS 438/2018, arts. 3º, 7º, 8º, 18 e 21"
+  }
+ ],
+ "regras_de_calculo": {
+  "dias": "Dias corridos. Exclui o dia de início e inclui o dia do vencimento: data final = data de início + prazo em dias. A carência termina ao fim desse dia.",
+  "horas": "Contadas minuto a minuto a partir do início de vigência. Sem a hora exata, a ferramenta mostra o dia seguinte à data de início.",
+  "meses": "O prazo em meses termina no dia de igual número do mês final, ou no dia seguinte se esse dia não existir (exemplo: início em 31/01, fim de 1 mês em 01/03 em ano não bissexto).",
+  "referencia": "Código Civil (Lei 10.406/2002), art. 132, caput e §§ 3º e 4º. Convenção da ferramenta, a confirmar pelo escritório (pendência F6).",
+  "feriados": "Carência e CPT não são prazos em dias úteis. A ferramenta não desconta fins de semana nem feriados."
+ },
+ "fontes": [
+  "https://www.planalto.gov.br/ccivil_03/leis/l9656.htm",
+  "https://www.gov.br/ans/pt-br/assuntos/consumidor/carencia",
+  "https://www.gov.br/ans/pt-br/assuntos/consumidor/cobertura-parcial-temporaria-cpt-para-doencas-e-lesoes-preexistentes",
+  "https://bvsms.saude.gov.br/bvs/saudelegis/ans/2022/res0558_30_12_2022.html",
+  "https://bvsms.saude.gov.br/bvs/saudelegis/ans/2022/res0557_30_12_2022.html",
+  "https://bvsms.saude.gov.br/bvs/saudelegis/ans/2018/res0438_05_12_2018.html",
+  "https://www.gov.br/ans/pt-br/assuntos/contratacao-e-troca-de-plano/formas-de-ingressar-num-plano-sem-carencias-ou-cobertura-parcial-temporaria/portabilidade-de-carencias",
+  "https://arquivocidadao.stj.jus.br/index.php/sumula-597-2",
+  "https://processo.stj.jus.br/repetitivos/temas_repetitivos/pesquisa.jsp?novaConsulta=true&tipo_pesquisa=T&cod_tema_inicial=1314&cod_tema_final=1314",
+  "https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm"
+ ]
+}

@@ -1,0 +1,332 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/ferramentas.css · as ferramentas educativas
+   (BRIEF, seção 7). Entra sozinho quando a página usa uma parte
+   ferramenta-<nome> (ou o campo "ferramenta" do guia); a home o carrega pela
+   ficha "estilos" por causa do "Onde você está agora?".
+   Nenhuma ferramenta pede contato junto ao resultado, pede dado de saúde ou
+   manda o que a pessoa digita para fora do navegador.
+
+    1. A caixa da ferramenta (.ferr) e o texto fixo
+    2. "Onde você está agora?" (situacao.js, do protótipo B)
+    3. Carta de negativa anotada (carta.js): página dupla do A, folha do C
+    4. Prazos da ANS e o calendário de dias úteis (prazos.js, do B)
+    5. Carências da lei (carencia.js)
+    6. Glossário do processo (glossario.js)
+    7. Verificador de canais oficiais (canais.js)
+    8. Celular e tablet
+   ===================================================================== */
+
+/* ---------- 1. A caixa da ferramenta ---------- */
+.ferr{ position:relative; display:flex; flex-direction:column; align-items:stretch; min-width:0; padding:var(--e-6); border:1px solid var(--linha-media); border-top:2px solid var(--marinho); }
+.ferr-topo{ display:flex; align-items:center; gap:var(--e-3); color:var(--f-enfase); }
+.ferr-t{ margin-top:var(--e-4); font-size:clamp(24px,.571vw + 21.77px,30px); line-height:1.15; }
+.ferr-apoio{ margin-top:var(--e-3); max-width:60ch; font-size:var(--t-apoio); line-height:1.55; font-weight:400; color:var(--f-texto); }
+.ferr-form{ margin-top:var(--e-5); }
+.ferr-nota{ margin-top:var(--e-5); padding-top:var(--e-3); border-top:1px solid var(--f-linha); font-size:13px; line-height:1.55; font-weight:400; color:var(--f-apoio); }
+.ferr-sem-js{ margin-top:var(--e-4); font-size:var(--t-apoio); color:var(--f-apoio); }
+html.js .ferr-sem-js{ display:none; }
+.campo-ajuda.erro{ display:flex; align-items:flex-start; gap:8px; color:var(--f-titulo); }
+.campo-ajuda.erro::before{ content:""; width:16px; height:16px; margin-top:1px; flex:none; background:var(--erro); -webkit-mask:var(--ic-alerta) center/contain no-repeat; mask:var(--ic-alerta) center/contain no-repeat; }
+
+/* ---------- 2. "Onde você está agora?" ----------
+   No computador: o trilho Noite à esquerda (as situações em losangos) e o caminho aberto no Papel,
+   a partir do eixo A; a situação aberta aponta para ele com um losango Papel. No celular: sanfona. */
+.seletor{ position:relative; background:var(--papel); overflow-anchor:none; }
+.seletor-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); grid-template-rows:repeat(11,auto) minmax(var(--e-9),1fr); }
+.seletor-fundo{ grid-column:1 / 6; grid-row:1 / -1; margin-right:calc(var(--calha) * -1); background:var(--noite); box-shadow:0 0 0 100vmax var(--noite); clip-path:inset(0 0 0 -100vmax); }
+.seletor-cab,.seletor-grupo,.sit{ grid-column:1 / 6; position:relative; }
+@media (min-width:1025px){
+  .seletor-cab,.seletor-grupo,.sit{ grid-row:var(--fila); }
+}
+.seletor-cab{ padding:var(--e-8) var(--e-7) var(--e-3) 0; background:none; }
+.seletor-titulo{ margin-top:var(--e-3); font-size:var(--t-secao); line-height:1.08; letter-spacing:-.012em; color:var(--branco); }
+.seletor-apoio{ margin-top:var(--e-5); max-width:40ch; font-size:var(--t-chamada); line-height:1.55; color:var(--bruma); }
+.seletor-grupo{ margin:var(--e-6) var(--e-7) var(--e-3) 0; background:none; font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--bruma); }
+.situacoes,.situacao{ display:contents; }
+.sit{ margin:0 calc(var(--calha) * -1) 0 0; font:inherit; color:inherit; }
+.sit-btn{ position:relative; display:grid; grid-template-columns:32px minmax(0,1fr) 20px; align-items:center; column-gap:var(--e-4); width:100%; min-height:72px; padding:14px var(--e-6) 14px 0; text-align:left; color:var(--gelo); border-top:1px solid var(--linha-escura); transition:background-color var(--t-rapida) ease,color var(--t-rapida) ease; }
+.situacao:last-child .sit-btn{ border-bottom:1px solid var(--linha-escura); }
+.sit-btn::before{ content:""; position:absolute; left:15.5px; top:0; bottom:0; width:1px; background:var(--linha-escura); }
+.situacao:first-child .sit-btn::before{ top:50%; }
+.situacao:last-child .sit-btn::before{ bottom:50%; }
+.sit-marca{ position:relative; z-index:1; justify-self:center; width:10px; height:10px; transform:rotate(45deg); border:1.5px solid var(--ouro); background:var(--noite); transition:background-color var(--t-rapida) ease; }
+.sit-txt{ display:block; min-width:0; }
+.sit-nome{ display:block; font-family:var(--display); font-weight:500; font-size:22px; line-height:1.2; color:var(--branco); transition:color var(--t-rapida) ease; }
+.sit-sub{ display:block; margin-top:4px; font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--bruma); }
+.sit-btn::after{ content:""; justify-self:end; width:16px; height:16px; background:var(--ouro); -webkit-mask:var(--ic-seta) center/contain no-repeat; mask:var(--ic-seta) center/contain no-repeat; transition:transform var(--t-rapida) ease; }
+@media (hover:hover){
+  .sit-btn:hover .sit-nome{ color:var(--champanhe); }
+  .sit-btn:hover::after{ transform:translateX(3px); }
+}
+.sit-btn:focus-visible{ outline:2px solid var(--ouro); outline-offset:-2px; }
+.sit-btn[aria-expanded="true"]{ background:var(--mare); box-shadow:0 0 0 100vmax var(--mare); clip-path:inset(0 0 0 -100vmax); }
+.sit-btn[aria-expanded="true"] .sit-marca{ width:12px; height:12px; background:var(--ouro); }
+@media (min-width:1025px){
+  /* a situação aberta aponta para o caminho (sem :has(): a classe vem do situacao.js) */
+  .sit--aberta::after{ content:""; position:absolute; right:0; top:50%; z-index:2; width:16px; height:16px; margin-top:-8px; background:var(--papel); transform:translateX(50%) rotate(45deg); pointer-events:none; }
+}
+/* O caminho: abre no Papel, a partir do eixo A */
+.caminho{ grid-column:6 / -1; grid-row:1 / -1; align-self:start; padding:var(--e-8) 0 var(--e-9) var(--e-8); background:none; }
+.caminho-kicker{ display:flex; align-items:center; gap:12px; font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--marinho); }
+.caminho-kicker::before{ content:""; flex:none; width:32px; height:1px; background:var(--marinho); }
+.caminho-titulo{ margin-top:var(--e-4); max-width:22ch; font-size:var(--t-h3); line-height:1.1; letter-spacing:-.004em; text-wrap:balance; }
+.caminho-intro{ margin-top:var(--e-4); max-width:54ch; font-size:var(--t-chamada); line-height:1.55; color:var(--grafite); }
+.caminho .percurso{ margin-top:var(--e-7); }
+.caminho-pe{ margin-top:var(--e-5); padding-top:var(--e-4); border-top:1px solid var(--linha-clara); }
+.caminho-pe .rotulo{ color:var(--pedra); }
+.caminho-links{ margin-top:var(--e-2); display:grid; column-gap:var(--e-6); }
+.caminho-links--2{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.caminho-links .link-seta{ min-height:48px; }
+.caminho-temas{ margin-top:var(--e-6); font-size:17px; }
+.caminho-nota{ margin-top:var(--e-6); max-width:56ch; }
+.caminho-familia{ margin-top:var(--e-6); display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--e-6); border-top:1px solid var(--linha-clara); }
+.caminho-familia a{ display:flex; align-items:center; gap:12px; min-height:48px; border-bottom:1px solid var(--linha-clara); font-size:16px; line-height:1.3; font-weight:400; color:var(--noite); text-decoration:none; transition:color var(--t-rapida) ease; }
+.caminho-familia a::before{ content:""; flex:none; width:7px; height:7px; transform:rotate(45deg); border:1.5px solid var(--marinho); }
+.caminho-familia a:hover{ color:var(--marinho); }
+.caminho-adv{ margin-top:var(--e-5); }
+.caminho-adv .id-oab{ margin-top:4px; color:var(--grafite); }
+.caminho-aviso{ margin-top:var(--e-4); padding-left:var(--e-4); border-left:2px solid var(--marinho); font-size:15px; line-height:1.55; font-weight:400; color:var(--grafite); }
+/* Sem JavaScript, todos os caminhos aparecem abertos, um embaixo do outro */
+html:not(.js) .caminho[hidden]{ display:block!important; }
+html:not(.js) .seletor-grade{ grid-template-rows:none; }
+html:not(.js) .seletor-cab,html:not(.js) .seletor-grupo,html:not(.js) .sit,html:not(.js) .caminho{ grid-row:auto; }
+html:not(.js) .caminho{ grid-column:1 / -1; padding-left:0; }
+html:not(.js) .seletor-fundo{ display:none; }
+
+/* ---------- 3. Carta de negativa anotada ----------
+   Computador: página dupla do A (a carta branca à esquerda, as notas no Papel à direita, com o
+   vinco marcado por um losango); uma nota por vez, abas 01 a 06, Anterior e Próximo.
+   Celular: a nota abre numa folha que sobe da base (do C); a barra "Toque num trecho grifado"
+   fica presa embaixo enquanto a carta está na tela. Sem JavaScript, as notas em lista. */
+.carta{ min-width:0; }
+.carta-dupla{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); grid-template-areas:"folha notas" "folha traz"; grid-template-rows:auto 1fr; background:var(--papel); border:1px solid var(--linha-media); box-shadow:12px 12px 0 -1px var(--f-fundo),12px 12px 0 0 var(--fio); }
+.carta-folha{ grid-area:folha; position:relative; padding:var(--e-7) var(--e-7) var(--e-7) var(--e-9); background:var(--branco); border-right:1px solid var(--linha-clara); color:var(--grafite); min-width:0; }
+/* o vinco da página dupla: um losango no alto */
+.carta-folha::after{ content:""; position:absolute; top:28px; right:-6px; width:11px; height:11px; transform:rotate(45deg); background:var(--papel); border:1.5px solid var(--marinho); }
+/* a tarja de modelo corre pela margem da folha: o modelo não vira documento nem num recorte de tela */
+.carta-margem{ position:absolute; left:0; top:0; bottom:0; width:var(--e-7); display:flex; align-items:center; justify-content:center; border-right:1px solid var(--linha-clara); background:var(--papel); }
+.carta-margem span{ writing-mode:vertical-rl; transform:rotate(180deg); white-space:nowrap; font:500 var(--t-rotulo)/1 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--pedra); }
+.carta-timbre{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:var(--e-3) var(--e-4); padding-bottom:var(--e-4); border-bottom:1px solid var(--linha-clara); }
+.carta-emissor{ font:600 15px/1.35 var(--texto); letter-spacing:.06em; text-transform:uppercase; color:#26313C; }
+.carta-emissor span{ display:block; margin-top:2px; font-weight:400; font-size:13px; letter-spacing:0; text-transform:none; color:var(--pedra); }
+.carta-selo{ flex:none; color:var(--marinho); }
+.carta-dados{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--e-3) var(--e-5); margin-top:var(--e-4); padding-bottom:var(--e-4); border-bottom:1px solid var(--linha-clara); }
+.carta-dados dt{ font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:.12em; text-transform:uppercase; color:var(--pedra); }
+.carta-dados dd{ margin-top:2px; font-size:14px; line-height:1.5; font-weight:400; color:var(--grafite); font-variant-numeric:tabular-nums; }
+.carta-assunto{ margin-top:var(--e-5); font:500 15px/1.45 var(--texto); color:var(--noite); }
+.carta-corpo{ margin-top:12px; font-size:16px; line-height:1.85; font-weight:300; color:#2F3A45; }
+.carta-corpo > p + p{ margin-top:14px; }
+.carta-corpo > .carta-assina{ margin-top:24px; color:var(--noite); font-weight:400; }
+.carta-rodape{ margin-top:var(--e-6); padding-top:12px; border-top:1px solid var(--linha-clara); font-size:13px; line-height:1.5; font-weight:400; color:var(--pedra); }
+/* o grifo dentro da carta: marca-texto na metade de baixo; o trecho aberto cobre a palavra inteira e ganha o fio */
+.carta-grifo{ color:var(--noite); font-weight:400; text-decoration:none; cursor:pointer;
+  background-image:linear-gradient(var(--grifo),var(--grifo)); background-repeat:no-repeat; background-position:0 92%; background-size:100% 46%;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:.06em .1em; margin:0 -.04em;
+  transition:background-size var(--t-rapida) ease,box-shadow var(--t-rapida) ease; -webkit-tap-highlight-color:transparent; }
+.carta-grifo:hover{ background-size:100% 86%; }
+.carta-grifo.ativo{ background-size:100% 86%; box-shadow:inset 0 -2px 0 var(--marinho); }
+.carta-grifo:focus-visible{ outline:2px solid var(--marinho); outline-offset:2px; }
+.carta-ref{ display:inline; margin-left:.3em; font:600 var(--t-rotulo)/1 var(--texto); letter-spacing:.04em; color:var(--marinho); vertical-align:.5em; font-variant-numeric:tabular-nums; }
+/* as notas */
+.carta-notas{ grid-area:notas; min-width:0; padding:var(--e-6) var(--e-6) var(--e-5); color:var(--grafite); }
+.carta-notas-cab{ display:flex; justify-content:space-between; align-items:center; gap:12px; min-height:24px; }
+.carta-fechar{ display:none; width:48px; height:48px; margin:-12px -12px -12px 0; background:var(--f-titulo); -webkit-mask:var(--ic-x) center/22px no-repeat; mask:var(--ic-x) center/22px no-repeat; }
+.carta-abas{ display:flex; margin-top:12px; border-bottom:1px solid var(--f-linha); }
+.carta-aba{ flex:1; min-height:48px; margin-bottom:-1px; border-bottom:2px solid transparent; font-family:var(--display); font-weight:500; font-size:22px; line-height:1; color:var(--f-apoio); font-variant-numeric:lining-nums tabular-nums; transition:color var(--t-rapida) ease,border-color var(--t-rapida) ease; }
+.carta-aba:hover{ color:var(--f-titulo); }
+.carta-aba[aria-pressed="true"]{ color:var(--f-enfase); border-bottom-color:var(--f-enfase); }
+.carta-aba:focus-visible{ outline-offset:-2px; }
+.carta-lista{ margin-top:var(--e-5); }
+.carta-nota + .carta-nota{ margin-top:var(--e-6); padding-top:var(--e-5); border-top:1px solid var(--f-linha); }
+.carta-nota:focus{ outline:none; }
+.carta-nota:focus-visible{ outline:2px solid var(--f-enfase); outline-offset:6px; }
+.carta-nota-t{ display:flex; align-items:baseline; gap:12px; font-family:var(--display); font-weight:500; font-size:26px; line-height:1.15; color:var(--f-titulo); }
+.carta-nota-n{ font:500 var(--t-legenda)/1 var(--texto); letter-spacing:.12em; color:var(--f-rotulo); font-variant-numeric:tabular-nums; }
+.carta-nota-rot{ margin-top:18px; font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.carta-nota-rot + p{ margin-top:6px; font-size:var(--t-apoio); line-height:1.65; font-weight:400; color:var(--f-texto); }
+.carta-nota-link{ margin-top:6px; }
+.carta-nav{ display:flex; justify-content:space-between; align-items:center; gap:var(--e-4); margin-top:var(--e-4); padding-top:4px; border-top:1px solid var(--f-linha); }
+.carta-passo{ display:inline-flex; align-items:center; gap:8px; min-height:48px; font:500 13px/1.3 var(--texto); letter-spacing:.12em; text-transform:uppercase; color:var(--f-titulo); }
+.carta-passo::before,.carta-passo--prox::after{ content:""; width:16px; height:16px; flex:none; background:var(--f-enfase); -webkit-mask:var(--ic-seta) center/contain no-repeat; mask:var(--ic-seta) center/contain no-repeat; transition:transform var(--t-rapida) ease; }
+.carta-passo::before{ transform:rotate(180deg); }
+.carta-passo--prox::before{ content:none; }
+.carta-passo:disabled{ color:#8F9CA9; cursor:default; }
+.carta-passo:disabled::before,.carta-passo:disabled::after{ background:#8F9CA9; }
+.carta-contagem{ font-size:var(--t-legenda); color:var(--f-apoio); font-variant-numeric:tabular-nums; }
+.carta-contagem b{ font-weight:500; color:var(--f-titulo); }
+/* com JavaScript: uma nota por vez, todas empilhadas na mesma célula (a altura não pula) */
+.carta--js .carta-lista{ display:grid; }
+.carta--js .carta-lista > .carta-nota{ grid-area:1 / 1; margin-top:0; padding-top:0; border-top:0; }
+.carta--js .carta-nota.inativa{ visibility:hidden; }
+/* O que a negativa precisa trazer: no pé da coluna das notas */
+.carta-traz{ grid-area:traz; align-self:end; margin:0 var(--e-6) var(--e-6); padding-top:var(--e-4); border-top:1px solid var(--f-linha-destaque); }
+.carta-traz .lista{ margin-top:12px; gap:8px; font-size:15px; line-height:1.5; font-weight:400; color:var(--f-texto); }
+.carta-traz .lista span{ color:var(--f-apoio); white-space:nowrap; }
+.carta-traz-fonte{ margin-top:12px; font-size:13px; line-height:1.5; font-weight:400; color:var(--f-apoio); }
+.carta-pe{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px 32px; margin-top:var(--e-6); }
+.carta-aviso{ max-width:72ch; font-size:13px; line-height:1.55; font-weight:400; color:var(--f-apoio); }
+/* a barra de leitura do celular */
+.carta-doca{ display:none; }
+
+/* ---------- 4. Prazos da ANS e o calendário de dias úteis ---------- */
+.prazos-form{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,220px); gap:var(--e-4); align-items:start; }
+.prazos-campo-data input{ min-width:0; font-variant-numeric:tabular-nums; }
+.prazos-res{ margin-top:var(--e-5); padding-top:var(--e-5); border-top:1px solid var(--f-linha); display:grid; grid-template-columns:minmax(0,1fr); column-gap:var(--e-6); row-gap:var(--e-5); align-items:start; }
+.prazos-res.com-calendario{ grid-template-columns:minmax(0,1fr) minmax(0,264px); }
+.prazos-esq{ min-width:0; }
+.prazos-num .kpi-num{ font-size:clamp(56px,3.048vw + 44.11px,88px); color:var(--noite); }
+.prazos-num .kpi-num .un{ font-size:15px; letter-spacing:.02em; margin-left:.4em; }
+.prazos-num .kpi-num--palavra{ font-size:clamp(40px,1.524vw + 34.06px,56px); }
+.prazos-o-que{ margin-top:var(--e-3); font:500 17px/1.4 var(--texto); color:var(--noite); }
+.prazos-norma{ margin-top:4px; font-size:13px; line-height:1.5; font-weight:400; color:var(--pedra); }
+.prazos-obs{ margin-top:var(--e-3); padding-left:var(--e-4); border-left:2px solid var(--f-linha-destaque); font-size:14px; line-height:1.55; font-weight:400; color:var(--grafite); }
+.prazos-resposta{ margin-top:var(--e-4); padding-top:var(--e-3); border-top:1px solid var(--f-linha); font-size:15px; line-height:1.55; font-weight:400; color:var(--grafite); }
+.prazos-datas{ margin-top:var(--e-4); display:grid; gap:8px; }
+.prazos-datas li{ display:grid; grid-template-columns:18px minmax(0,1fr); column-gap:12px; align-items:start; font-size:14px; line-height:1.45; font-weight:400; color:var(--grafite); }
+.prazos-datas b{ font-weight:500; color:var(--noite); }
+.prazos-cal{ min-width:0; }
+.cal-cab{ margin-bottom:var(--e-3); font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--marinho); }
+.cal-sem,.cal-grade{ display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:2px; }
+.cal-sem span{ padding-bottom:6px; font:500 10px/1 var(--texto); letter-spacing:.06em; text-transform:uppercase; text-align:center; color:var(--pedra); }
+.cal-dia{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; aspect-ratio:1; font:500 12px/1 var(--texto); font-variant-numeric:lining-nums tabular-nums; color:var(--pedra); }
+.cal-dia small{ margin-top:2px; font:500 8px/1 var(--texto); letter-spacing:.08em; text-transform:uppercase; }
+.cal-fora{ color:#A3B3C2; }
+.cal-util{ background:var(--nevoa); color:var(--noite); }
+.cal-livre{ background:transparent; }
+.cal-feriado::after{ content:""; position:absolute; bottom:4px; left:50%; width:4px; height:4px; margin-left:-2px; transform:rotate(45deg); background:currentColor; }
+.cal-pedido{ box-shadow:inset 0 0 0 1.5px var(--marinho); }
+.cal-resposta::before{ content:""; position:absolute; top:4px; right:4px; width:6px; height:6px; transform:rotate(45deg); background:var(--marinho); }
+.cal-limite{ background:var(--marinho); color:var(--branco); }
+.cal-limite.cal-resposta::before{ background:var(--branco); }
+.cal-nota{ margin-top:var(--e-3); font-size:12px; line-height:1.5; color:var(--pedra); }
+.cal-amostra{ position:relative; display:block; width:18px; height:18px; margin-top:1px; }
+.cal-amostra.cal-pedido,.cal-amostra.cal-resposta{ background:var(--nevoa); }
+.cal-amostra.cal-resposta::before{ top:3px; right:3px; width:5px; height:5px; }
+
+/* ---------- 5. Carências da lei ---------- */
+.carencia-form .campo-form{ max-width:360px; }
+.carencia-form .campo-ajuda{ max-width:60ch; }
+.carencia-res{ margin-top:var(--e-5); padding-top:var(--e-4); border-top:1px solid var(--f-linha); }
+.carencia-vazio{ font-size:var(--t-apoio); line-height:1.55; font-weight:400; color:var(--f-apoio); }
+.carencia-lista{ display:grid; }
+.carencia-item{ padding:var(--e-4) 0; border-bottom:1px solid var(--f-linha); }
+.carencia-tipo{ font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.carencia-prazo{ display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 16px; margin-top:6px; }
+.carencia-num{ font-family:var(--display); font-weight:500; font-size:30px; line-height:1.05; color:var(--noite); font-variant-numeric:lining-nums tabular-nums; }
+.carencia-quando{ font-size:15px; line-height:1.5; font-weight:400; color:var(--grafite); }
+.carencia-quando b{ font-weight:500; color:var(--noite); }
+.carencia-base{ margin-top:4px; font-size:13px; line-height:1.5; font-weight:400; color:var(--pedra); }
+.carencia-obs{ margin-top:6px; max-width:70ch; font-size:14px; line-height:1.55; font-weight:400; color:var(--grafite); }
+
+/* ---------- 6. Glossário do processo ---------- */
+.gl-status{ margin-top:var(--e-3); font-size:13px; line-height:1.5; font-weight:400; color:var(--pedra); }
+.gl-lista{ margin-top:var(--e-2); border-top:1px solid var(--f-linha); }
+.gl-termo{ padding:var(--e-4) 0; border-bottom:1px solid var(--f-linha); }
+.gl-termo dt{ font:500 17px/1.4 var(--texto); color:var(--noite); }
+.gl-termo dd p{ margin-top:4px; font-size:15px; line-height:1.55; font-weight:400; color:var(--grafite); }
+.gl-voce b{ font-weight:500; color:var(--marinho); }
+.gl-cat{ font:500 var(--t-rotulo)/1.4 var(--texto)!important; letter-spacing:var(--track); text-transform:uppercase; color:var(--pedra)!important; }
+.gl-lista mark{ background:var(--grifo); color:inherit; padding:0 .06em; }
+
+/* ---------- 7. Verificador de canais oficiais ---------- */
+.canais-form{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:var(--e-4); align-items:start; }
+.canais-form .btn{ margin-top:27px; }
+.canais-res:empty{ display:none; }
+.canais-res{ margin-top:var(--e-5); padding:var(--e-4) var(--e-5); border-left:2px solid var(--f-enfase); background:var(--f-painel); }
+.canais-res--nao,.canais-res--aviso{ border-left-color:var(--erro); }
+.canais-res--ok{ border-left-color:var(--ok); }
+.canais-res-t{ font:500 17px/1.4 var(--texto); color:var(--noite); }
+.canais-res-d{ margin-top:6px; font-size:15px; line-height:1.55; font-weight:400; color:var(--grafite); }
+.canais-res-lista{ margin-top:8px; display:grid; gap:2px; font-size:15px; line-height:1.5; font-weight:500; color:var(--noite); }
+.canais-res-golpe{ margin-top:var(--e-3); padding-top:var(--e-3); border-top:1px solid var(--f-linha); font-size:15px; line-height:1.55; font-weight:500; color:var(--noite); }
+
+/* Texto de leitura das ferramentas no computador (DIREÇÃO, correção 10: corpo com pelo menos 17 px):
+   o termo do glossário na mesma voz do termo do guia (Newsreader), as explicações e os avisos fixos maiores */
+@media (min-width:1025px){
+  .ferr-apoio,.carencia-vazio,.canais-res-d,.prazos-resposta,.carencia-quando{ font-size:17px; }
+  .ferr-nota,.prazos-norma,.carencia-base,.gl-status{ font-size:15px; }
+  .prazos-obs,.carencia-obs,.prazos-datas li{ font-size:16px; }
+  .gl-termo dt{ font:500 22px/1.2 var(--display); font-optical-sizing:auto; }
+  .gl-termo dd p{ margin-top:6px; font-size:17px; line-height:1.6; }
+}
+
+/* ---------- 8. Celular e tablet ---------- */
+@media (max-width:1024px){
+  /* "Onde você está agora?": o trilho vira o bloco Noite inteiro; o caminho abre embaixo da situação */
+  .seletor{ background:var(--noite); }
+  .seletor-grade{ grid-template-columns:minmax(0,1fr); grid-template-rows:none; padding-bottom:var(--e-8); }
+  .seletor-fundo{ display:none; }
+  .seletor-cab,.seletor-grupo,.sit,.caminho{ grid-column:1; }
+  .seletor-cab{ padding:var(--e-7) 0 var(--e-2); }
+  .seletor-grupo{ margin-right:0; }
+  .sit{ margin-right:0; }
+  .sit-btn{ grid-template-columns:24px minmax(0,1fr) 20px; padding-right:0; }
+  .sit-btn::before{ left:11.5px; }
+  .sit-btn::after{ transform:rotate(90deg); }
+  .sit-btn[aria-expanded="true"]::after{ transform:rotate(-90deg); }
+  .sit-btn[aria-expanded="true"]{ clip-path:inset(0 -100vmax); }
+  .caminho{ grid-row:auto; margin-inline:calc(var(--gut) * -1); padding:var(--e-6) var(--gut) var(--e-7); background:var(--papel); }
+  html.js .seletor-grade:not(.situacao-pronta) .caminho{ display:none; }
+  /* Carta: a folha inteira; a nota sobe da base */
+  .carta-dupla{ display:block; box-shadow:8px 8px 0 -1px var(--f-fundo),8px 8px 0 0 var(--fio); }
+  .carta-folha{ border-right:0; }
+  .carta-folha::after{ display:none; }
+  .carta-notas{ padding:var(--e-6) var(--e-5) var(--e-4); border-top:1px solid var(--linha-clara); }
+  .carta-traz{ margin:0 var(--e-5) var(--e-6); }
+  .carta--js .carta-notas{ display:none; position:fixed; left:0; right:0; bottom:0; z-index:45; margin:0; max-height:min(76vh,620px); overflow-y:auto; overscroll-behavior:contain; padding:16px var(--gut) 20px; background:var(--noite); color:var(--gelo); border:0; border-top:1px solid var(--ouro); box-shadow:0 -16px 40px rgba(15,29,42,.32);
+    --f-fundo:var(--noite); --f-titulo:var(--branco); --f-texto:var(--gelo); --f-apoio:var(--bruma); --f-enfase:var(--ouro); --f-rotulo:var(--ouro); --f-link:var(--champanhe); --f-linha:var(--linha-escura); --f-linha-destaque:var(--ouro); }
+  .carta--js.carta--aberta .carta-notas{ display:block; }
+  .carta--js .carta-fechar{ display:block; }
+  .carta--js .carta-passo:disabled{ color:#5F7389; }
+  .carta--js .carta-passo:disabled::before,.carta--js .carta-passo:disabled::after{ background:#5F7389; }
+  .carta-nota-t{ font-size:24px; }
+  .carta--js .carta-doca{ position:fixed; left:var(--gut); right:var(--gut); bottom:12px; z-index:40; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 8px 8px 16px; border:1px solid var(--ouro); box-shadow:0 8px 24px rgba(15,29,42,.28); visibility:hidden; opacity:0; transform:translateY(8px); transition:opacity var(--t-rapida) ease,transform var(--t-rapida) ease,visibility 0s linear var(--t-rapida); }
+  .carta--js.carta--na-tela:not(.carta--aberta) .carta-doca{ visibility:visible; opacity:1; transform:none; transition:opacity var(--t-rapida) ease,transform var(--t-rapida) ease,visibility 0s; }
+  .carta-doca-txt{ display:flex; flex-direction:column; gap:2px; min-width:0; font-size:var(--t-legenda); line-height:1.35; font-weight:400; color:var(--gelo); }
+  .carta-doca .btn{ flex:none; min-height:48px; padding:12px 16px 11px; font-size:12px; }
+  /* na folha que sobe, Anterior e Próximo ficam presos no pé, sempre à vista */
+  .carta--js .carta-nav{ position:sticky; bottom:-20px; z-index:1; margin:var(--e-4) calc(var(--gut) * -1) -20px; padding:var(--e-2) var(--gut) 20px; background:var(--noite); border-top:1px solid var(--linha-escura); }
+}
+@media (prefers-reduced-motion:no-preference) and (max-width:1024px){
+  .carta--js.carta--aberta .carta-notas{ animation:folha-sobe var(--t-rapida) ease-out; }
+}
+@keyframes folha-sobe{ from{ transform:translateY(24px); opacity:0; } to{ transform:none; opacity:1; } }
+@media (max-width:640px){
+  .ferr{ padding:var(--e-5) var(--e-4); }
+  .caminho-links--2,.caminho-familia{ grid-template-columns:minmax(0,1fr); }
+  .caminho-titulo{ font-size:var(--t-h4); }
+  .sit-nome{ font-size:20px; }
+  /* a folha ganha largura: a tarja vertical de modelo fica (nenhum recorte de tela vira documento), mais estreita;
+     a folha de trás deslocada sai, porque fazia borda dupla na margem do celular */
+  .carta-dupla{ box-shadow:none; }
+  .carta-folha{ padding:var(--e-5) var(--e-4) var(--e-5) calc(var(--e-5) + var(--e-4)); }   /* a tarja de 24 e 16 de respiro */
+  .carta-margem{ width:var(--e-5); }
+  .carta-dados{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--e-3) var(--e-4); }
+  .carta-corpo{ font-size:16px; line-height:1.7; }
+  .carta-notas{ padding:var(--e-5) var(--e-4) var(--e-3); }
+  .carta-traz{ margin:0 var(--e-4) var(--e-5); }
+  .carta-traz .lista span{ white-space:normal; }
+  .carta-pe{ flex-direction:column; align-items:flex-start; }
+  .prazos-form,.prazos-res,.prazos-res.com-calendario{ grid-template-columns:minmax(0,1fr); }
+  .canais-form{ grid-template-columns:minmax(0,1fr); }
+  .canais-form .btn{ margin-top:0; width:100%; }
+}
+@media (max-width:380px){
+  .sit-btn{ column-gap:var(--e-3); }
+  .carta-dados{ grid-template-columns:minmax(0,1fr); }
+  /* a barra fica numa linha só (cerca de 64 px): o rótulo e o botão, sem a frase */
+  .carta-doca{ flex-wrap:nowrap; }
+  .carta-doca-txt > span:not(.rotulo){ display:none; }
+  .carta-doca .btn{ flex:none; }
+}
+@media (hover:none){
+  .sit-btn:hover::after{ transform:none; }
+}
+@media (hover:none) and (max-width:1024px){
+  .sit-btn::after,.sit-btn:hover::after{ transform:rotate(90deg); }
+  .sit-btn[aria-expanded="true"]::after{ transform:rotate(-90deg); }
+}
+@media print{
+  .carta-doca,.carta-abas,.carta-nav{ display:none!important; }
+  .carta--js .carta-nota.inativa{ visibility:visible; }
+}

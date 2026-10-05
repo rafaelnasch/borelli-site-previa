@@ -1,0 +1,4 @@
+Contact: mailto:atendimento@advborelli.com.br
+Expires: 2027-10-04T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://advborelli.com.br/.well-known/security.txt

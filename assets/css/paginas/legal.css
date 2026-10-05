@@ -1,0 +1,38 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/legal.css · aviso de privacidade e termos de uso
+   Entra sozinho em toda página de "modelo": "legal" (o build carrega
+   assets/css/paginas/<modelo>.css). O texto usa a coluna de leitura de
+   680 px do guia (site.css, seção 21); aqui fica só o que é próprio do
+   documento legal. Usa só os tokens e os campos do site.css.
+
+    1. Versão do documento, subtítulo em negrito e índice "Nesta página"
+    2. Ficha de identificação e tabelas dentro da coluna de leitura
+    3. Celular
+   ===================================================================== */
+
+/* ---------- 1. Versão, subtítulo e índice ---------- */
+.legal-versao{ padding-bottom:var(--e-3); border-bottom:1px solid var(--f-linha); font-size:var(--t-apoio); line-height:1.55; font-weight:400; color:var(--f-apoio); }
+/* os subtítulos internos (Em poucas linhas, Pelo formulário, Como pedir) saem em negrito, sem grifo:
+   não são título em Newsreader (parte A dos dossiês legais) */
+.guia-texto > .legal-sub{ margin-top:var(--e-6); }
+.legal-sub strong{ font-weight:600; color:var(--f-titulo); }
+.legal-sub + *{ margin-top:var(--e-3)!important; }
+.guia-texto > .legal-indice{ margin-top:var(--e-7); }
+.legal-indice .rotulo{ display:block; margin-bottom:var(--e-3); }
+.legal-indice .c18-indice > li > a{ font-size:16px; }
+/* a âncora do índice para logo abaixo do cabeçalho fixo */
+.guia-texto > h2[id]{ scroll-margin-top:calc(var(--cab-h, 96px) + 24px); }
+
+/* ---------- 2. Ficha de identificação e tabelas ---------- */
+.guia-texto > .ficha-tec{ margin-top:var(--e-5); font-size:var(--t-apoio); }
+.guia-texto > .ficha-tec dt{ white-space:normal; max-width:16ch; }
+.guia-texto > .ficha-tec dd{ overflow-wrap:anywhere; }
+.guia-texto > .lista,.guia-texto > .lista-num{ font-size:var(--t-leitura); }
+.guia-texto .table-wrap.matriz > table{ min-width:680px; }
+
+/* ---------- 3. Celular ---------- */
+@media (max-width:640px){
+  .guia-texto > .legal-indice{ margin-top:var(--e-6); }
+  .legal-indice .c18-indice > li > a{ font-size:15px; }
+  .guia-texto > .ficha-tec dt{ max-width:none; }
+}

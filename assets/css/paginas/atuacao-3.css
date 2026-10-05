@@ -1,0 +1,55 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/atuacao-3.css
+   Complemento das páginas de área do grupo 3 (redução de mama, home care
+   e reembolso, erro médico). Carregado pela ficha "estilos", depois do
+   site.css e do area.css. Usa só os tokens e os campos do site.css.
+
+    1. Grupo de regras: a página com duas metades (home care e reembolso)
+       separa as regras numeradas da parte 02 em grupos com rótulo e nome
+    2. Tabela de consulta dentro da parte 02 (cabe na coluna de leitura)
+   ===================================================================== */
+
+/* ---------- 1. Grupo de regras ---------- */
+.regras-intro{ margin-top:var(--e-6)!important; }
+.regras-grupo{ margin-top:var(--e-8)!important; }
+.regras-grupo .rotulo{ display:block; color:var(--f-apoio); }
+.regras-grupo-t{
+  margin-top:8px!important; font-family:var(--display); font-weight:500; font-optical-sizing:auto;
+  font-size:clamp(27px,.476vw + 25.1px,32px); line-height:1.12; color:var(--f-titulo);
+}
+.regras-grupo-d{ margin-top:12px!important; max-width:62ch; font-size:var(--t-apoio); line-height:1.55; color:var(--f-texto); }
+.regras-grupo + .regras,
+.regras-grupo + .table-wrap{ margin-top:var(--e-5)!important; }
+.table-wrap + .regras{ margin-top:var(--e-6)!important; }
+
+/* lista numerada (os cinco requisitos da ADI 7.265): o número no lugar do losango */
+.c18-lista--num{ counter-reset:item; }
+.c18-lista--num > li{ counter-increment:item; }
+.c18-lista--num > li::before{
+  content:counter(item); top:0; left:2px; width:auto; height:auto; transform:none; border:0;
+  font:500 1.1em/1.4 var(--display); font-variant-numeric:lining-nums; color:var(--f-titulo);
+}
+
+/* intertítulo dentro do texto de uma parte (a parte 01 da página com duas metades) */
+.parte-sub{
+  margin-top:var(--e-8)!important; font-family:var(--display); font-weight:500; font-optical-sizing:auto;
+  font-size:clamp(24px,.762vw + 21px,32px); line-height:1.15; color:var(--f-titulo); max-width:22em;
+}
+.parte-texto > .parte-sub:first-child{ margin-top:0!important; }
+.parte-sub + .c18-texto{ margin-top:var(--e-4)!important; }
+
+/* ---------- 2. Tabela de consulta na parte 02 ---------- */
+.parte .table-wrap{ margin-top:var(--e-5); }
+.parte table.consulta caption{ padding-right:0; }
+
+/* citação literal com mais de um inciso ou parágrafo: um respiro entre eles */
+.regra-cita p + p{ margin-top:.5em; }
+
+/* os atalhos das duas metades moram na margem do computador; no celular a margem desce para depois das
+   regras, onde o atalho já não serve (a frase de abertura da parte e os rótulos dos grupos guiam) */
+@media (max-width:1024px){
+  .margem-nota--metades{ display:none; }
+}
+@media (max-width:640px){
+  .regras-grupo{ margin-top:var(--e-7)!important; }
+}

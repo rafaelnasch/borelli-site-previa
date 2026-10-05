@@ -1,0 +1,264 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/area.css · a página de área (BRIEF 5.2)
+   O modelo do protótipo A (Editorial sereno) com os enxertos da DIREÇÃO,
+   seção 2. Entra sozinho em toda página de "modelo": "area" (o build carrega
+   assets/css/paginas/<modelo>.css). Usa só os tokens e os campos do site.css.
+
+    1. Abertura da área (ajustes da .abertura-pagina; a trama para antes dos atalhos)
+    2. O corpo: trilho do índice em campo claro e as partes
+    3. A parte: fólio e numeral (grande só nos campos Noite), título, texto
+    4. Notas de margem ("Em uma frase", normas citadas, quem revisa)
+    5. 01 · quadro estética × reparadora (e o quadro de dois lados iguais, .contraste--par), os
+       três prazos (.tres-prazos) e as pílulas dos procedimentos
+    6. 02 · as regras numeradas, a citação literal e "Onde está" (recolhíveis no celular)
+    7. 03 · documentos (a lista é do site.css) · 04 · etapas · 05 · perguntas
+    8. Leia também e 06 Canais oficiais dentro da coluna das partes
+    9. Celular e tablet: o índice vira barra presa abaixo do cabeçalho; "Em uma frase" abre a parte
+   ===================================================================== */
+
+/* ---------- 1. Abertura da área ---------- */
+.tema-abertura .abertura-pagina-titulo{ max-width:16em; }
+/* a chamada da área é longa (o que a página explica, com os órgãos por extenso): letra de chamada, não de herói */
+.tema-abertura .chamada{ max-width:700px; font-size:var(--t-chamada); }
+.tema-abertura .c18-meta{ align-self:end; }
+/* a trama da área fica no alto à direita e some antes dos atalhos (texto pequeno): além do lado
+   direito (site.css), ela ocupa só os primeiros 420 px da abertura, apagando-se para baixo. A ficha,
+   que pode subir até ali, está no painel Maré */
+.tema-abertura.trama::before{
+  bottom:auto; height:420px;
+  -webkit-mask-image:linear-gradient(to left,#000 0%,rgba(0,0,0,.55) 24%,transparent 44%),linear-gradient(#000 45%,transparent 100%);
+  -webkit-mask-composite:source-in;
+          mask-image:linear-gradient(to left,#000 0%,rgba(0,0,0,.55) 24%,transparent 44%),linear-gradient(#000 45%,transparent 100%);
+          mask-composite:intersect;
+}
+
+/* ---------- 2. O corpo: índice à esquerda (3 colunas) e as partes (9) ----------
+   O trilho do índice mora numa margem fixa em Papel, como a margem de uma revista; cada parte
+   leva o seu campo de 40 px antes da coluna de leitura até a borda direita da tela. */
+.tema{ background:var(--papel); }
+.tema-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); align-items:start; }
+.tema-partes{ grid-column:4 / -1; grid-row:1; min-width:0; }
+.tema-indice{ grid-column:1 / span 3; grid-row:1; position:sticky; top:calc(var(--cab-h) + 24px); z-index:4; margin-top:88px; padding:20px 40px 20px 0; color:var(--grafite); }
+.tema-indice-botao{ display:none; }
+.tema-indice-rotulo{ display:block; padding-bottom:12px; }
+.tema-indice .c18-indice > li > a{ font-size:16px; }
+.tema-indice-losango{ display:block; width:7px; height:7px; margin:4px 0 0 2px; transform:rotate(45deg); border:1.5px solid var(--f-losango); }
+.tema-indice-progresso{ position:relative; height:1px; margin-top:-1px; overflow:hidden; }
+.tema-indice-progresso > span{ position:absolute; inset:0; background:var(--f-linha-destaque); transform:scaleX(0); transform-origin:0 50%; }
+.tema-indice-aviso{ margin-top:var(--e-6); }
+
+/* ---------- 3. A parte ---------- */
+.parte{
+  position:relative; display:grid; grid-template-columns:repeat(9,minmax(0,1fr)); column-gap:var(--calha); align-items:start;
+  padding-block:96px 104px; background:var(--f-fundo); box-shadow:0 0 0 100vmax var(--f-fundo); clip-path:inset(-1px -100vmax -1px -40px);
+}
+.parte-cab{ grid-column:1 / span 6; grid-row:1; margin-bottom:var(--e-7); min-width:0; }
+.parte-texto{ grid-column:1 / span 6; grid-row:2; min-width:0; }
+.parte-margem{ grid-column:7 / -1; grid-row:2; min-width:0; display:flex; flex-direction:column; gap:var(--e-7); }
+.parte-largo{ grid-column:1 / -1; grid-row:2; min-width:0; }
+/* fólio: numeral e nome da parte, com o fio que segue até a margem */
+.parte-folio{ display:flex; align-items:center; gap:16px; margin-bottom:var(--e-5); }
+.parte-folio::after{ content:""; flex:1; height:1px; background:var(--f-linha-destaque); }
+.parte-folio .rotulo{ flex:none; }
+.parte-num{ font-family:var(--display); font-weight:500; font-size:clamp(34px,.762vw + 31.03px,42px); line-height:.9; letter-spacing:-.02em; color:var(--f-num-cor); font-variant-numeric:lining-nums; }
+/* numeral grande só nos campos Noite (DIREÇÃO, seção 2) */
+.parte.campo-noite .parte-num{ font-size:clamp(64px,3.048vw + 52.11px,96px); line-height:.8; }
+.parte-num--losango{ display:block; width:14px; height:14px; margin:0 10px; transform:rotate(45deg); border:1.5px solid var(--f-losango); }
+.parte .c18-h2{ max-width:16em; }
+.parte-texto > * + *{ margin-top:var(--e-5); }
+.parte-texto > .c18-texto + .c18-texto{ margin-top:var(--e-4); }
+.parte-destaque{ margin-top:var(--e-8)!important; }
+.parte-texto > .c18-destaque + .c18-texto{ margin-top:var(--e-3); }
+
+/* ---------- 4. Notas de margem ---------- */
+.margem-nota{ border-top:1px solid var(--f-linha-destaque); padding-top:16px; }
+.margem-nota > .rotulo{ display:block; }
+.margem-frase{ margin-top:12px; font-family:var(--display); font-weight:500; font-size:24px; line-height:1.25; color:var(--f-titulo); }
+.margem-lista{ margin-top:12px; }
+.margem-lista li{ padding:8px 0; border-bottom:1px solid var(--f-linha); font-size:15px; line-height:1.45; font-weight:400; color:var(--f-texto); }
+.margem-fonte{ margin-top:12px; font-size:13px; line-height:1.5; font-weight:400; color:var(--f-apoio); }
+.margem-nota.nota,.margem-nota.c18-nota{ padding:16px 0 18px; }
+.margem-links{ margin-top:8px; }
+.margem-links a{ display:flex; justify-content:space-between; align-items:center; gap:12px; min-height:48px; padding:10px 0; border-bottom:1px solid var(--f-linha); font-size:15px; line-height:1.4; font-weight:400; color:var(--f-titulo); text-decoration:none; }
+.margem-links a::after{ content:""; flex:none; width:16px; height:16px; background:var(--f-enfase); -webkit-mask:var(--ic-seta) center/contain no-repeat; mask:var(--ic-seta) center/contain no-repeat; transition:transform var(--t-rapida) ease; }
+.margem-links a:hover::after{ transform:translateX(3px); }
+.margem-tempo-lista > div{ padding:14px 0; border-bottom:1px solid var(--f-linha); }
+.margem-tempo-lista dt{ font-family:var(--display); font-weight:500; font-size:26px; line-height:1.1; color:var(--f-titulo); }
+.margem-tempo-lista dd{ margin-top:4px; font-size:15px; line-height:1.5; font-weight:400; color:var(--f-texto); }
+.margem-tempo-lista dd span{ display:block; margin-top:4px; font-size:13px; color:var(--f-apoio); }
+.margem-forma{ width:112px; margin:-28px 0 -36px -14px; }
+/* Quem revisa esta página (do C): retrato pequeno em janela em cima e o texto embaixo, na largura toda
+   da margem (o nome, a OAB e "Conheça o advogado" sem quebrar no meio); sem foto, só o texto */
+.revisor{ margin:0; display:grid; grid-template-columns:minmax(0,1fr); row-gap:var(--e-4); align-items:start; padding-top:var(--e-5); border-top:1px solid var(--f-linha-destaque); }
+.revisor-foto{ width:96px; margin:12px; }
+.revisor figcaption{ display:flex; flex-direction:column; align-items:flex-start; gap:var(--e-2); min-width:0; }
+.revisor .id-oab{ color:var(--f-titulo); }
+.revisor .link-seta{ min-height:48px; }
+@media (min-width:641px){
+  .revisor .id-oab > span:last-child,.revisor .link-seta{ white-space:nowrap; }
+}
+
+/* ---------- 5. 01 O que é: o quadro estética × reparadora e as pílulas ---------- */
+.contraste{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin-block:var(--e-7)!important; border-top:1px solid var(--f-linha-destaque); border-bottom:1px solid var(--f-linha); }
+.contraste-lado{ padding:20px 24px 24px 0; min-width:0; }
+.contraste-lado + .contraste-lado{ padding:20px 0 24px 24px; border-left:1px solid var(--f-linha); }
+.contraste-lado .rotulo{ display:block; }
+.contraste-lado:first-child .rotulo{ color:var(--f-apoio); }
+.contraste-t{ margin-top:10px; font-family:var(--display); font-weight:500; font-size:var(--t-h4); line-height:1.2; color:var(--f-titulo); }
+.contraste-lado:first-child .contraste-t{ color:var(--pedra); }
+.contraste-d{ margin-top:10px; font-size:15px; line-height:1.55; font-weight:400; color:var(--f-texto); }
+/* quadro de dois lados iguais (.contraste--par): nenhum lado é "o contra", os dois têm a cor de título */
+.contraste--par .contraste-lado:first-child .rotulo{ color:var(--f-rotulo); }
+.contraste--par .contraste-lado:first-child .contraste-t{ color:var(--f-titulo); }
+/* três prazos da lei lado a lado (bariátrica e urgência): numeral médio, campo claro; empilha até 1024 */
+.tres-prazos-t{ display:block; }
+.tres-prazos{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:12px!important; border-top:1px solid var(--f-linha-destaque); border-bottom:1px solid var(--f-linha); }
+.tres-prazos > div{ display:flex; flex-direction:column; gap:8px; padding:18px 20px 22px 0; min-width:0; }
+.tres-prazos > div + div{ padding-left:20px; border-left:1px solid var(--f-linha); }
+.tres-prazos dt{ display:flex; flex-direction:column; gap:8px; }
+.tres-prazos .prazo-num{ font-family:var(--display); font-weight:500; font-size:28px; line-height:1.05; color:var(--f-titulo); font-variant-numeric:lining-nums; }
+.tres-prazos .prazo-nome{ font:500 15px/1.4 var(--texto); color:var(--f-titulo); }
+.tres-prazos dd{ font-size:15px; line-height:1.55; font-weight:400; color:var(--f-texto); }
+/* as cirurgias em pílulas (com JavaScript) ou em lista com a descrição de cada uma (sem) */
+.proc{ margin-top:var(--e-7)!important; padding-top:20px; border-top:1px solid var(--f-linha); }
+.proc > .rotulo{ display:block; }
+.proc-pilulas{ display:flex; flex-wrap:wrap; gap:0 8px; margin-top:12px; }
+.proc-pilula{ display:inline-flex; align-items:center; min-height:48px; padding:0; -webkit-tap-highlight-color:transparent; }
+.proc-pilula > span{ display:inline-flex; align-items:center; min-height:34px; padding:0 14px; border:1px solid var(--f-linha-destaque); border-radius:999px; font:500 13px/1.2 var(--texto); letter-spacing:.1em; text-transform:uppercase; color:var(--f-titulo); transition:background-color var(--t-rapida) ease,color var(--t-rapida) ease,border-color var(--t-rapida) ease; }
+.proc-pilula:hover > span{ background:var(--f-painel); }
+.proc-pilula[aria-pressed="true"] > span{ background:var(--marinho); border-color:var(--marinho); color:var(--branco); }
+.proc-pilula:focus-visible{ outline:none; }
+.proc-pilula:focus-visible > span{ outline:2px solid var(--f-enfase); outline-offset:2px; }
+.proc-lista{ margin-top:12px; border-top:1px solid var(--f-linha); }
+.proc-item{ display:grid; grid-template-columns:184px minmax(0,1fr); gap:4px 24px; padding:12px 0; border-bottom:1px solid var(--f-linha); }
+.proc-item dt{ font:500 15px/1.5 var(--texto); color:var(--f-titulo); }
+.proc-item dd{ font-size:15px; line-height:1.55; font-weight:400; color:var(--f-texto); }
+.proc-pronto .proc-lista{ border-top:0; margin-top:8px; }
+.proc-pronto .proc-item{ display:none; }
+.proc-pronto .proc-item.ativo{ display:block; padding:16px 20px 18px; border:0; border-left:2px solid var(--f-enfase); background:var(--f-painel); }
+.proc-pronto .proc-item.ativo dt{ font-family:var(--display); font-weight:500; font-size:22px; line-height:1.2; }
+.proc-pronto .proc-item.ativo dd{ margin-top:6px; font-size:16px; }
+.proc-ressalva{ margin-top:16px; font-size:15px; line-height:1.55; font-weight:400; color:var(--f-apoio); }
+
+/* ---------- 6. 02 O que diz a regra: as regras numeradas, a citação literal e "Onde está" ---------- */
+.regras{ margin-top:var(--e-7)!important; border-top:1px solid var(--f-linha-destaque); }
+.regra{ padding:28px 0 32px; border-bottom:1px solid var(--f-linha); }
+.regra-t{ display:grid; grid-template-columns:40px minmax(0,1fr); align-items:baseline; gap:16px; font-family:var(--display); font-weight:500; font-size:var(--t-h4); line-height:1.2; color:var(--f-titulo); }
+.regra-n{ font-size:34px; line-height:1; color:var(--f-num-cor); font-variant-numeric:lining-nums; }
+.regra-corpo{ padding-left:56px; margin-top:14px; }
+.regra-corpo > * + *{ margin-top:14px; }
+.regra-corpo > p:not(.regra-onde){ max-width:var(--leitura); font-size:var(--t-leitura); line-height:1.6; color:var(--f-texto); }
+.regra-corpo > .c18-lista,.regra-corpo > .lista{ max-width:var(--leitura); }
+.regra-corpo > .c18-lista{ margin-block:18px!important; }
+.regra-cita{ margin-block:18px!important; padding:2px 0 2px 20px; border-left:2px solid var(--f-linha-destaque); }
+.regra-cita p{ font-family:var(--citacao); font-style:italic; font-weight:400; font-size:clamp(19px,.381vw + 17.51px,23px); line-height:1.4; color:var(--f-titulo); }
+.regra-cita cite{ display:block; margin-top:10px; font:500 var(--t-rotulo)/1.5 var(--texto); font-style:normal; letter-spacing:var(--track); text-transform:uppercase; color:var(--f-apoio); }
+.regra-onde{ padding-top:12px; border-top:1px solid var(--f-linha); font-size:13px; line-height:1.55; font-weight:400; color:var(--f-apoio); }
+.regra-onde > span:not(.pendente){ display:inline-block; margin-right:12px; font:500 11px/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.regra-fecho{ margin-top:var(--e-8)!important; }
+.regra-fecho .olho{ max-width:var(--leitura); }
+.regra-fecho .c18-texto{ margin-top:var(--e-5); }
+/* No celular (até 640 px), o site.js põe o título de cada regra num botão que abre e fecha o texto
+   dela (a primeira aberta); "Onde está" fica sempre à vista. No computador e sem JavaScript, tudo
+   aberto. Na impressão, tudo aberto */
+.regra-t--botao{ display:block; }
+.regra-botao{ display:grid; grid-template-columns:28px minmax(0,1fr) 18px; align-items:baseline; column-gap:12px; width:100%; min-height:48px; padding:0; text-align:left; font:inherit; letter-spacing:inherit; color:inherit; cursor:pointer; }
+.regra-botao::after{ content:""; align-self:center; width:18px; height:18px; background:var(--f-enfase); -webkit-mask:var(--ic-chevron) center/contain no-repeat; mask:var(--ic-chevron) center/contain no-repeat; transition:transform var(--t-rapida) ease; }
+.regra-botao[aria-expanded="true"]::after{ transform:rotate(180deg); }
+.regra-botao:focus-visible{ outline:2px solid var(--f-enfase); outline-offset:4px; }
+.regra--fechada{ padding-block:var(--e-4); }
+.regra--fechada .regra-corpo{ margin-top:var(--e-1); }
+.regra--fechada .regra-onde{ margin-top:0; padding-top:0; border-top:0; }
+
+/* ---------- 7. 03 Documentos, 04 etapas e 05 perguntas ---------- */
+.parte .docs{ max-width:760px; }
+.parte .percurso{ margin-top:var(--e-7); }
+.parte .faq{ max-width:760px; }
+
+/* ---------- 8. Leia também e 06 Canais oficiais dentro da coluna das partes ---------- */
+.parte--leia{ padding-block:80px 88px; }
+.parte--leia .parte-cab{ margin-bottom:var(--e-4); }
+.parte--leia .c18-h2{ margin-top:0; }
+.parte--leia .leia-grade{ margin-top:var(--e-6); }
+.parte--canais{ display:block; padding-block:88px 96px; }
+.parte--canais .wrap{ max-width:none; padding-inline:0; }
+.parte--canais .canais-fim-grade{ grid-template-columns:repeat(9,minmax(0,1fr)); }
+.parte--canais .canais-fim-texto{ grid-column:1 / span 5; }
+.parte--canais .canais-fim-grade > .canais{ grid-column:6 / -1; }
+/* o Marinho não é Noite: fólio com o numeral menor, como nas partes claras (DIREÇÃO, seção 2) */
+.parte--canais .canais-fim-num{ font-size:clamp(34px,.762vw + 31.03px,42px); line-height:.9; }
+/* na coluna das partes, o endereço e o horário vão embaixo do botão, uma linha cada */
+@media (min-width:1025px){
+  .parte--canais .canais-fim-acao{ flex-direction:column; align-items:flex-start; gap:var(--e-4); }
+  .parte--canais .canais-fim-onde{ flex:none; }
+}
+
+/* ---------- 9. Celular e tablet ---------- */
+@media (min-width:1025px) and (max-width:1240px){
+  .parte-cab,.parte-texto{ grid-column:1 / span 8; }
+  .parte-margem{ grid-column:1 / span 8; grid-row:3; margin-top:var(--e-7); display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--e-6) var(--calha); align-items:start; }
+  .parte--canais .canais-fim-grade{ grid-template-columns:minmax(0,1fr); }
+  .parte--canais .canais-fim-grade > *{ grid-column:1 / -1!important; }
+}
+@media (max-width:1024px){
+  /* o índice vira uma barra presa logo abaixo do cabeçalho, com a parte atual escrita */
+  html{ scroll-padding-top:calc(var(--cab-h) + 72px); }
+  .tema-grade{ display:block; }
+  .tema-indice{ position:sticky; top:var(--cab-h); z-index:20; margin:0 calc(var(--gut) * -1); padding:0 var(--gut); background:var(--papel); border-bottom:1px solid var(--linha-clara); }
+  .tema-indice-rotulo,.tema-indice-aviso{ display:none; }
+  .tema-indice-botao{ display:grid; grid-template-columns:auto minmax(0,1fr) 18px; align-items:center; gap:12px; width:100%; min-height:56px; text-align:left; }
+  .tema-indice-botao::after{ content:""; width:18px; height:18px; background:var(--marinho); -webkit-mask:var(--ic-chevron) center/contain no-repeat; mask:var(--ic-chevron) center/contain no-repeat; transition:transform var(--t-rapida) ease; }
+  .tema-indice-botao[aria-expanded="true"]::after{ transform:rotate(180deg); }
+  .tema-indice-atual{ min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font:500 15px/1.3 var(--texto); color:var(--noite); }
+  .tema-indice-lista{ display:none; }
+  .tema-indice.indice-aberto .tema-indice-lista{ display:block; position:absolute; left:0; right:0; top:100%; padding:0 var(--gut) 12px; max-height:calc(100vh - var(--cab-h) - 72px); overflow-y:auto; overscroll-behavior:contain; background:var(--papel); border-bottom:1px solid var(--marinho); }
+  .tema-indice .c18-indice > li > a[aria-current="location"]::after{ left:auto; right:4px; }
+  .tema-indice-progresso{ margin:0 calc(var(--gut) * -1); height:2px; }
+  html:not(.js) .tema-indice{ position:static; }
+  html:not(.js) .tema-indice-botao{ display:none; }
+  html:not(.js) .tema-indice-lista{ display:block; padding-bottom:var(--e-4); }
+  .parte{ display:block; padding-block:64px 72px; clip-path:inset(-1px -100vmax); }
+  .parte-cab{ margin-bottom:var(--e-6); }
+  .parte-margem{ margin-top:var(--e-7); display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--e-6) var(--calha); align-items:start; }
+  .margem-forma{ display:none; }
+  .parte--canais .canais-fim-grade{ grid-template-columns:minmax(0,1fr); }
+  .parte--canais .canais-fim-grade > *{ grid-column:1 / -1!important; }
+  .tres-prazos{ grid-template-columns:minmax(0,1fr); }
+  .tres-prazos > div,.tres-prazos > div + div{ padding:16px 0 18px; border-left:0; }
+  .tres-prazos > div + div{ border-top:1px solid var(--f-linha); }
+}
+@media (max-width:640px){
+  .parte{ padding-block:56px 64px; }
+  .parte-folio{ gap:12px; }
+  .parte.campo-noite .parte-num{ font-size:56px; }
+  .parte-margem{ grid-template-columns:minmax(0,1fr); }
+  .contraste{ grid-template-columns:minmax(0,1fr); }
+  .contraste-lado{ padding:18px 0 20px; }
+  .contraste-lado + .contraste-lado{ padding:18px 0 20px; border-left:0; border-top:1px solid var(--f-linha); }
+  .tres-prazos .prazo-num{ font-size:26px; }
+  .proc-item{ grid-template-columns:minmax(0,1fr); }
+  .regra-t{ grid-template-columns:28px minmax(0,1fr); gap:12px; }
+  .regra-n{ font-size:28px; }
+  .regra-corpo{ padding-left:0; }
+  /* no celular, o retrato pequeno ao lado do texto */
+  .revisor:not(.revisor--texto){ grid-template-columns:88px minmax(0,1fr); column-gap:var(--e-4); }
+  .revisor-foto{ width:auto; }
+  .parte--leia{ padding-block:56px 64px; }
+  /* "Em uma frase" abre a parte (a nota com .margem-nota--antes sobe para antes do texto; as outras
+     notas da margem continuam depois dele) */
+  .parte--resumo-antes{ display:flex; flex-direction:column; align-items:stretch; }
+  .parte--resumo-antes > .parte-margem{ display:contents; }
+  .parte--resumo-antes > .parte-cab{ order:1; }
+  .parte--resumo-antes .margem-nota--antes{ order:2; margin-bottom:var(--e-6); }
+  .parte--resumo-antes > .parte-texto{ order:3; }
+  .parte--resumo-antes > .parte-margem > :not(.margem-nota--antes){ order:4; margin-top:var(--e-7); }
+}
+@media (hover:none){
+  .margem-links a:hover::after{ transform:none; }
+}
+@media print{
+  .tema-indice{ display:none!important; }
+  .parte{ box-shadow:none; clip-path:none; }
+  .regra-corpo > [data-regra-oculta]{ display:block!important; }
+  .regra-botao::after{ display:none; }
+}

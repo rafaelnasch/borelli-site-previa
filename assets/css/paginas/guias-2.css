@@ -1,0 +1,37 @@
+/* guias-2.css · componentes dos guias do grupo 2 (cirurgias reparadoras uma a uma, rol da ANS, NatJus e
+   atendimento em outro estado). Carregado pelo campo "estilos" de cada guia, depois do site.css. Usa só os
+   tokens do site.css (--f-*, --e-*, --t-*): o componente se adapta ao campo de cor sozinho.
+
+   1. Ficha de cada cirurgia (.cir-ficha): lista de definição com O que é, Região, O que pode causar e
+      O que diz o rol. No computador, rótulo à esquerda; no celular, rótulo em cima.
+   2. Selo do rol (.cir-rol): diz, logo abaixo do nome da cirurgia, se ela aparece no rol pelo nome.
+      Losango cheio = no rol com diretriz; losango vazado = fora do rol pelo nome. Não é promessa de
+      cobertura: é o que está escrito no Anexo I da RN 465/2021.
+   3. Ritmo do texto: intertítulo de terceiro nível seguido de selo e ficha. */
+
+/* ---------- 1. Ficha de cada cirurgia ---------- */
+.guia-texto .cir-ficha{ margin-top:var(--e-4); border-top:1px solid var(--f-linha-destaque); max-width:var(--leitura); }
+.cir-ficha > div{ display:grid; grid-template-columns:148px minmax(0,1fr); gap:var(--e-4); padding:14px 0 16px; border-bottom:1px solid var(--f-linha); }
+.cir-ficha dt{ padding-top:.42em; font:500 var(--t-rotulo)/1.45 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.cir-ficha dd{ margin:0; min-width:0; font-size:var(--t-corpo, 17px); line-height:1.6; font-weight:300; color:var(--f-texto); overflow-wrap:anywhere; }
+.cir-ficha dd a{ color:var(--f-titulo); }
+
+/* ---------- 2. Selo do rol ---------- */
+.guia-texto .cir-rol{ display:inline-flex; align-items:center; gap:10px; margin-top:var(--e-3); padding:6px 14px 6px 12px; border:1px solid var(--f-linha-destaque); font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-titulo); max-width:100%; }
+.cir-rol .losango{ width:8px; height:8px; }
+.guia-texto .cir-rol--fora{ border-color:var(--f-linha); color:var(--f-apoio); }
+
+/* ---------- 3. Ritmo ---------- */
+.guia-texto h3 + .cir-rol + .cir-ficha{ margin-top:var(--e-4); }
+.guia-texto .cir-ficha + h3{ margin-top:var(--e-7); }
+
+@media (max-width:640px){
+  .cir-ficha > div{ grid-template-columns:minmax(0,1fr); gap:6px; padding:14px 0; }
+  .cir-ficha dt{ padding-top:0; }
+  .cir-ficha dd{ font-size:16px; }
+  .guia-texto .cir-rol{ padding:6px 12px 6px 10px; letter-spacing:.12em; }
+}
+
+@media print{
+  .cir-ficha > div{ break-inside:avoid; }
+}

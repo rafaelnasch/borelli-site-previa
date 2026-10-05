@@ -1,0 +1,84 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/home.css · o que só a página inicial usa
+   (DIREÇÃO, seção 1). Entra sozinho pela página de "modelo": "home".
+   Os componentes que outras páginas também usam (índice das áreas, quem
+   assina, história, valores, tempo, cartões de ferramenta, perguntas) estão no
+   site.css; o "Onde você está agora?" e a carta estão no ferramentas.css.
+
+   Ritmo de campos (como numa revista; nunca dois campos claros iguais lado a
+   lado, com ou sem a seção de guias): Noite (abertura) · Noite e Papel (Onde
+   você está agora?) · Névoa (carta) · Papel (atuação) · Noite (como trabalha)
+   · Abismo (história) · Papel (quem assina) · Noite (ferramentas) · Papel
+   (guias, só com três publicados) · Névoa (perguntas) · Marinho (canais) ·
+   Abismo (rodapé).
+
+    1. Abertura (Opção A da 18.3): Noite com a trama e o painel Maré
+    2. Grifo nosso: cabeçalho com o cartaz da casa
+    3. Como o escritório trabalha (Noite): o percurso, o tempo e os valores
+    4. Guias recentes: o primeiro em destaque, os outros a partir do eixo B
+    5. Perguntas frequentes em duas colunas
+    6. Celular e tablet
+   ===================================================================== */
+
+/* ---------- 1. Abertura (o espaço vem do .c18-hero: 96 e 112, como na marca) ---------- */
+.home-abertura-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-7); align-items:center; }
+.home-abertura .c18-hero-texto{ grid-column:1 / span 7; }
+.home-abertura .c18-hero-titulo{ max-width:11.5em; }
+/* "Guias para começar" no campo Maré, a partir do eixo B, com a norma sob cada guia: é o painel que
+   cobre a trama, que nunca fica atrás de texto pequeno */
+.painel-guias{ grid-column:8 / -1; padding:var(--e-6) var(--e-6) var(--e-5); }
+.painel-guias > .rotulo{ display:block; padding-bottom:var(--e-3); }
+.painel-guias-lista > li{ border-top:1px solid var(--f-linha); }
+.painel-guias-lista a{ display:grid; grid-template-columns:32px minmax(0,1fr) 16px; align-items:start; gap:var(--e-3); padding:var(--e-4) 0; color:var(--f-titulo); text-decoration:none; }
+.painel-guias-lista a::after{ content:""; align-self:center; width:16px; height:16px; background:var(--f-enfase); -webkit-mask:var(--ic-seta) center/contain no-repeat; mask:var(--ic-seta) center/contain no-repeat; transition:transform var(--t-rapida) ease; }
+.painel-guias-lista a:hover::after{ transform:translateX(3px); }
+.painel-guias-lista a:hover .guia-t{ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.22em; }
+.guia-n{ font-family:var(--display); font-weight:500; font-size:22px; line-height:1.1; color:var(--f-num-cor); font-variant-numeric:lining-nums; }
+.guia-t{ font-size:17px; line-height:1.35; font-weight:400; color:var(--f-titulo); }
+.guia-t small{ display:block; margin-top:4px; font-size:13px; line-height:1.4; color:var(--f-apoio); }
+
+/* ---------- 2. Grifo nosso: título e apoio à esquerda, o cartaz da casa à direita, rente ao pé ---------- */
+.grifo-nosso .secao-cab{ align-items:end; }
+.grifo-apoio{ margin-top:var(--e-5); max-width:46ch; font-size:var(--t-chamada); line-height:1.55; color:var(--f-apoio); }
+
+/* ---------- 3. Como o escritório trabalha (Noite, como no protótipo B) ---------- */
+.trabalha .percurso-casa{ margin-bottom:var(--e-8); }
+.trabalha .tempo-grade{ margin-bottom:var(--e-8); }
+
+/* ---------- 4. Guias recentes: o primeiro grande à esquerda, os outros empilhados a partir do eixo B
+   (a seção só sai com três guias publicados: marcador "@lista-guias" com minimo="3") ---------- */
+.home-guias .guias-lista{ grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-7); }
+.home-guias .guias-lista > li{ grid-column:8 / -1; }
+.home-guias .guias-lista > li:first-child{ grid-column:1 / span 6; grid-row:1 / span 2; }
+/* na home, o guia é editorial: só o fio de cima, sem caixa (o destaque alto não vira uma caixa vazia) */
+.home-guias .guia-cartao{ padding:var(--e-5) 0 0; border:0; border-top:2px solid var(--f-linha-destaque); background:none; }
+.home-guias .guias-lista > li:first-child .intertitulo{ font-size:var(--t-h3); line-height:1.1; }
+.home-guias .guias-lista > li:first-child .guia-cartao p:not(.rotulo):not(.legenda){ max-width:46ch; font-size:var(--t-chamada); line-height:1.55; }
+
+/* ---------- 5. Perguntas frequentes em duas colunas ---------- */
+.perguntas-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-6); }
+.perguntas-cab{ grid-column:1 / span 4; }
+.perguntas-apoio{ margin-top:var(--e-5); max-width:34ch; font-size:var(--t-chamada); line-height:1.55; color:var(--f-apoio); }
+.perguntas-grade > .faq{ grid-column:6 / -1; }
+
+/* ---------- 6. Celular e tablet ---------- */
+@media (max-width:1024px){
+  .home-abertura .c18-hero-texto,.painel-guias{ grid-column:1 / -1; }
+  .painel-guias{ max-width:560px; }
+  .home-guias .guias-lista > li,.home-guias .guias-lista > li:first-child{ grid-column:span 6; grid-row:auto; }
+  .perguntas-cab,.perguntas-grade > .faq{ grid-column:1 / -1; }
+}
+@media (max-width:640px){
+  .home-abertura .c18-hero-titulo{ max-width:none; }
+  .painel-guias{ padding:var(--e-5) 20px var(--e-2); }
+  .home-guias .guias-lista{ grid-template-columns:minmax(0,1fr); }
+  .home-guias .guias-lista > li,.home-guias .guias-lista > li:first-child{ grid-column:1 / -1; }
+  .home-guias .guias-lista > li:first-child .intertitulo{ font-size:var(--t-h4); }
+  .trabalha .percurso-casa,.trabalha .tempo-grade{ margin-bottom:var(--e-7); }
+  /* os dez temas de Família já estão no "Onde você está agora?" (Divórcio, pensão, guarda ou
+     inventário): no celular, a atuação mostra só a página de Família */
+  #atuacao .at-temas{ display:none; }
+}
+@media (hover:none){
+  .painel-guias-lista a:hover::after{ transform:none; }
+}

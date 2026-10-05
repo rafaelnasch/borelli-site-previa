@@ -1,0 +1,72 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/familia-medicos.css
+   Componentes próprios de duas páginas de área: /atuacao/direito-de-familia/ (a página-hub com
+   dez temas) e /atuacao/medicos-e-instituicoes/ (a assessoria a médicos e instituições).
+   Entra pela ficha ("estilos"), depois do site.css e do area.css. Usa só os tokens e as
+   variáveis de campo (--f-*) do site.css: o componente se adapta ao fundo sozinho.
+
+    1. 01 · os temas da página em pílulas (links para as âncoras da parte 02)
+    2. 02 · regras com dois algarismos, rótulos internos, alerta dos números públicos
+    3. 03 · a lista de documentos por tema (um painel por vez com JavaScript; todos sem ele)
+    4. 01 · a lista dos temas da assessoria (médicos)
+    5. Celular
+   ===================================================================== */
+
+/* ---------- 1. Os temas em pílulas (01 O que é) ---------- */
+.fam-temas{ margin-top:var(--e-7)!important; padding-top:20px; border-top:1px solid var(--f-linha); }
+.fam-temas > .rotulo{ display:block; }
+.fam-temas-lista{ display:flex; flex-wrap:wrap; gap:0 8px; margin-top:12px; }
+.fam-temas-lista a{ display:inline-flex; align-items:center; min-height:48px; text-decoration:none; -webkit-tap-highlight-color:transparent; }
+.fam-temas-lista a > span{ display:inline-flex; align-items:center; min-height:34px; padding:0 14px; border:1px solid var(--f-linha-destaque); border-radius:999px; font:500 13px/1.2 var(--texto); letter-spacing:.1em; text-transform:uppercase; color:var(--f-titulo); transition:background-color var(--t-rapida) ease,color var(--t-rapida) ease; }
+.fam-temas-lista a:hover > span{ background:var(--f-painel); }
+.fam-temas-lista a:focus-visible{ outline:none; }
+.fam-temas-lista a:focus-visible > span{ outline:2px solid var(--f-enfase); outline-offset:2px; }
+
+/* ---------- 2. As regras da parte 02 ---------- */
+/* dez temas: o numeral de dois algarismos precisa de coluna mais larga */
+.regras--temas .regra-t{ grid-template-columns:52px minmax(0,1fr); }
+.regras--temas .regra-corpo{ padding-left:68px; }
+/* rótulo interno de cada tema ("Como funciona", "Revisão", "O imposto") */
+.regra-corpo > .regra-sub{ display:block; margin-top:var(--e-6); }
+.regra-corpo > .regra-sub + *{ margin-top:10px; }
+.regra-corpo > .c18-lista strong,.regra-corpo > p strong{ font-weight:500; color:var(--f-titulo); }
+.regra-corpo > .alerta{ max-width:var(--leitura); }
+.regra-corpo > .alerta a{ color:var(--f-titulo); font-weight:500; }
+.regra-corpo > .link-seta{ margin-top:var(--e-4); }
+/* a abertura da parte 02 (a tentativa de acordo), antes dos temas */
+.fam-acordo{ max-width:var(--leitura); }
+.fam-acordo-t{ margin-top:var(--e-7); }
+
+/* ---------- 3. Documentos por tema (03) ---------- */
+.fam-docs{ margin-top:var(--e-6)!important; }
+.fam-docs-escolha > .rotulo{ display:block; }
+.fam-docs-pilulas{ display:flex; flex-wrap:wrap; gap:0 8px; margin-top:12px; }
+.fam-docs-painel{ margin-top:var(--e-6); padding-top:var(--e-5); border-top:1px solid var(--f-linha-destaque); }
+.fam-docs-painel + .fam-docs-painel{ margin-top:var(--e-8); }
+.fam-docs-pronto .fam-docs-painel + .fam-docs-painel{ margin-top:var(--e-6); }
+.fam-docs-t{ font-family:var(--display); font-weight:500; font-size:var(--t-h4); line-height:1.2; color:var(--f-titulo); }
+.fam-docs-painel > * + *{ margin-top:var(--e-4); }
+.fam-docs-base{ font-size:15px; line-height:1.55; font-weight:400; color:var(--f-apoio); }
+.fam-docs-painel > .c18-lista{ margin-top:var(--e-5); }
+.fam-docs-painel > .docs{ max-width:760px; }
+
+/* ---------- 4. A lista dos temas da assessoria (médicos, 01) ---------- */
+.med-temas{ margin-top:var(--e-7)!important; padding-top:20px; border-top:1px solid var(--f-linha); }
+.med-temas > .rotulo{ display:block; }
+.med-temas-lista{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--calha); margin-top:8px; }
+.med-temas-lista li{ position:relative; padding:12px 0 12px 26px; border-bottom:1px solid var(--f-linha); font-size:16px; line-height:1.5; font-weight:400; color:var(--f-texto); }
+.med-temas-lista li::before{ content:""; position:absolute; left:3px; top:calc(12px + .62em); width:8px; height:8px; transform:rotate(45deg); border:1.5px solid var(--f-losango); }
+.med-regra{ margin-top:var(--e-7)!important; }
+
+/* ---------- 5. Celular ---------- */
+@media (max-width:640px){
+  .regras--temas .regra-t{ grid-template-columns:34px minmax(0,1fr); }
+  .regras--temas .regra-corpo{ padding-left:0; }
+  .regras--temas .regra-botao{ grid-template-columns:34px minmax(0,1fr) 18px; }
+  .med-temas-lista{ grid-template-columns:minmax(0,1fr); }
+  .fam-temas-lista a > span,.fam-docs-pilulas .proc-pilula > span{ padding:0 12px; letter-spacing:.08em; }
+}
+@media print{
+  .fam-docs-escolha{ display:none!important; }
+  .fam-docs-painel[hidden]{ display:block!important; }
+}

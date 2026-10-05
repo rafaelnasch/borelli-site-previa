@@ -1,0 +1,22 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/lp.css · a landing page de tema (brand book 18.10)
+   Entra sozinho em toda página de "modelo": "lp" (o build carrega
+   assets/css/paginas/<modelo>.css). As partes usam o componente da página de
+   área (area.css, pela ficha "estilos"), sem o trilho do índice: a coluna das
+   partes ocupa 9 de 12 colunas no computador e o campo de cada parte vai de
+   ponta a ponta da tela. O fim (formulário e selo) usa o institucional-2.css.
+   Usa só os tokens e os campos do site.css.
+   ===================================================================== */
+.lp-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); }
+.lp-partes{ grid-column:1 / span 10; min-width:0; }
+/* o campo da parte vai de ponta a ponta (o area.css corta 40 px à esquerda, onde ficaria o índice) */
+.lp-corpo .parte{ clip-path:inset(-1px -100vmax); }
+.lp-mais{ margin-top:var(--e-6)!important; }
+.lp-fim .c18-texto{ max-width:46ch; }
+
+@media (max-width:1240px){
+  .lp-partes{ grid-column:1 / -1; }
+}
+@media (max-width:1024px){
+  .lp-grade{ display:block; }
+}

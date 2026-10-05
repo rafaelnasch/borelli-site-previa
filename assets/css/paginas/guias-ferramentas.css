@@ -1,0 +1,92 @@
+/* =====================================================================
+   guias-ferramentas.css · os guias com ferramenta e o índice /guias/
+   Carregado pela ficha "estilos" de: /guias/ (src/paginas/guias/index.html),
+   prazos-maximos-de-atendimento, carencia-e-doenca-preexistente,
+   glossario-do-processo e carta-de-negativa-anotada (src/guias/*.md).
+   Só tokens do site.css; nenhuma regra usa :has(). O ouro não aparece
+   no claro; no Noite, quem colore é o próprio campo (--f-*).
+   Índice: 1 Tabela · 2 Citação de norma · 3 Glossário em texto ·
+   4 Carta na largura da página · 5 Índice de guias · 6 Celular · 7 Impressão
+   ===================================================================== */
+
+/* ---------- 1. Tabela de consulta: a coluna da norma sem quebra no computador ---------- */
+@media (min-width:641px){
+  .guia-texto table.consulta td:last-child{ white-space:nowrap; }
+}
+/* Ferramenta de prazos dentro da coluna de 680 px: tipo e data empilhados, para o select mostrar o nome inteiro */
+.guia-texto .prazos-form{ grid-template-columns:minmax(0,1fr); }
+
+/* ---------- 2. Citação literal de norma (figure.olho.olho--longo.olho--norma) ----------
+   O olho longo do site, um pouco mais contido, porque o guia cita várias normas seguidas */
+.guia-texto .olho--norma{ padding-top:var(--e-5); }
+.guia-texto .olho--norma blockquote p{ font-size:clamp(19px,.381vw + 17.51px,23px); line-height:1.45; }
+.guia-texto .olho--norma figcaption{ margin-top:var(--e-3); }
+.guia-texto .olho--norma + p,.guia-texto .olho--norma + .table-wrap{ margin-top:var(--e-6); }
+
+/* ---------- 3. Glossário em texto (dl.termos, um div.termo por termo, com id para link direto) ---------- */
+.guia-texto .termos{ border-top:1px solid var(--f-linha-destaque); }
+.guia-texto .termo{ padding:var(--e-5) 0; border-bottom:1px solid var(--f-linha); scroll-margin-top:calc(var(--cab-h, 96px) + 16px); }
+.guia-texto .termo dt{ font:500 var(--t-h4)/1.2 var(--display); color:var(--f-titulo); font-optical-sizing:auto; }
+.guia-texto .termo dd{ margin-top:var(--e-2); }
+.guia-texto .termo dd p{ max-width:var(--leitura); }
+.guia-texto .termo dd p + p{ margin-top:var(--e-2); }
+.guia-texto .termo-voce{ font-size:var(--t-corpo); line-height:1.6; color:var(--f-texto); }
+.guia-texto .termo-voce b{ font-weight:500; color:var(--marinho); }
+.guia-texto .termo:target{ background:linear-gradient(90deg,var(--grifo) 0 4px,transparent 4px); padding-left:var(--e-4); }
+
+/* ---------- 4. Carta anotada na largura da página ----------
+   No guia, a coluna de leitura tem 680 px. A carta em página dupla precisa da largura do .wrap: a coluna
+   sai pela direita até a borda do conteúdo (100cqi = a largura do .wrap do corpo do guia). Sem suporte a
+   container queries, a carta fica na coluna (o carta.js e o CSS do celular continuam valendo). */
+@media (min-width:1025px){
+  .guia-corpo > .wrap{ container-type:inline-size; }
+  .guia-texto > .ferramenta.carta{ width:100cqi; max-width:none; }
+  .guia-texto > .olho--cartaz{ max-width:var(--leitura); }
+}
+.guia-texto > .olho--cartaz{ margin-block:var(--e-7); }
+
+/* ---------- 5. Índice /guias/ ---------- */
+.gi-busca{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); column-gap:var(--e-6); row-gap:var(--e-4); align-items:end; margin-bottom:var(--e-7); padding-bottom:var(--e-6); border-bottom:1px solid var(--f-linha); }
+.gi-campo{ min-width:0; }
+.gi-campo-linha{ position:relative; }
+.gi-campo-linha .gi-campo-ic{ position:absolute; left:14px; top:50%; margin-top:-10px; color:var(--f-apoio); pointer-events:none; }
+.gi-campo-linha input{ padding-left:44px; min-height:56px; font-size:17px; background:var(--branco); }
+.gi-campo-linha input::-webkit-search-cancel-button{ cursor:pointer; }
+.gi-temas{ margin:0; min-width:0; }
+.gi-temas .pilula{ letter-spacing:.12em; }
+.gi-status{ grid-column:1 / -1; font-size:var(--t-apoio); line-height:1.5; color:var(--f-apoio); }
+.gi-atalho{ margin:0 0 var(--e-5); }
+
+.gi-grupos{ display:flex; flex-direction:column; gap:var(--e-8); }
+.gi-grupo-cab{ display:flex; align-items:baseline; justify-content:space-between; gap:var(--e-4); margin-bottom:var(--e-5); padding-bottom:var(--e-3); border-bottom:1px solid var(--f-linha-destaque); }
+.gi-grupo-t{ font:500 13px/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.gi-grupo-n{ font-size:var(--t-legenda); color:var(--f-apoio); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.gi-lista .guia-cartao{ padding-top:var(--e-4); }
+.gi-lista .guia-cartao .intertitulo{ font-size:clamp(22px,.381vw + 20.5px,26px); line-height:1.18; }
+
+.gi-nada{ margin-top:var(--e-6); padding:var(--e-6); border:1px solid var(--f-linha); background:var(--branco); }
+.gi-nada p{ max-width:60ch; font-size:var(--t-corpo); line-height:1.6; color:var(--f-texto); }
+.gi-nada .btn{ margin-top:var(--e-4); }
+
+/* ---------- 6. Celular e tablet ---------- */
+@media (max-width:1024px){
+  .gi-busca{ grid-template-columns:minmax(0,1fr); }
+}
+@media (max-width:640px){
+  .gi-procurar{ padding-top:var(--e-6); }
+  .gi-procurar .secao-cab-apoio{ display:none; }
+  .gi-busca{ margin-bottom:var(--e-6); padding-bottom:var(--e-5); }
+  .gi-temas{ gap:8px; }
+  .gi-temas .pilula{ white-space:normal; text-align:left; }
+  .gi-grupos{ gap:var(--e-7); }
+  .gi-nada{ padding:var(--e-5) var(--e-4); }
+  .gi-nada .btn{ width:100%; }
+  .guia-texto .termo dt{ font-size:22px; }
+  .guia-texto .termo-voce{ font-size:16px; }
+}
+
+/* ---------- 7. Impressão: a lista inteira, sem a busca ---------- */
+@media print{
+  .gi-busca,.gi-nada,.gi-atalho{ display:none!important; }
+  .gi-grupo[hidden],.gi-lista li[hidden]{ display:block!important; }
+}

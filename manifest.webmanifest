@@ -1,0 +1,28 @@
+{
+  "name": "Borelli Advocacia",
+  "short_name": "Borelli",
+  "description": "Escritório de advocacia em Fortaleza (CE), com atuação em Direito da Saúde e Direito de Família. O site explica regras, documentos e etapas em português claro.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#172B3D",
+  "theme_color": "#172B3D",
+  "icons": [
+    {
+      "src": "/borelli-site-previa/assets/img/marca/borelli-favicon-180.png?v=e0003c1c",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/borelli-site-previa/assets/img/marca/borelli-favicon-512.png?v=2ab0cfcb",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/borelli-site-previa/assets/img/marca/borelli-favicon.svg?v=89498050",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

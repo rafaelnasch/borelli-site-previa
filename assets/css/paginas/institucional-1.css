@@ -1,0 +1,147 @@
+/* =====================================================================
+   BORELLI ADVOCACIA · paginas/institucional-1.css
+   Componentes das páginas Sobre (/sobre/), Advogados (/advogados/) e das
+   páginas de cada advogado (/advogados/caico-borelli/ e /advogados/thais-cruz/).
+   Entra pela ficha "estilos". Tudo lê as variáveis do campo (--f-*): o mesmo
+   bloco funciona no Papel, na Névoa e no Noite. Grade de 12 colunas, eixo A
+   na coluna 6 e eixo B na coluna 8 (brand book, seção 19).
+
+    1. Duas colunas: texto e margem (história, palestras, trabalho)
+    2. Como o escritório trabalha: percurso e "durante o processo"
+    3. Valores em quatro colunas
+    4. Perfil do advogado: retrato em janela ou só texto, e a ficha
+    5. Cartões dos advogados (/advogados/)
+    6. Listas de páginas e guias por grupo
+    7. Perguntas frequentes em duas colunas
+    8. Identificação da sociedade
+    9. Celular e tablet
+   ===================================================================== */
+
+/* ---------- 1. Duas colunas ---------- */
+.inst-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-7); align-items:start; }
+.inst-grade > *{ min-width:0; }
+.inst-col-foto{ grid-column:1 / span 4; grid-row:1; margin:12px; max-width:380px; }   /* no computador, a foto à esquerda mesmo quando vem depois do texto no HTML */
+.inst-col-texto{ grid-column:6 / -1; }
+.inst-col-principal{ grid-column:1 / span 7; }
+.inst-col-margem{ grid-column:9 / -1; }
+.inst-col-texto > * + *,.inst-col-principal > * + *,.inst-col-margem > * + *{ margin-top:var(--e-5); }
+.inst-col-foto figcaption{ margin-top:var(--e-6); }
+.inst-col-foto figcaption .legenda{ margin-top:4px; }
+.historia-corpo .inst-fecho{ font-family:var(--display); font-weight:500; font-size:clamp(22px,.381vw + 20.51px,26px); line-height:1.25; color:var(--f-titulo); }
+
+/* ---------- 2. Como o escritório trabalha ---------- */
+.inst-frente{ padding:var(--e-5) 0 var(--e-5); border-top:1px solid var(--f-linha-destaque); }
+.inst-frente + .inst-frente{ border-top-color:var(--f-linha); }
+.inst-frente h3{ font-family:var(--display); font-weight:500; font-size:var(--t-h4); line-height:1.2; color:var(--f-titulo); }
+.inst-frente p{ margin-top:var(--e-2); max-width:46ch; font-size:16px; line-height:1.6; font-weight:400; color:var(--f-texto); }
+.inst-margem-rotulo{ display:block; padding-bottom:var(--e-3); }
+.inst-margem-lista{ display:grid; gap:12px; padding-top:var(--e-4); border-top:1px solid var(--f-linha); }
+.inst-margem-lista > li{ position:relative; padding-left:22px; font-size:16px; line-height:1.55; font-weight:400; color:var(--f-texto); }
+.inst-margem-lista > li::before{ content:""; position:absolute; left:2px; top:.62em; width:7px; height:7px; transform:rotate(45deg); border:1.5px solid var(--f-losango); }
+.inst-margem-links{ display:flex; flex-wrap:wrap; column-gap:var(--e-6); }
+
+/* ---------- 3. Valores em quatro colunas (oito valores, duas linhas) ---------- */
+.inst-valores{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); column-gap:var(--e-6); border-top:1px solid var(--f-linha-destaque); }
+.inst-valores > li{ min-width:0; padding:var(--e-5) 0 var(--e-6); border-bottom:1px solid var(--f-linha); }
+.inst-valores b{ display:block; margin-top:var(--e-3); font:500 17px/1.35 var(--texto); color:var(--f-titulo); }
+.inst-valores > li > span:last-child{ display:block; margin-top:var(--e-2); font-size:16px; line-height:1.6; font-weight:400; color:var(--f-texto); }
+
+/* ---------- 4. Perfil do advogado ---------- */
+.perfil-intro{ max-width:var(--leitura); }
+.perfil-cargo{ font-family:var(--display); font-weight:500; font-size:clamp(24px,.571vw + 21.77px,30px); line-height:1.2; color:var(--f-titulo); }
+.perfil-ficha{ margin-top:var(--e-6); }
+.perfil-ficha dd .id-oab{ font-size:inherit; color:inherit; }
+.perfil-ficha a{ color:var(--f-link); text-underline-offset:.2em; }
+.perfil-ficha .legenda{ display:block; margin-top:2px; }
+.perfil-ficha dd > a{ display:inline-flex; align-items:center; min-height:48px; margin-block:-14px; }   /* alvo de toque de 48 px sem mudar o ritmo da ficha */
+.perfil-ficha dd > .pendente{ display:block; margin-top:2px; }
+
+/* ---------- 5. Cartões dos advogados (/advogados/) ---------- */
+.adv-cartoes{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--e-7); row-gap:var(--e-7); }
+.adv-cartao{ display:grid; grid-template-columns:160px minmax(0,1fr); column-gap:var(--e-6); align-items:start; min-width:0; padding-top:var(--e-6); border-top:1px solid var(--f-linha-destaque); }
+.adv-cartao .assina-foto{ margin:12px; }
+.adv-cartao-texto{ display:flex; flex-direction:column; align-items:flex-start; gap:var(--e-3); min-width:0; }
+.adv-cartao-nome{ font-family:var(--display); font-weight:500; font-size:var(--t-h3); line-height:1.1; color:var(--f-titulo); }
+.adv-cartao .id-oab{ font-size:var(--t-apoio); color:var(--f-titulo); }
+.adv-cartao-nota{ max-width:44ch; font-size:16px; line-height:1.6; font-weight:400; color:var(--f-texto); }
+.adv-cartao .janela--monograma > span{ font-size:52px; }
+.adv-atendimento{ margin-top:var(--e-8); display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); align-items:start; padding-top:var(--e-5); border-top:1px solid var(--f-linha); }
+.adv-atendimento > .assina-sinal{ grid-column:1 / span 4; }
+.adv-atendimento > p:not(.assina-sinal){ grid-column:6 / -1; max-width:60ch; font-size:16px; line-height:1.6; font-weight:400; color:var(--f-texto); }
+
+/* ---------- 6. Listas de páginas e guias por grupo ---------- */
+.inst-grupos{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:var(--e-7); row-gap:var(--e-7); }
+.inst-grupos--2{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.inst-grupos > div{ min-width:0; }
+.inst-grupos .rotulo{ display:block; }
+.inst-grupos .leia-t{ font-size:20px; }
+.inst-areas .at-lista{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+.inst-areas .at-medicos{ margin-top:var(--e-7); }
+.inst-temas{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:var(--e-6); margin-top:var(--e-3); border-top:1px solid var(--f-linha-destaque); }
+.inst-temas > li{ border-bottom:1px solid var(--f-linha); }
+.inst-temas a{ display:flex; align-items:center; gap:12px; min-height:56px; font-size:17px; line-height:1.3; font-weight:400; color:var(--f-titulo); text-decoration:none; transition:color var(--t-rapida) ease; }
+.inst-temas a::before{ content:""; flex:none; width:7px; height:7px; transform:rotate(45deg); border:1.5px solid var(--f-losango); }
+.inst-temas a:hover{ color:var(--f-link); text-decoration:underline; text-underline-offset:.2em; }
+.inst-temas-pendente{ margin-top:var(--e-5); }
+.inst-aviso{ margin-top:var(--e-6); }
+
+/* ---------- 7. Perguntas frequentes em duas colunas ---------- */
+.inst-perguntas{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-6); }
+.inst-perguntas-cab{ grid-column:1 / span 4; min-width:0; }
+.inst-perguntas-cab p:not(.c18-secao-n){ margin-top:var(--e-5); max-width:34ch; font-size:var(--t-chamada); line-height:1.55; color:var(--f-apoio); }
+.inst-perguntas > .faq{ grid-column:6 / -1; min-width:0; }
+.faq .sanfona-corpo a{ color:var(--f-link); text-underline-offset:.2em; }
+
+/* ---------- 8. Identificação da sociedade ---------- */
+.inst-id .ficha-tec dd{ font-size:16px; }
+.inst-id .ficha-tec dd .id-oab{ font-size:inherit; font-weight:400; color:inherit; }
+.inst-id .ficha-tec a{ color:var(--f-link); text-underline-offset:.2em; }
+.inst-id-nota{ max-width:52ch; font-size:16px; line-height:1.6; font-weight:400; color:var(--f-texto); }
+
+/* ---------- 9. Computador, tablet e celular ---------- */
+@media (min-width:1025px){
+  /* corpo de leitura com pelo menos 17 px no computador (DIREÇÃO, correção 10) */
+  .inst-frente p,.inst-margem-lista > li,.inst-valores > li > span:last-child,.adv-cartao-nota,.adv-atendimento > p:not(.assina-sinal),.inst-id-nota,.inst-id .ficha-tec dd{ font-size:17px; }
+  .inst-temas{ grid-template-columns:repeat(5,minmax(0,1fr)); }   /* dez temas: duas linhas de cinco */
+  /* "Leia também" com uma coluna só (os guias já estão no corpo): ocupa a largura toda, em duas colunas */
+  .leia-grade > div:only-child{ grid-column:1 / -1; }
+  .leia-grade > div:only-child .leia-lista{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--e-7); }
+}
+@media (min-width:768px) and (max-width:1024px){
+  /* tablet: a foto continua ao lado do texto, e a margem ao lado da coluna principal */
+  .inst-col-foto{ grid-column:1 / span 5; max-width:360px; }
+  .inst-col-texto{ grid-column:6 / -1; }
+  .inst-col-principal{ grid-column:1 / span 7; }
+  .inst-col-margem{ grid-column:8 / -1; }
+}
+@media (max-width:767px){
+  .inst-grade,.inst-perguntas{ grid-template-columns:minmax(0,1fr); }
+  .inst-grade > *,.inst-perguntas > *{ grid-column:1 / -1!important; grid-row:auto!important; }
+  .inst-col-foto{ max-width:360px; }
+}
+@media (max-width:1024px){
+  .inst-valores{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .inst-grupos{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .inst-areas .at-lista{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .adv-cartoes{ grid-template-columns:minmax(0,1fr); }
+  .adv-atendimento{ grid-template-columns:minmax(0,1fr); row-gap:var(--e-3); }
+  .adv-atendimento > *{ grid-column:1 / -1!important; }
+  .inst-temas{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:640px){
+  .inst-col-foto,#historia .historia-foto{ max-width:280px; }   /* no celular, a foto não ocupa a tela inteira antes do texto */
+  .inst-valores,.inst-grupos,.inst-grupos--2,.inst-areas .at-lista,.inst-temas{ grid-template-columns:minmax(0,1fr); }
+  .inst-valores > li{ display:grid; grid-template-columns:14px minmax(0,1fr); column-gap:12px; padding:16px 0; }
+  .inst-valores > li > .losango{ grid-column:1; grid-row:1; align-self:center; }
+  .inst-valores b{ grid-column:2; grid-row:1; margin-top:0; }
+  .inst-valores > li > span:last-child{ grid-column:2; margin-top:4px; }
+  .adv-cartao{ grid-template-columns:96px minmax(0,1fr); column-gap:var(--e-4); padding-top:var(--e-5); }
+  .adv-cartao .assina-foto{ margin:10px; }
+  .adv-cartao .janela--monograma > span{ font-size:30px; }
+  .adv-cartao-nome{ font-size:var(--t-h4); }
+  .inst-temas a{ min-height:48px; font-size:16px; }
+}
+@media (max-width:380px){
+  .adv-cartao{ grid-template-columns:minmax(0,1fr); row-gap:var(--e-4); }
+  .adv-cartao .assina-foto{ width:96px; }
+}
