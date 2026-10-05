@@ -28,14 +28,28 @@
 .regras--temas .regra-corpo{ padding-left:68px; }
 /* rótulo interno de cada tema ("Como funciona", "Revisão", "O imposto") */
 .regra-corpo > .regra-sub{ display:block; margin-top:var(--e-6); }
+/* o area.css dá a todo parágrafo do tema o tamanho e a cor do texto de leitura; o rótulo interno volta
+   ao tamanho e à cor do rótulo do sistema, abaixo do título do tema */
+.regra-corpo > p.regra-sub{ font-size:var(--t-rotulo); line-height:1.4; color:var(--f-rotulo); max-width:none; }
 .regra-corpo > .regra-sub + *{ margin-top:10px; }
 .regra-corpo > .c18-lista strong,.regra-corpo > p strong{ font-weight:500; color:var(--f-titulo); }
 .regra-corpo > .alerta{ max-width:var(--leitura); }
 .regra-corpo > .alerta a{ color:var(--f-titulo); font-weight:500; }
+/* 190 e 180: área de toque de 48 x 48 px sem mudar a altura da linha nem o espaço entre as palavras */
+.regra-corpo > .alerta a[href^="tel:"]{ display:inline-flex; align-items:center; min-width:48px; min-height:48px; justify-content:center; margin:-14px -11px; }
 .regra-corpo > .link-seta{ margin-top:var(--e-4); }
 /* a abertura da parte 02 (a tentativa de acordo), antes dos temas */
 .fam-acordo{ max-width:var(--leitura); }
 .fam-acordo-t{ margin-top:var(--e-7); }
+/* os temas da parte 02 na margem: presos ao lado do texto no computador largo; até 1240 px a margem
+   desce para baixo do texto e as pílulas da parte 01 fazem esse papel */
+@media (min-width:1241px){
+  #o-que-diz-a-regra > .parte-margem{ align-self:stretch; }
+  .fam-temas-margem{ position:sticky; top:calc(var(--cab-h,72px) + 24px); }
+}
+@media (max-width:1240px){
+  .fam-temas-margem{ display:none; }
+}
 
 /* ---------- 3. Documentos por tema (03) ---------- */
 .fam-docs{ margin-top:var(--e-6)!important; }
@@ -54,7 +68,7 @@
 .med-temas{ margin-top:var(--e-7)!important; padding-top:20px; border-top:1px solid var(--f-linha); }
 .med-temas > .rotulo{ display:block; }
 .med-temas-lista{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--calha); margin-top:8px; }
-.med-temas-lista li{ position:relative; padding:12px 0 12px 26px; border-bottom:1px solid var(--f-linha); font-size:16px; line-height:1.5; font-weight:400; color:var(--f-texto); }
+.med-temas-lista li{ position:relative; padding:12px 0 12px 26px; border-bottom:1px solid var(--f-linha); font-size:17px; line-height:1.5; font-weight:400; color:var(--f-texto); }
 .med-temas-lista li::before{ content:""; position:absolute; left:3px; top:calc(12px + .62em); width:8px; height:8px; transform:rotate(45deg); border:1.5px solid var(--f-losango); }
 .med-regra{ margin-top:var(--e-7)!important; }
 

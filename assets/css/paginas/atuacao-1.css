@@ -5,13 +5,16 @@
    Entra pela ficha "estilos". Usa só os tokens e os campos do site.css;
    tudo funciona sem :has() e sem JavaScript.
 
-    1. Índice /atuacao/: a ordem das partes, em duas colunas no computador
-    2. Parte 02 em grupos (plano de saúde e SUS): saltos, cabeçalho do grupo, tese longa
+    1. Índice /atuacao/: os grupos (h3 com a cara do rótulo), a ordem das partes, em duas colunas
+       no computador, e os temas da família em duas colunas no tablet
+    1b. Parte 01: a lista de situações com toque de 48 px
+    2. Parte 02 em grupos (plano de saúde e SUS): saltos, cabeçalho do grupo, tese longa, a linha
+       de apoio da tese (.tese-nota: o que não é órgão e número sai da legenda em caixa alta)
     (o quadro de dois lados iguais, .contraste--par, e os três prazos, .tres-prazos, passaram
      para o area.css, porque outras áreas também usam)
     5. Perguntas frequentes em grupos
-    6. Celular (saltos da parte 02 com o rótulo em linha própria; temas da família em uma
-       coluna abaixo de 380 px)
+    6. Celular (saltos da parte 02 com o rótulo em linha própria; título do grupo acima das
+       regras; temas da família em uma coluna até 430 px)
    O JS que abre a regra recolhida quando um link aponta para ela: ferramentas/regra-ancora.js
    ===================================================================== */
 
@@ -22,7 +25,19 @@
 .at-ordem-lista.percurso::after{ display:none; }
 .at-ordem-lista .percurso-n{ font-size:30px; line-height:1; }
 .at-ordem-lista .percurso-t{ font-size:18px; }
+.at-ordem-lista .percurso-d{ font-size:17px; line-height:1.55; }
 .at-ordem .ferr-aviso{ margin-top:var(--e-5); }
+/* Os três grupos são h3 (navegação por títulos), com a mesma cara do rótulo */
+.at-cab h3.rotulo{ margin:0; text-wrap:wrap; }
+/* Tablet: os dez temas da família em duas colunas (em uma, sobrava o lado direito vazio) */
+@media (min-width:641px) and (max-width:1024px){
+  .at-familia .at-temas{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--calha); }
+}
+
+/* ---------- 1b. Parte 01: situações de que a página trata (links de 48 px) ---------- */
+.situacoes{ gap:0; }
+.situacoes a{ display:block; padding-block:calc((48px - 1.5em) / 2); }
+.situacoes > li::before{ top:calc((48px - 1.5em) / 2 + .6em); }
 
 /* ---------- 2. Parte 02 em grupos ---------- */
 .regra-saltos{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 24px; }
@@ -35,7 +50,9 @@
 .regra-grupo-t{ font-family:var(--display); font-weight:500; font-size:var(--t-h3); line-height:1.12; color:var(--f-titulo); max-width:18em; }
 .regra-grupo-apoio{ max-width:var(--leitura); font-size:var(--t-leitura); line-height:1.6; color:var(--f-texto); }
 .regra-grupo > .c18-tese{ margin-top:var(--e-6); }
+.tese-nota{ max-width:var(--leitura); margin-top:12px!important; padding-left:35px; font-size:15px; line-height:1.55; font-weight:400; color:var(--f-apoio); }
 /* Tese longa (mais de 40 palavras, como a tese 2 da ADI 7.265): letra menor, como o .olho--longo do sistema */
+.regra-grupo .c18-tese cite{ overflow-wrap:anywhere; }
 .c18-tese--longa p{ font-size:clamp(19px,.429vw + 16.8px,22px); line-height:1.45; text-wrap:pretty; }
 .regra-grupo > .regras{ margin-top:var(--e-6)!important; }
 .regra-ponte{ margin-top:var(--e-7)!important; max-width:var(--leitura); }
@@ -46,19 +63,21 @@
 .regras > .regra[id]{ scroll-margin-top:calc(var(--cab-h, 96px) + 24px); }
 
 /* ---------- 5. Perguntas em grupos ---------- */
-.faq > .faq-grupo{ display:block; padding:var(--e-6) 0 var(--e-2); border-bottom:1px solid var(--f-linha-destaque); }
+.faq > .faq-grupo{ display:block; padding:var(--e-6) 0 var(--e-3); }
 .faq > .faq-grupo:first-child{ padding-top:var(--e-3); }
+.faq > .faq-grupo + .sanfona{ border-top:1px solid var(--f-linha-destaque); }
 
 /* ---------- 6. Celular ---------- */
 @media (max-width:640px){
   .at-ordem-lista{ grid-template-columns:minmax(0,1fr); }
   .at-ordem-lista .percurso-n{ font-size:26px; }
-  .regra-grupo-t{ font-size:var(--t-h4); }
+  .at-ordem-lista .percurso-d{ font-size:16px; }
+  .regra-grupo-t{ font-size:28px; }
   .regra-saltos{ column-gap:20px; row-gap:0; }
   .regra-saltos .rotulo{ flex-basis:100%; padding-top:8px; }
 }
-/* Índice: abaixo de 380 px, os dez temas da família em uma coluna (em duas, "Investigação de
-   paternidade" quebrava em três linhas e as linhas encostavam umas nas outras) */
-@media (max-width:380px){
+/* Índice: até 430 px, os dez temas da família em uma coluna (em duas, "Investigação de
+   paternidade" e outros quebravam em duas ou três linhas e encostavam no item de baixo) */
+@media (max-width:430px){
   .at-familia .at-temas{ grid-template-columns:minmax(0,1fr); }
 }

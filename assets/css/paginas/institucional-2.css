@@ -7,8 +7,8 @@
    adapta ao campo sozinho. Sem :has(), sem overflow escondido no html ou no body.
    Índice: 1 Grade principal e lado · 2 Caixa do formulário · 3 Lista de canais ·
    4 Passos em duas colunas · 5 Atendimento de quem já é cliente · 6 Termos do
-   glossário · 7 Índice das páginas legais · 8 Landing page · 9 Obrigado · 10 404 ·
-   11 Celular e tablet · 12 Impressão
+   glossário · 7 Páginas legais · 8 Landing page · 9 Obrigado · 10 404 ·
+   11 Celular e tablet · 12 Impressão · 13 Contato e Obrigado
    ===================================================================== */
 
 /* ---------- 1. Grade principal (até o eixo B) e coluna do lado (a partir do eixo B) ---------- */
@@ -51,7 +51,7 @@
 .i2-canais .ic{ grid-row:1 / span 3; width:20px; height:20px; margin-top:2px; color:var(--f-enfase); }
 .i2-canal-nome{ font:500 var(--t-rotulo)/1.6 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
 .i2-canal-valor{ font:500 18px/1.4 var(--texto); color:var(--f-titulo); overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
-.i2-canal-valor a{ display:inline-flex; align-items:center; min-height:44px; color:inherit; text-decoration:underline; text-decoration-color:var(--f-linha-destaque); text-decoration-thickness:1px; text-underline-offset:.22em; }
+.i2-canal-valor a{ display:inline-flex; align-items:center; min-height:48px; color:inherit; text-decoration:underline; text-decoration-color:var(--f-linha-destaque); text-decoration-thickness:1px; text-underline-offset:.22em; }
 .i2-canal-valor a:hover{ color:var(--f-link); }
 .i2-canal-d{ font-size:var(--t-apoio); line-height:1.55; font-weight:400; color:var(--f-texto); }
 .i2-canal-d a{ display:inline-flex; align-items:center; min-height:48px; color:var(--f-link); }
@@ -89,26 +89,25 @@
 .i2-ler > li{ font-size:var(--t-apoio); line-height:1.6; font-weight:400; color:var(--f-texto); }
 .i2-ler b{ display:block; color:var(--f-titulo); font-weight:500; }
 
-/* ---------- 7. Índice das páginas legais ("Nesta página", no alto da coluna de leitura) ---------- */
-.i2-legal-indice{ margin-bottom:var(--e-8); padding:var(--e-5) var(--e-5) var(--e-4); background:var(--f-painel); border-top:2px solid var(--f-linha-destaque); }
-.i2-legal-indice > .rotulo{ display:block; margin-bottom:var(--e-2); }
-.i2-legal-indice ol{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--e-6); }
-.i2-legal-indice li{ min-width:0; border-bottom:1px solid var(--f-linha); }
-.i2-legal-indice a{ display:flex; align-items:center; min-height:44px; padding:6px 0; font-size:15px; line-height:1.35; font-weight:400; color:var(--f-titulo); text-decoration:none; }
-.i2-legal-indice a:hover{ color:var(--f-link); text-decoration:underline; text-underline-offset:.2em; }
-.i2-versao{ display:inline-block; font:500 var(--t-rotulo)/1.5 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-apoio); }
-.modelo-legal .guia-texto .i2-resumo{ margin-top:var(--e-6); padding:var(--e-5) 0 var(--e-5) var(--e-5); border-left:2px solid var(--f-linha-destaque); }
-.modelo-legal .i2-resumo > strong:first-child{ display:block; margin-bottom:var(--e-3); font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
-.modelo-legal .i2-resumo .lista{ font-size:var(--t-apoio); line-height:1.6; font-weight:400; }
-.modelo-legal .guia-texto .i2-sub{ margin-top:var(--e-6); font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
-.modelo-legal .guia-texto .i2-sub + *{ margin-top:var(--e-3); }
-.modelo-legal .guia-texto > * + *{ margin-top:var(--e-4); }
-.modelo-legal .guia-texto .lista,.modelo-legal .guia-texto .lista-num{ margin-top:var(--e-4); }
-.modelo-legal .guia-texto .i2-ficha{ padding:var(--e-4) 0; border-top:1px solid var(--f-linha-destaque); border-bottom:1px solid var(--f-linha); font-size:var(--t-apoio); line-height:1.65; font-weight:400; }
-.modelo-legal .guia-texto .i2-ficha b{ color:var(--f-titulo); font-weight:500; }
-.modelo-legal .guia-texto .table-wrap td b{ font-weight:500; color:var(--f-titulo); }
+/* ---------- 7. Páginas legais (privacidade e termos): ficha de identificação e tabela dos cookies ----------
+   O texto e os componentes vêm do legal.css; aqui só o que corrige a leitura no computador: a coluna dos
+   rótulos da ficha com largura fixa, sem partir palavra no meio, e a matriz dos cookies com a coluna
+   "Para quê" larga. */
+@media (min-width:641px){
+  .modelo-legal .guia-texto > .ficha-tec{ grid-template-columns:minmax(150px,13rem) minmax(0,1fr); }
+  .modelo-legal .guia-texto > .ficha-tec dt{ max-width:none; overflow-wrap:normal; word-break:normal; hyphens:manual; }
+}
+.modelo-legal .guia-texto .table-wrap.matriz > table{ width:100%; table-layout:fixed; }
+.modelo-legal .guia-texto .table-wrap.matriz th{ white-space:normal; overflow-wrap:normal; word-break:normal; hyphens:manual; }
+.modelo-legal .guia-texto .table-wrap.matriz th:nth-child(1){ width:21%; }
+.modelo-legal .guia-texto .table-wrap.matriz th:nth-child(2){ width:15%; }
+.modelo-legal .guia-texto .table-wrap.matriz th:nth-child(3){ width:31%; }
+.modelo-legal .guia-texto .table-wrap.matriz th:nth-child(4){ width:19%; }
+.modelo-legal .guia-texto .table-wrap.matriz th:nth-child(5){ width:14%; }
+.modelo-legal .guia-texto .matriz-dica{ margin-top:var(--e-4); }
 
-/* ---------- 8. Landing page: as partes sem o trilho do índice, numa coluna de 9 em 12 ---------- */
+/* ---------- 8. Landing page: as partes sem o trilho do índice (a coluna das partes vem do lp.css) ---------- */
+.lp-ressalva{ margin-top:var(--e-5)!important; }
 .lp-corpo{ background:var(--papel); }
 .lp-corpo .parte{ clip-path:inset(-1px -100vmax); }
 .lp-corpo .parte .c18-h2{ max-width:18em; }
@@ -136,20 +135,10 @@
 .i2-enquanto .guias-comecar small{ font-size:13px; line-height:1.4; color:var(--f-apoio); }
 .i2-enquanto .guias-comecar a:hover span:not(.rotulo){ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.16em; }
 
-/* ---------- 10. 404: a busca na própria página e os atalhos em três grupos ---------- */
-.i2-404-busca{ margin-top:var(--e-6); max-width:640px; }
-.i2-404-busca .campo-form > label{ color:var(--f-titulo); }
-.i2-404-linha{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:var(--e-3); align-items:end; }
-.i2-404-linha .btn{ min-height:48px; }
-.i2-404-res{ margin-top:var(--e-4); }
-.i2-404-res:empty{ display:none; }
-.i2-404-situacao{ margin-top:var(--e-3); font-size:var(--t-apoio); line-height:1.5; color:var(--f-texto); }
-.i2-404-situacao:empty{ display:none; }
+/* ---------- 10. 404: os atalhos em três grupos (a busca é o diálogo do site, aberto pelo botão da abertura) ---------- */
 .i2-404-lista{ margin-top:var(--e-3); border-top:1px solid var(--f-linha-destaque); }
 .i2-404-lista a{ display:grid; gap:2px; min-height:48px; padding:12px 0; border-bottom:1px solid var(--f-linha); color:var(--f-titulo); text-decoration:none; }
-.i2-404-lista .rotulo{ color:var(--f-rotulo); }
 .i2-404-lista .i2-404-t{ font:500 17px/1.4 var(--texto); }
-.i2-404-lista .i2-404-d{ font-size:14px; line-height:1.5; font-weight:400; color:var(--f-apoio); }
 .i2-404-lista a:hover .i2-404-t{ text-decoration:underline; text-underline-offset:.2em; }
 .i2-404-grupos{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-7); }
 .i2-404-grupos > div{ min-width:0; }
@@ -182,23 +171,19 @@
   .i2-termos > div{ grid-template-columns:minmax(0,1fr); }
   .i2-termos dd + dd{ grid-column:1; }
   .i2-termos dt{ font-size:22px; }
-  .i2-legal-indice{ padding:var(--e-4); }
-  .i2-legal-indice ol{ grid-template-columns:minmax(0,1fr); }
   .i2-obrigado{ padding-block:64px; }
   .i2-enquanto .guias-comecar{ grid-template-columns:minmax(0,1fr); }
-  .i2-404-linha{ grid-template-columns:minmax(0,1fr); }
-  .i2-404-linha .btn{ width:100%; }
   .i2-404-grupos{ grid-template-columns:minmax(0,1fr); }
   .lp-fim{ padding-block:64px; }
 }
 
 /* ---------- 12. Impressão ---------- */
 @media print{
-  .i2-404-busca,.i2-legal-indice{ display:none!important; }
   .i2-form-caixa{ border:0; padding:0; }
 }
 
-/* ---------- 13. Contato: o botão "Fale com o escritório" do bloco Canais oficiais levaria a esta mesma
-   página; ali ficam só o endereço e o horário ---------- */
-.modelo-contato .canais-fim-acao > .btn{ display:none; }
+/* ---------- 13. Contato e Obrigado: o botão "Fale com o escritório" do bloco Canais oficiais levaria à
+   própria página de contato (no Obrigado, a um segundo envio da mesma mensagem); ali ficam só o
+   endereço e o horário ---------- */
+.modelo-contato .canais-fim-acao > .btn,.modelo-obrigado .canais-fim-acao > .btn{ display:none; }
 .i2-bloco .c18-destaque{ margin-top:var(--e-5); font-size:clamp(24px,.381vw + 22.51px,28px); }

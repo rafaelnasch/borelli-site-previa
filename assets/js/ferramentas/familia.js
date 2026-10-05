@@ -7,6 +7,9 @@
      certo e leva até ele.
    · Temas da parte 02: no celular, o site.js deixa cada tema recolhível (o primeiro aberto).
      Um link ou um endereço com "#divorcio", "#pensao"... abre o tema pedido e leva até ele.
+   · Endereço: o tema aberto vai para o endereço sem criar entrada nova no histórico do navegador.
+     Curatela, medidas protetivas e registro civil tratam de dados sensíveis (dossiê, nota de
+     privacidade): o nome deles não vai para o endereço; no lugar, fica a parte da página.
    Nada é enviado a lugar nenhum: tudo acontece na página.
    ===================================================================== */
 (function () {
@@ -21,10 +24,20 @@
     var comportamento = poucoMovimento() || doc.documentElement.classList.contains('automatizado') ? 'auto' : 'smooth';
     try { el.scrollIntoView({ block: 'start', behavior: comportamento }); } catch (e) { el.scrollIntoView(true); }
   };
+  var SENSIVEL = /curatela|medidas-protetivas|registro-civil/;
+  /* grava no endereço sem nova entrada no histórico; tema sensível vira a parte em que ele está */
+  var anota = function (hash) {
+    if (!window.history || !window.history.replaceState) return;
+    if (SENSIVEL.test(hash)) hash = hash.indexOf('#documentos') === 0 ? '#documentos' : '#o-que-diz-a-regra';
+    try { window.history.replaceState(window.history.state, '', hash); } catch (e) { /* endereço fica como está */ }
+  };
   var porId = function (hash) {
     if (!hash || hash.length < 2) return null;
     try { return doc.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { return null; }
   };
+
+  /* a lista de curatela guardava marcações numa versão de prévia; agora é lista simples: apaga o que ficou */
+  try { window.localStorage.removeItem('borelli-docs:familia-curatela'); } catch (e) { /* sem acesso ao armazenamento */ }
 
   /* ---------- Documentos por tema ---------- */
   var mostraDocs = null;
@@ -42,14 +55,14 @@
       });
     };
     botoes.forEach(function (b, i) {
-      b.addEventListener('click', function () { mostra(b); });
+      b.addEventListener('click', function () { mostra(b); anota('#' + b.getAttribute('data-fam-tema')); });
       b.addEventListener('keydown', function (e) {
         var alvo = null;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') alvo = botoes[(i + 1) % botoes.length];
         else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') alvo = botoes[(i - 1 + botoes.length) % botoes.length];
         else if (e.key === 'Home') alvo = botoes[0];
         else if (e.key === 'End') alvo = botoes[botoes.length - 1];
-        if (alvo) { e.preventDefault(); foca(alvo); mostra(alvo); }
+        if (alvo) { e.preventDefault(); foca(alvo); mostra(alvo); anota('#' + alvo.getAttribute('data-fam-tema')); }
       });
     });
     escolha.hidden = false;
@@ -80,6 +93,7 @@
     if (!alvo) return;
     var achou = (mostraDocs && mostraDocs(alvo)) || abreTema(alvo);
     if (achou && rolar) leva(alvo);
+    if (achou && SENSIVEL.test(hash)) anota(hash);
   };
 
   doc.addEventListener('click', function (e) {
@@ -93,7 +107,7 @@
     if (docs || tema) {
       /* o painel ou o tema acabou de mudar de altura: a rolagem é feita aqui, no lugar certo */
       e.preventDefault();
-      if (window.history && window.history.pushState) window.history.pushState(null, '', hash);
+      anota(hash);
       leva(alvo);
     }
   });

@@ -66,6 +66,23 @@
         else mostra('nao', 'Este e-mail não está na lista de canais oficiais.', 'Os canais oficiais da Borelli Advocacia são estes:', true);
         return;
       }
+      /* site (advborelli.com.br, com ou sem https:// e www.): antes do perfil, porque o perfil aceita
+         pontos e capturaria o domínio. Conta como site o que veio com https:// ou www., com caminho
+         depois do domínio ou terminado num domínio de topo comum; o @ no começo é sempre perfil */
+      var semProtocolo = minusculo.replace(/^https?:\/\//, '').replace(/^www\./, '');
+      var dominio = semProtocolo.replace(/[\/?#].*$/, '');
+      var siteOficial = oficial.site.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/[\/?#].*$/, '');
+      var ehInstagram = /^instagram\.com$/.test(dominio);
+      var pareceSite = v.charAt(0) !== '@' && !ehInstagram && /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(dominio) &&
+        (/^(https?:\/\/|www\.)/.test(minusculo) || /[\/?#]/.test(semProtocolo) || /\.(com|net|org|br|adv|jus|gov|app|site|online|info|io)$/.test(dominio));
+      if (siteOficial && dominio === siteOficial && !ehInstagram && v.charAt(0) !== '@') {
+        mostra('ok', 'Este é o site oficial da Borelli Advocacia.', 'O endereço ' + siteOficial + ' está na lista de canais oficiais.', false);
+        return;
+      }
+      if (pareceSite) {
+        mostra('nao', 'Este site não está na lista de canais oficiais.', 'Os canais oficiais da Borelli Advocacia são estes:', true);
+        return;
+      }
       /* perfil (@nome ou endereço do Instagram) */
       var perfil = /^@?([a-z0-9._]{2,30})$/.exec(minusculo.replace(/^https?:\/\/(www\.)?instagram\.com\//, '').replace(/\/.*$/, ''));
       if (perfil && /[a-z]/.test(perfil[1]) && !/^\d+$/.test(perfil[1].replace(/\./g, ''))) {

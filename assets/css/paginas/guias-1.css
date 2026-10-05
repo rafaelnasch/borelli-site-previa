@@ -19,3 +19,14 @@
   .guia-texto > .guia-tese{ margin-top:var(--e-5); margin-bottom:var(--e-5); padding-left:18px; }
   .guia-texto > .olho--cartaz{ margin-top:var(--e-6); margin-bottom:var(--e-6); }
 }
+
+/* Olho com a marca [conferir antes de publicar] no crédito: a marca desce para a linha de baixo, e o crédito
+   ocupa a largura toda (no celular, ele ficava espremido em três linhas ao lado da marca). */
+.guia-texto .olho figcaption{ display:block; }
+.guia-texto .olho figcaption::before{ display:inline-block; vertical-align:middle; margin:0 12px 0 0; position:relative; top:-.12em; }
+.guia-texto .olho figcaption .pendente{ display:block; margin-top:8px; }
+
+/* Roteiro para a conversa com o médico (relatório médico): cada item é uma frase inteira, para copiar e
+   imprimir completa; o começo em peso de rótulo e o resto em peso de corpo, para a lista não pesar. */
+[data-roteiro] .doc-t{ font-weight:300; color:var(--f-texto); }
+[data-roteiro] .doc-t strong{ font-weight:500; color:var(--f-titulo); }

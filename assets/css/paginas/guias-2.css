@@ -2,18 +2,23 @@
    atendimento em outro estado). Carregado pelo campo "estilos" de cada guia, depois do site.css. Usa só os
    tokens do site.css (--f-*, --e-*, --t-*): o componente se adapta ao campo de cor sozinho.
 
-   1. Ficha de cada cirurgia (.cir-ficha): lista de definição com O que é, Região, O que pode causar e
-      O que diz o rol. No computador, rótulo à esquerda; no celular, rótulo em cima.
+   1. Ficha de cada cirurgia (.cir-ficha): lista de definição com O que é, Região, O que o excesso de pele
+      pode causar e O que diz o rol. No computador, rótulo à esquerda; no celular, rótulo em cima. O texto
+      da ficha tem o mesmo corpo do resto do guia (--t-leitura).
    2. Selo do rol (.cir-rol): diz, logo abaixo do nome da cirurgia, se ela aparece no rol pelo nome.
       Losango cheio = no rol com diretriz; losango vazado = fora do rol pelo nome. Não é promessa de
       cobertura: é o que está escrito no Anexo I da RN 465/2021.
-   3. Ritmo do texto: intertítulo de terceiro nível seguido de selo e ficha. */
+   3. Ritmo do texto: intertítulo de terceiro nível seguido de selo e ficha.
+   4. Citação literal longa de norma (.olho--norma): para os textos de mais de 100 palavras, o olho
+      longo continua (filete, aspas e crédito), mas o texto sai em Lexend reta, no corpo de leitura,
+      para não virar uma tela inteira de itálico no celular.
+   5. Celular: o nome da cirurgia na tabela do alto (que vira cartão) é alvo de toque de 48 px. */
 
 /* ---------- 1. Ficha de cada cirurgia ---------- */
 .guia-texto .cir-ficha{ margin-top:var(--e-4); border-top:1px solid var(--f-linha-destaque); max-width:var(--leitura); }
-.cir-ficha > div{ display:grid; grid-template-columns:148px minmax(0,1fr); gap:var(--e-4); padding:14px 0 16px; border-bottom:1px solid var(--f-linha); }
+.cir-ficha > div{ display:grid; grid-template-columns:200px minmax(0,1fr); gap:var(--e-4); padding:14px 0 16px; border-bottom:1px solid var(--f-linha); }
 .cir-ficha dt{ padding-top:.42em; font:500 var(--t-rotulo)/1.45 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
-.cir-ficha dd{ margin:0; min-width:0; font-size:var(--t-corpo, 17px); line-height:1.6; font-weight:300; color:var(--f-texto); overflow-wrap:anywhere; }
+.cir-ficha dd{ margin:0; min-width:0; font-size:var(--t-leitura); line-height:1.6; font-weight:300; color:var(--f-texto); overflow-wrap:anywhere; }
 .cir-ficha dd a{ color:var(--f-titulo); }
 
 /* ---------- 2. Selo do rol ---------- */
@@ -25,10 +30,13 @@
 .guia-texto h3 + .cir-rol + .cir-ficha{ margin-top:var(--e-4); }
 .guia-texto .cir-ficha + h3{ margin-top:var(--e-7); }
 
+/* ---------- 4. Citação literal longa de norma ---------- */
+.olho--norma blockquote p{ font-family:var(--texto); font-style:normal; font-weight:300; font-size:var(--t-leitura); line-height:1.6; }
+
 @media (max-width:640px){
   .cir-ficha > div{ grid-template-columns:minmax(0,1fr); gap:6px; padding:14px 0; }
   .cir-ficha dt{ padding-top:0; }
-  .cir-ficha dd{ font-size:16px; }
+  .guia-texto table.consulta td:first-child > a{ display:inline-flex; align-items:center; min-height:48px; }
   .guia-texto .cir-rol{ padding:6px 12px 6px 10px; letter-spacing:.12em; }
 }
 
