@@ -30,8 +30,38 @@
 .guia-texto > .lista,.guia-texto > .lista-num{ font-size:var(--t-leitura); }
 .guia-texto .table-wrap.matriz > table{ min-width:680px; }
 
+/* v2: o bloco aberto "Como pedir acesso, correção ou eliminação" (privacidade), logo abaixo do resumo,
+   com o fio de ênfase à esquerda para marcar a única ação da página; e os subtítulos dentro das sanfonas */
+.guia-texto > .legal-pedido{ margin-top:var(--e-6); padding:4px 0 4px var(--e-5); border-left:2px solid var(--f-linha-destaque); }
+.legal-pedido > .legal-sub{ margin-top:0; }
+.legal-pedido > .lista-num{ margin-top:var(--e-3); font-size:var(--t-leitura); }
+.legal-pedido a{ overflow-wrap:anywhere; }
+.guia-texto > .legal-pedido + .legal-secao{ margin-top:var(--e-7); }
+.legal-secao-corpo > .legal-sub:not(:first-child){ margin-top:var(--e-5); }
+/* na tabela larga de cookies, o tipo e a resposta curta não quebram no meio da palavra */
+.legal-secao .table-wrap.matriz td:nth-child(2),.legal-secao .table-wrap.matriz td:nth-child(4){ white-space:nowrap; }
+.legal-secao [id]{ scroll-margin-top:calc(var(--cab-h, 96px) + 24px); }
+.guia-texto > .legal-secao{ scroll-margin-top:calc(var(--cab-h, 96px) + 24px); }
+
+/* v2fix: os títulos abertos ("Em poucas linhas", "Como pedir", "O texto completo") são h2 de verdade, no tamanho de
+   seção do site, sem grifo; a margem é a do bloco, menor que a do guia, para a página continuar curta */
+.guia-texto > h2.legal-sub,.legal-pedido > h2.legal-sub{ font-family:var(--display); font-weight:500; font-size:var(--t-secao); line-height:1.1; color:var(--f-titulo); }
+.guia-texto > h2.legal-sub{ margin-top:var(--e-7); }
+.guia-texto > h2.legal-sub:first-child,.guia-texto > .legal-versao + h2.legal-sub{ margin-top:var(--e-6); }
+.guia-texto > h2.legal-sub + .legal-secao{ margin-top:var(--e-5); }
+/* o corpo das sanfonas no tamanho de corpo (17 px), não no de apoio; as referências continuam em 14 px */
+.legal-secao-corpo p,.legal-secao-corpo li{ font-size:var(--t-corpo); }
+.legal-secao-corpo .legal-refs{ font-size:14px; }
+/* legenda das tabelas acima delas, nunca solta depois dos cartões nem dentro da rolagem */
+.legal-secao table caption{ caption-side:top; padding:0 0 var(--e-3); }
+.legal-legenda{ font-size:var(--t-legenda)!important; line-height:1.5; color:var(--f-apoio); }
+.legal-legenda + .table-wrap{ margin-top:var(--e-2)!important; }
+
 /* ---------- 3. Celular ---------- */
 @media (max-width:640px){
+  /* a tabela de finalidades vira cartões: a célula-título fica abaixo do summary (Lexend 17/600, não Newsreader 22) */
+  .legal-secao table.vira-cartao td:first-child{ font-family:var(--texto); font-size:17px; font-weight:600; line-height:1.4; }
+  .legal-secao table.vira-cartao caption{ order:-1; padding:0 0 var(--e-3); }
   .guia-texto > .legal-indice{ margin-top:var(--e-6); }
   .legal-indice .c18-indice > li > a{ font-size:15px; }
   .guia-texto > .ficha-tec dt{ max-width:none; }

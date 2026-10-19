@@ -7,7 +7,7 @@ Contato: atendimento@advborelli.com.br
 Cidade: Fortaleza, CE, Brasil
 
 /* SITE */
-Atualizado em: 2026/10/05
+Atualizado em: 2026/10/19
 Idioma: português do Brasil
 Padrões: HTML, CSS e JavaScript sem dependências
 Fontes: Newsreader e Lexend (SIL Open Font License)

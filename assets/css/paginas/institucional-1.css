@@ -15,7 +15,10 @@
     7. Perguntas frequentes em duas colunas
     8. Identificação da sociedade
     9. Celular e tablet
-   ===================================================================== */
+   ===================================================================== 
+   v2: a abertura curta (sem ficha) é do build e do site.css; os valores em quatro colunas, as duas frentes e a
+   identificação da sociedade no Noite são da v1 e saem no fim do lote quando as páginas forem reescritas.
+   */
 
 /* ---------- 1. Duas colunas ---------- */
 .inst-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-7); align-items:start; }

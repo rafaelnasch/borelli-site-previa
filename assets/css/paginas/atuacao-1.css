@@ -5,10 +5,7 @@
    Entra pela ficha "estilos". Usa só os tokens e os campos do site.css;
    tudo funciona sem :has() e sem JavaScript.
 
-    1. Índice /atuacao/: os grupos (h3 com a cara do rótulo) e a ordem das partes, em duas colunas
-       no computador (os temas da família, duas colunas no tablet e uma até 430 px, estão no site.css,
-       porque a home usa a mesma grade)
-    1b. Parte 01: a lista de situações com toque de 48 px
+    1. Hub /atuacao/ (v2): ritmo dos três grupos (as listas e etiquetas são do site.css)
     2. Parte 02 em grupos (plano de saúde e SUS): saltos, cabeçalho do grupo, tese longa, a linha
        de apoio da tese (.tese-nota: o que não é órgão e número sai da legenda em caixa alta)
     (o quadro de dois lados iguais, .contraste--par, e os três prazos, .tres-prazos, passaram
@@ -16,24 +13,29 @@
     5. Perguntas frequentes em grupos
     6. Celular (saltos da parte 02 com o rótulo em linha própria; título do grupo acima das regras)
    A regra recolhida no celular abre sozinha quando um link aponta para ela: site.js, seção 11.
-   ===================================================================== */
+   ===================================================================== 
+   LEGADO (v2, 18/10/2026): as regras em grupos, os saltos, a tese e a ordem das partes são da v1. As páginas
+   reescritas no roteiro da v2 não usam este arquivo; ele sai no fim do lote.
+   */
 
-/* ---------- 1. Índice: a ordem das partes ---------- */
-.at-ordem-lista{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--calha); margin-top:var(--e-7); }
-.at-ordem-lista > li{ padding-bottom:var(--e-6); }
-.at-ordem-lista > li::after{ display:none; }
-.at-ordem-lista.percurso::after{ display:none; }
-.at-ordem-lista .percurso-n{ font-size:30px; line-height:1; }
-.at-ordem-lista .percurso-t{ font-size:18px; }
-.at-ordem-lista .percurso-d{ font-size:17px; line-height:1.55; }
-.at-ordem .ferr-aviso{ margin-top:var(--e-5); }
-/* Os três grupos são h3 (navegação por títulos), com a mesma cara do rótulo */
-.at-cab h3.rotulo{ margin:0; text-wrap:wrap; }
-
-/* ---------- 1b. Parte 01: situações de que a página trata (links de 48 px) ---------- */
-.situacoes{ gap:0; }
-.situacoes a{ display:block; padding-block:calc((48px - 1.5em) / 2); }
-.situacoes > li::before{ top:calc((48px - 1.5em) / 2 + .6em); }
+/* ---------- 1. Hub /atuacao/ (v2): os três grupos (saúde, família, médicos) ----------
+   As listas e as etiquetas vêm do site.css (.lista-situacoes, .etiquetas, .sit-quem). Aqui só o ritmo
+   entre a linha do advogado, o link da página de Família, as etiquetas e a frase final. Quando este
+   arquivo sair no fim do lote, estas regras passam para o site.css junto com o hub. */
+.hub-grupo .sit-quem{ margin-bottom:var(--e-4); }
+.hub-familia-link{ margin:0; }
+.hub-familia-link .link-seta{ font-size:18px; color:var(--f-link); }
+.hub-apoio{ margin:var(--e-3) 0 var(--e-3); max-width:var(--leitura); font-size:var(--t-apoio); line-height:1.5; color:var(--f-texto); }
+.hub-grupo .sit-quem + .hub-apoio{ margin-top:0; }
+.hub-grupo .hub-apoio + .link-seta{ color:var(--f-link); }
+/* A abertura do hub na mesma coluna de leitura das seções (um eixo só no computador) */
+.modelo-hub .abertura-pagina > .wrap{ max-width:calc(var(--leitura) + 2 * var(--gut)); }
+.modelo-hub .abertura-pagina-texto{ max-width:none; }
+/* "Não achou o seu caso?": linha própria, fora de #medicos, para não sumir junto com a seção */
+#medicos{ padding-bottom:var(--e-6); }
+.hub-fim{ padding-block:0 var(--e-8); }
+.hub-nao-achou{ margin:0; padding-top:var(--e-5); border-top:1px solid var(--f-linha); font-size:var(--t-leitura); line-height:1.5; color:var(--f-texto); }
+.hub-nao-achou a{ padding-block:12px; color:var(--f-link); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.2em; }
 
 /* ---------- 2. Parte 02 em grupos ---------- */
 .regra-saltos{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 24px; }
@@ -65,9 +67,6 @@
 
 /* ---------- 6. Celular ---------- */
 @media (max-width:640px){
-  .at-ordem-lista{ grid-template-columns:minmax(0,1fr); }
-  .at-ordem-lista .percurso-n{ font-size:26px; }
-  .at-ordem-lista .percurso-d{ font-size:16px; }
   .regra-grupo-t{ font-size:28px; }
   .regra-saltos{ column-gap:20px; row-gap:0; }
   .regra-saltos .rotulo{ flex-basis:100%; padding-top:8px; }

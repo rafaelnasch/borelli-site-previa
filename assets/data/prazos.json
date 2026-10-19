@@ -124,7 +124,7 @@
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso II",
    "texto_literal": "II - consulta nas demais especialidades médicas: em até quatorze dias úteis;",
-   "observacao": "Inclui, por exemplo, cirurgia plástica, endocrinologia, dermatologia. O retorno fica a critério do profissional (art. 3º, § 3º)."
+   "observacao": "Inclui, por exemplo, cirurgia plástica, endocrinologia e dermatologia. O retorno fica a critério do profissional."
   },
   {
    "id": "fonoaudiologo",
@@ -206,41 +206,41 @@
   {
    "id": "laboratorio-analises-clinicas",
    "grupo": "Exames e terapias",
-   "rotulo": "Exames de laboratório de análises clínicas, sem internação (regime ambulatorial)",
+   "rotulo": "Exames de laboratório de análises clínicas, sem internação",
    "rotulo_curto": "Exame de laboratório",
    "prazo_dias_uteis": 3,
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso X",
    "texto_literal": "X - serviços de diagnóstico por laboratório de análises clínicas em regime ambulatorial: em até três dias úteis;",
-   "observacao": "Se o procedimento estiver classificado no Rol da ANS como de alta complexidade, o prazo passa a ser o do inciso XII: 21 dias úteis (art. 3º, § 5º)."
+   "observacao": "Se o exame estiver marcado na lista da ANS como procedimento complexo, o prazo passa a ser de 21 dias úteis."
   },
   {
    "id": "demais-diagnostico-terapia",
    "grupo": "Exames e terapias",
-   "rotulo": "Demais exames e terapias sem internação (regime ambulatorial)",
+   "rotulo": "Demais exames e terapias sem internação",
    "rotulo_curto": "Outros exames e terapias",
    "prazo_dias_uteis": 10,
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso XI",
    "texto_literal": "XI - demais serviços de diagnóstico e terapia em regime ambulatorial: em até dez dias úteis;",
-   "observacao": "Se o procedimento estiver classificado no Rol da ANS como de alta complexidade, o prazo passa a ser o do inciso XII: 21 dias úteis (art. 3º, § 5º)."
+   "observacao": "Se o procedimento estiver marcado na lista da ANS como procedimento complexo, o prazo passa a ser de 21 dias úteis."
   },
   {
    "id": "alta-complexidade",
    "grupo": "Cirurgias, internações e alta complexidade",
-   "rotulo": "Procedimentos de alta complexidade (PAC), assim listados no Rol da ANS",
-   "rotulo_curto": "Alta complexidade (PAC)",
+   "rotulo": "Procedimentos complexos, assim marcados na lista da ANS",
+   "rotulo_curto": "Procedimento complexo",
    "prazo_dias_uteis": 21,
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso XII",
    "texto_literal": "XII - procedimentos de alta complexidade - PAC: em até vinte e um dias úteis;",
-   "observacao": "Redação dada pela retificação publicada no DOU de 17/01/2023. Quais procedimentos são de alta complexidade é definido no Rol de Procedimentos e Eventos em Saúde da ANS (art. 3º, § 4º)."
+   "observacao": "A própria lista da ANS diz quais procedimentos são complexos."
   },
   {
    "id": "internacao-eletiva",
    "grupo": "Cirurgias, internações e alta complexidade",
-   "rotulo": "Internação eletiva (programada, sem urgência)",
-   "rotulo_curto": "Internação programada",
+   "rotulo": "Internação marcada com antecedência (sem urgência)",
+   "rotulo_curto": "Internação marcada",
    "prazo_dias_uteis": 21,
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso XIII",
@@ -256,7 +256,7 @@
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso XIV",
    "texto_literal": "XIV - atendimento em regime de hospital-dia: em até dez dias úteis;",
-   "observacao": "Se o procedimento estiver classificado no Rol da ANS como de alta complexidade, o prazo passa a ser o do inciso XII: 21 dias úteis (art. 3º, § 5º)."
+   "observacao": "Se o procedimento estiver marcado na lista da ANS como procedimento complexo, o prazo passa a ser de 21 dias úteis."
   },
   {
    "id": "antineoplasico-oral-domiciliar",
@@ -267,7 +267,7 @@
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso XV",
    "texto_literal": "XV - tratamentos antineoplásicos domiciliares de uso oral, incluindo medicamentos para o controle de efeitos adversos relacionados ao tratamento e adjuvantes: em até dez dias úteis, podendo ser realizado de maneira fracionada por ciclo;",
-   "observacao": "O fornecimento pode ser fracionado por ciclo. Redação dada pela retificação publicada no DOU de 17/01/2023."
+   "observacao": "O fornecimento pode ser feito em partes, por ciclo do tratamento."
   },
   {
    "id": "continuidade-pos-internacao-cancer",
@@ -278,7 +278,7 @@
    "imediato": false,
    "referencia": "RN 566/2022, art. 3º, inciso XVI",
    "texto_literal": "XVI - tratamentos antineoplásicos ambulatoriais e domiciliares de uso oral, procedimentos radioterápicos para tratamento de câncer e hemoterapia, na qualidade de procedimentos cuja necessidade esteja relacionada à continuidade da assistência prestada em âmbito de internação hospitalar: em até dez úteis, cujo fornecimento poderá ser realizado de maneira fracionada por ciclo; e",
-   "observacao": "O texto da retificação de 17/01/2023 traz 'em até dez úteis' (sem a palavra 'dias'); a página oficial da ANS, atualizada em 28/07/2026, informa 10 dias úteis. O fornecimento pode ser fracionado por ciclo."
+   "observacao": "O fornecimento pode ser feito em partes, por ciclo do tratamento."
   },
   {
    "id": "urgencia-emergencia",
@@ -289,7 +289,7 @@
    "imediato": true,
    "referencia": "RN 566/2022, art. 3º, inciso XVII",
    "texto_literal": "XVII - urgência e emergência: imediato.",
-   "observacao": "Inciso incluído pela retificação publicada no DOU de 17/01/2023. Nas situações dos arts. 4º, § 3º, e 6º, parágrafo único, não há necessidade de autorização prévia. A carência para urgência e emergência não pode passar de 24 horas (Lei nº 9.656/1998, art. 12, V, c)."
+   "observacao": "Em alguns casos de urgência e emergência não é preciso autorização prévia. A carência para urgência e emergência não pode passar de 24 horas."
   },
   {
    "id": "contracepcao",
@@ -302,7 +302,7 @@
    "calculo": "Aplicar o prazo do inciso correspondente ao atendimento (por exemplo, consulta, procedimento ou internação) e limitar a data-limite a 30 dias corridos da demanda; mostrar a data menor. Se o usuário não indicar o atendimento, mostrar só o teto de 30 dias corridos.",
    "referencia": "RN 566/2022, art. 3º, § 6º (incluído pela RN 595/2023, em vigor desde 01/01/2024); Lei nº 9.263/1996, art. 9º, § 2º (incluído pela Lei nº 14.443/2022)",
    "texto_literal": "§ 6º A disponibilização de qualquer método e técnica de contracepção deverá observar os prazos máximos previstos neste artigo, não podendo ultrapassar 30 dias corridos, conforme previsto no art. 9º, § 2º da Lei nº 9.263, de 1996, incluído pela Lei nº 14.443, de 2002.",
-   "observacao": "O texto da RN 595 escreve 'Lei nº 14.443, de 2002'; o ano correto da lei é 2022."
+   "observacao": null
   }
  ],
  "prazos_de_resposta": {
@@ -310,7 +310,7 @@
   "itens": [
    {
     "id": "resposta-urgencia",
-    "rotulo": "Pedido de urgência ou emergência",
+    "rotulo": "Pedido de atendimento de urgência ou emergência",
     "prazo_dias_uteis": null,
     "imediato": true,
     "referencia": "RN 623/2024, art. 12, I"
@@ -401,14 +401,13 @@
    "id": "nip-assistencial",
    "rotulo": "Reclamação na ANS (NIP assistencial): prazo para a operadora adotar as medidas para resolver",
    "prazo_dias_uteis": 5,
-   "contagem": "a partir do primeiro dia útil seguinte à notificação da operadora",
    "referencia": "RN 483/2022, art. 10, I e § 2º"
   },
   {
    "id": "retorno-a-ans",
    "rotulo": "Prazo para o beneficiário informar à ANS se o problema foi resolvido, contado do fim do prazo da operadora; sem retorno, presume-se resolvido, mas a reclamação pode ser reaberta a qualquer tempo",
    "prazo_dias": 10,
-   "tipo_dias": "a norma diz 'dez dias subsequentes', sem 'úteis'; orientar contagem em dias corridos, por segurança",
+   "tipo_dias": "a norma diz 'dez dias subsequentes', sem 'úteis'",
    "referencia": "RN 483/2022, art. 12, caput e § 1º (redação da RN 657/2025)"
   },
   {
@@ -423,5 +422,6 @@
   "horario": "segunda a sexta-feira, exceto feriados nacionais, das 8h às 20h",
   "url": "https://www.gov.br/ans/pt-br/canais_atendimento/canais-de-atendimento-ao-consumidor-1"
  },
- "aviso": "Conteúdo informativo. Não constitui promessa de resultado, prazo ou valor. Cada caso é analisado individualmente."
+ "aviso": "Conteúdo informativo. Não constitui promessa de resultado, prazo ou valor. Cada caso é analisado individualmente.",
+ "_leia_v2": "UX-V2-SPEC, seção 6, passo 4: o que a ferramenta mostra na tela (rotulo, observacao) sai sem número de norma, sem artigo e sem forma de contagem. Os campos referencia e texto_literal guardam a fonte para o \"Para aprofundar\" do guia e não aparecem na tela."
 }

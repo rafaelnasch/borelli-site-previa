@@ -15,12 +15,12 @@
 /* ---------- 1. Ficha de cada cirurgia ---------- */
 .guia-texto .cir-ficha{ margin-top:var(--e-4); border-top:1px solid var(--f-linha-destaque); max-width:var(--leitura); }
 .cir-ficha > div{ display:grid; grid-template-columns:200px minmax(0,1fr); gap:var(--e-4); padding:14px 0 16px; border-bottom:1px solid var(--f-linha); }
-.cir-ficha dt{ padding-top:.42em; font:500 var(--t-rotulo)/1.45 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.cir-ficha dt{ padding-top:.42em; font:500 var(--t-rotulo)/1.45 var(--texto); letter-spacing:var(--track); color:var(--f-rotulo); }
 .cir-ficha dd{ margin:0; min-width:0; font-size:var(--t-leitura); line-height:1.6; font-weight:300; color:var(--f-texto); overflow-wrap:anywhere; }
 .cir-ficha dd a{ color:var(--f-titulo); }
 
 /* ---------- 2. Selo do rol ---------- */
-.guia-texto .cir-rol{ display:inline-flex; align-items:center; gap:10px; margin-top:var(--e-3); padding:6px 14px 6px 12px; border:1px solid var(--f-linha-destaque); font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-titulo); max-width:100%; }
+.guia-texto .cir-rol{ display:inline-flex; align-items:center; gap:10px; margin-top:var(--e-3); padding:6px 14px 6px 12px; border:1px solid var(--f-linha-destaque); font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); color:var(--f-titulo); max-width:100%; }
 .cir-rol .losango{ width:8px; height:8px; }
 .guia-texto .cir-rol--fora{ border-color:var(--f-linha); color:var(--f-apoio); }
 

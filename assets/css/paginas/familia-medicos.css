@@ -10,14 +10,19 @@
     3. 03 · a lista de documentos por tema (um painel por vez com JavaScript; todos sem ele)
     4. 01 · a lista dos temas da assessoria (médicos)
     5. Celular
-   ===================================================================== */
+   ===================================================================== 
+   v2 (UX-V2-SPEC, seção 4.2.1): os 10 temas viram <details class="tema-fam"> e a grade "Qual é o assunto?" é
+   a .temas-grade, as duas no site.css (seção 29). Os temas em pílulas (.fam-temas), as regras de dois
+   algarismos (.regras--temas) e os documentos por tema (.fam-docs, com o familia.js) são LEGADO e saem no
+   fim do lote. Continua valendo a lista dos temas da assessoria a médicos (.med-temas).
+   */
 
 /* ---------- 1. Os temas em pílulas (01 O que é) ---------- */
 .fam-temas{ margin-top:var(--e-7)!important; padding-top:20px; border-top:1px solid var(--f-linha); }
 .fam-temas > .rotulo{ display:block; }
 .fam-temas-lista{ display:flex; flex-wrap:wrap; gap:0 8px; margin-top:12px; }
 .fam-temas-lista a{ display:inline-flex; align-items:center; min-height:48px; text-decoration:none; -webkit-tap-highlight-color:transparent; }
-.fam-temas-lista a > span{ display:inline-flex; align-items:center; min-height:34px; padding:0 14px; border:1px solid var(--f-linha-destaque); border-radius:999px; font:500 13px/1.2 var(--texto); letter-spacing:.1em; text-transform:uppercase; color:var(--f-titulo); transition:background-color var(--t-rapida) ease,color var(--t-rapida) ease; }
+.fam-temas-lista a > span{ display:inline-flex; align-items:center; min-height:34px; padding:0 14px; border:1px solid var(--f-linha-destaque); border-radius:999px; font:500 14px/1.2 var(--texto); letter-spacing:var(--track); color:var(--f-titulo); transition:background-color var(--t-rapida) ease,color var(--t-rapida) ease; }
 .fam-temas-lista a:hover > span{ background:var(--f-painel); }
 .fam-temas-lista a:focus-visible{ outline:none; }
 .fam-temas-lista a:focus-visible > span{ outline:2px solid var(--f-enfase); outline-offset:2px; }
@@ -84,3 +89,19 @@
   .fam-docs-escolha{ display:none!important; }
   .fam-docs-painel[hidden]{ display:block!important; }
 }
+
+/* ---------- 6. v2 · Família: os 10 temas logo abaixo do H2 do bloco D ---------- */
+/* o site.css (seção 29) dá o respiro do bloco aos componentes conhecidos; o invólucro dos temas
+   (.temas-fam) ainda não está na lista, então o respiro vem daqui (pedido ao sistema: incluir lá) */
+.bloco > .temas-fam{ margin-top:var(--bloco-y); }
+/* o aviso de perigo: "Em perigo agora:" e duas linhas de ligação empilhadas, cada uma com 48 px e
+   largura total no celular (antes os números eram links com caixa no meio da frase e desalinhavam as linhas) */
+.tema-fam-perigo a[href^="tel:"]{ display:flex; align-items:center; justify-content:flex-start; width:100%; min-height:48px; margin-top:8px; padding:8px 14px; border:1px solid var(--f-linha-destaque); background:transparent; font-weight:600; line-height:1.3; text-decoration:none; }
+.tema-fam-perigo a[href^="tel:"]:hover{ text-decoration:underline; text-underline-offset:.2em; }
+@media (min-width:641px){ .tema-fam-perigo a[href^="tel:"]{ width:auto; display:inline-flex; margin-right:8px; } }
+/* a etiqueta do tema ("com acordo, pode ser no cartório", "passa pelo juiz") é informação, não botão:
+   sem borda e sem caixa, no tom de apoio */
+.tema-fam-onde{ padding:0; border:0; font-weight:400; }
+/* no computador a lista dos temas já cabe na tela logo abaixo do H2 "Qual é o assunto?": a grade, que
+   repetia os mesmos dez nomes, fica só no celular */
+@media (min-width:768px){ #assunto > .temas-grade{ display:none; } #assunto > .temas-fam{ margin-top:var(--bloco-y); } }

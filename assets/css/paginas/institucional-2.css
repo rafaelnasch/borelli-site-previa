@@ -9,7 +9,10 @@
    4 Passos em duas colunas · 5 Atendimento de quem já é cliente · 6 Termos do
    glossário · 7 Páginas legais · 8 Landing page · 9 Obrigado · 10 404 ·
    11 Celular e tablet · 12 Impressão · 13 Contato e Obrigado
-   ===================================================================== */
+   ===================================================================== 
+   v2: o bloco final das páginas é o contato-fim (site.css, seção 29); /contato/ e /canais-oficiais/ não têm
+   bloco final e escrevem a parte canais-oficiais no corpo.
+   */
 
 /* ---------- 1. Grade principal (até o eixo B) e coluna do lado (a partir do eixo B) ---------- */
 .i2-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); row-gap:var(--e-8); align-items:start; }
@@ -49,7 +52,7 @@
 .i2-canais{ border-top:1px solid var(--f-linha-destaque); }
 .i2-canais > li{ display:grid; grid-template-columns:24px minmax(0,1fr); column-gap:var(--e-4); row-gap:2px; padding:var(--e-4) 0; border-bottom:1px solid var(--f-linha); }
 .i2-canais .ic{ grid-row:1 / span 3; width:20px; height:20px; margin-top:2px; color:var(--f-enfase); }
-.i2-canal-nome{ font:500 var(--t-rotulo)/1.6 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.i2-canal-nome{ font:500 var(--t-rotulo)/1.6 var(--texto); letter-spacing:var(--track); color:var(--f-rotulo); }
 .i2-canal-valor{ font:500 18px/1.4 var(--texto); color:var(--f-titulo); overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
 .i2-canal-valor a{ display:inline-flex; align-items:center; min-height:48px; color:inherit; text-decoration:underline; text-decoration-color:var(--f-linha-destaque); text-decoration-thickness:1px; text-underline-offset:.22em; }
 .i2-canal-valor a:hover{ color:var(--f-link); }
@@ -76,13 +79,13 @@
 .i2-acao-t{ font-family:var(--display); font-weight:500; font-size:var(--t-h4); line-height:1.2; color:var(--f-titulo); }
 .i2-acao p:not(.i2-acao-t){ font-size:var(--t-apoio); line-height:1.6; font-weight:400; color:var(--f-texto); }
 .i2-acao-link{ margin-top:auto; padding-top:var(--e-3); border-top:1px solid var(--f-linha); font-size:var(--t-apoio); line-height:1.5; }
-.i2-acao-link b{ display:block; margin-bottom:4px; font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
+.i2-acao-link b{ display:block; margin-bottom:4px; font:500 var(--t-rotulo)/1.4 var(--texto); letter-spacing:var(--track); color:var(--f-rotulo); }
 
 /* ---------- 6. Termos do glossário (Já sou cliente): o termo, o que quer dizer e "para você" ---------- */
 .i2-termos{ border-top:1px solid var(--f-linha-destaque); }
 .i2-termos > div{ display:grid; grid-template-columns:200px minmax(0,1fr); column-gap:var(--e-6); row-gap:6px; padding:var(--e-5) 0; border-bottom:1px solid var(--f-linha); }
 .i2-termos dt{ font-family:var(--display); font-weight:500; font-size:24px; line-height:1.2; color:var(--f-titulo); }
-.i2-termos dd{ min-width:0; font-size:var(--t-apoio); line-height:1.6; font-weight:400; color:var(--f-texto); }
+.i2-termos dd{ min-width:0; font-size:var(--t-corpo); line-height:1.6; font-weight:400; color:var(--f-texto); }
 .i2-termos dd + dd{ grid-column:2; }
 .i2-termos dd b{ font-weight:500; color:var(--f-titulo); }
 .i2-ler{ margin-top:var(--e-6); }
@@ -122,18 +125,10 @@
 .i2-obrigado{ padding-block:96px 88px; }
 .i2-obrigado .obrigado-caixa{ max-width:720px; }
 .i2-obrigado .c18-h2{ margin-top:var(--e-5); }
-.i2-obrigado .c18-h2 + .c18-texto{ margin-top:var(--e-4); }
-.i2-obrigado .percurso{ margin-top:var(--e-6); }
-.i2-obrigado .percurso-t{ font-size:18px; }
-.i2-obrigado .percurso-d{ font-size:16px; }
+/* o H1 do obrigado no tamanho dos H1 das aberturas (a classe c18-h2 daria o tamanho de seção) */
+.i2-obrigado h1{ font-size:var(--t-h1); }
 .i2-obrigado .c18-botoes{ margin-top:var(--e-6); }
 .i2-obrigado-aviso{ margin-top:var(--e-6); }
-.i2-enquanto .guias-comecar{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--calha); }
-.i2-enquanto .guias-comecar a{ display:flex; flex-direction:column; gap:var(--e-2); height:100%; min-height:48px; padding-top:var(--e-4); border-top:2px solid var(--f-linha-destaque); color:var(--f-titulo); text-decoration:none; }
-.i2-enquanto .guias-comecar .rotulo{ color:var(--f-rotulo); }
-.i2-enquanto .guias-comecar span:not(.rotulo){ font-family:var(--display); font-weight:500; font-size:var(--t-h4); line-height:1.2; }
-.i2-enquanto .guias-comecar small{ font-size:13px; line-height:1.4; color:var(--f-apoio); }
-.i2-enquanto .guias-comecar a:hover span:not(.rotulo){ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.16em; }
 
 /* ---------- 10. 404: os atalhos em três grupos (a busca é o diálogo do site, aberto pelo botão da abertura) ---------- */
 .i2-404-lista{ margin-top:var(--e-3); border-top:1px solid var(--f-linha-destaque); }
@@ -172,7 +167,6 @@
   .i2-termos dd + dd{ grid-column:1; }
   .i2-termos dt{ font-size:22px; }
   .i2-obrigado{ padding-block:64px; }
-  .i2-enquanto .guias-comecar{ grid-template-columns:minmax(0,1fr); }
   .i2-404-grupos{ grid-template-columns:minmax(0,1fr); }
   .lp-fim{ padding-block:64px; }
 }
@@ -185,5 +179,4 @@
 /* ---------- 13. Contato e Obrigado: o botão "Fale com o escritório" do bloco Canais oficiais levaria à
    própria página de contato (no Obrigado, a um segundo envio da mesma mensagem); ali ficam só o
    endereço e o horário ---------- */
-.modelo-contato .canais-fim-acao > .btn,.modelo-obrigado .canais-fim-acao > .btn{ display:none; }
 .i2-bloco .c18-destaque{ margin-top:var(--e-5); font-size:clamp(24px,.381vw + 22.51px,28px); }

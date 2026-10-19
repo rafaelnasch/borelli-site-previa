@@ -7,7 +7,10 @@
     1. Grupo de regras: a página com duas metades (home care e reembolso)
        separa as regras numeradas da parte 02 em grupos com rótulo e nome
     2. Tabela de consulta dentro da parte 02 (cabe na coluna de leitura)
-   ===================================================================== */
+   ===================================================================== 
+   LEGADO (v2, 18/10/2026): os grupos de regras e a tabela da parte 02 da v1. Dentro do "Para aprofundar"
+   da v2, use as regras simples do area.css; este arquivo sai no fim do lote.
+   */
 
 /* ---------- 1. Grupo de regras ---------- */
 .regras-intro{ margin-top:var(--e-6)!important; }

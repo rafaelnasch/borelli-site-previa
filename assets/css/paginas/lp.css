@@ -1,22 +1,26 @@
 /* =====================================================================
-   BORELLI ADVOCACIA · paginas/lp.css · a landing page de tema (brand book 18.10)
-   Entra sozinho em toda página de "modelo": "lp" (o build carrega
-   assets/css/paginas/<modelo>.css). As partes usam o componente da página de
-   área (area.css, pela ficha "estilos"), sem o trilho do índice: a coluna das
-   partes ocupa 10 de 12 colunas no computador e o campo de cada parte vai de
-   ponta a ponta da tela. O fim (formulário e selo) usa o institucional-2.css.
+   BORELLI ADVOCACIA · paginas/lp.css · a landing page de tema (v2, UX-V2-SPEC 4.7)
+   Entra sozinho em toda página de "modelo": "lp". O corpo usa a coluna de
+   660 px e os blocos da v2 (.leitura-col, .bloco, do site.css) e o quadro
+   estética × reparadora do area.css (pela ficha "estilos"). Aqui ficam só o
+   botão depois da lista de documentos e o fim com o formulário.
    Usa só os tokens e os campos do site.css.
    ===================================================================== */
-.lp-grade{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--calha); }
-.lp-partes{ grid-column:1 / span 10; min-width:0; }
-/* o campo da parte vai de ponta a ponta (o area.css corta 40 px à esquerda, onde ficaria o índice) */
-.lp-corpo .parte{ clip-path:inset(-1px -100vmax); }
-.lp-mais{ margin-top:var(--e-6)!important; }
-.lp-fim .c18-texto{ max-width:46ch; }
+.lp-acao{ margin-top:var(--bloco-y); }
+.bloco > .c18-texto + .docs{ margin-top:var(--e-5); }
+.lp-fim .bloco-apoio{ max-width:46ch; }
+.lp-fim .form{ max-width:none; margin-top:var(--bloco-y); }
+.lp-fim #lp{ scroll-margin-top:var(--e-6); }
 
-@media (max-width:1240px){
-  .lp-partes{ grid-column:1 / -1; }
+@media (max-width:600px){
+  .lp-acao .btn{ width:100%; justify-content:center; }
 }
-@media (max-width:1024px){
-  .lp-grade{ display:block; }
-}
+
+/* a abertura alinha com a coluna de 660 px do corpo, como na área */
+.modelo-lp .abertura-pagina > .wrap{ max-width:calc(var(--leitura) + 2 * var(--gut)); }
+
+/* as frases de regra (#o-que-e e #etapas) no tamanho do corpo, não como nota (revisão v2) */
+.modelo-lp .bloco-frase{ font-size:var(--t-leitura); }
+
+/* o selo dos canais dentro do bloco do formulário, na mesma coluna */
+.lp-fim .lp-selo{ margin-top:var(--bloco-y); max-width:none; }

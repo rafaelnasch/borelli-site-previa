@@ -43,7 +43,8 @@
     var linha = function (nome, prazo, quando, base, obs) {
       return '<li class="carencia-item"><p class="carencia-tipo">' + esc(nome) + '</p>' +
         '<p class="carencia-prazo"><span class="carencia-num">' + esc(prazo) + '</span><span class="carencia-quando">' + quando + '</span></p>' +
-        '<p class="carencia-base">' + esc(base) + '</p>' + (obs ? '<p class="carencia-obs">' + esc(obs) + '</p>' : '') + '</li>';
+        /* v2: a norma (base_legal) fica nos dados e no "Para aprofundar" do guia; a tela não mostra artigo */
+        (obs ? '<p class="carencia-obs">' + esc(obs) + '</p>' : '') + '</li>';
     };
     var calcula = function () {
       if (!dados) return;
@@ -59,7 +60,7 @@
       var h = '';
       (dados.carencias || []).forEach(function (c) {
         var quando;
-        if (c.unidade === 'horas') quando = 'a partir de <b>' + esc(escreve(somaDias(dt, 1))) + '</b> (sem a hora exata do início, o dia seguinte)';
+        if (c.unidade === 'horas') quando = 'a partir de <b>' + esc(escreve(somaDias(dt, 1))) + '</b>';
         else quando = 'termina ao fim de <b>' + esc(escreve(somaDias(dt, c.prazo))) + '</b>';
         h += linha(c.tipo, c.prazo + ' ' + c.unidade, quando, c.base_legal, c.observacao);
       });

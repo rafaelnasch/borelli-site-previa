@@ -4,7 +4,7 @@
    calendário de dias úteis do protótipo B. Parte: src/partes/ferramenta-prazos.html.
    Dados: /assets/data/prazos.json (bloco G do dossiê guia-prazos-maximos-ans.md).
    Contagem (FAQ da ANS, item 18): no prazo de atendimento o dia do pedido conta;
-   na resposta ao pedido, a conta começa no dia útil seguinte. Se o prazo de
+   na resposta ao pedido, a conta começa depois do dia do pedido. Se o prazo de
    atendimento for menor que o de resposta, vale o menor (RN 623/2024, art. 12,
    § 1º). Dias úteis: sem sábados, domingos e os nove feriados nacionais fixos de
    lei federal; feriados locais podem mudar a conta (o aviso fixo diz isso).
@@ -86,8 +86,11 @@
     };
     var calcula = function () {
       var p = itens[tipo.value];
-      if (!p) return;
-      var ref = p.referencia || '';
+      /* v2: o seletor abre em "Escolha o atendimento"; o resultado só aparece depois da escolha */
+      if (!p) { if (res) res.hidden = true; return; }
+      if (res) res.hidden = false;
+      /* v2: a norma (p.referencia) fica nos dados e no "Para aprofundar" do guia; a tela não mostra artigo */
+      if (norma) { norma.hidden = true; norma.textContent = ''; }
       oQue.textContent = p.rotulo;
       if (obs) { obs.hidden = !p.observacao; obs.textContent = p.observacao || ''; }
       var dt = null;
@@ -106,15 +109,13 @@
       if (p.imediato) {
         num.className = 'kpi-num kpi-num--palavra';
         num.textContent = 'Imediato';
-        norma.textContent = ref;
-        resp.textContent = 'Resposta ao pedido de autorização: imediata (RN 623/2024, art. 12, I).';
+        resp.textContent = 'Resposta ao pedido de autorização: imediata.';
         limpaData();
         return;
       }
       if (p.teto_dias_corridos) {
         num.className = 'kpi-num';
         num.innerHTML = p.teto_dias_corridos + '<span class="un">dias corridos, no máximo</span>';
-        norma.textContent = ref;
         resp.textContent = 'Vale o prazo do atendimento (consulta, procedimento ou internação), sem passar de 30 dias corridos do pedido.';
         limpaData();
         if (dt && datas) {
@@ -128,9 +129,8 @@
       var rr = menor ? p.prazo_dias_uteis : r;
       num.className = 'kpi-num';
       num.innerHTML = p.prazo_dias_uteis + '<span class="un">dias úteis</span>';
-      norma.textContent = 'Prazo máximo para o atendimento acontecer, contado do pedido · ' + ref;
-      resp.textContent = 'Quando o plano precisa autorizar, a resposta ao pedido tem prazo de até ' + rr + ' dias úteis, contados do dia útil seguinte ao pedido' +
-        (menor ? ', porque o prazo de atendimento é menor (RN 623/2024, art. 12, § 1º).' : ' (RN 623/2024, art. 12, II, ' + (r === 10 ? 'b' : 'a') + ').');
+      resp.textContent = 'Quando o plano precisa autorizar, a resposta ao pedido tem prazo de até ' + rr + ' dias úteis' +
+        (menor ? ', porque o prazo de atendimento é menor.' : '.');
       if (!dt) { limpaData(); return; }
       var limite = enesimoUtil(dt, p.prazo_dias_uteis);
       var resposta = enesimoUtil(soma(dt, 1), rr);

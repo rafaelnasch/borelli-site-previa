@@ -6,21 +6,23 @@
    módulos próprios (assets/js/ferramentas/*.js), carregados só onde são usadas.
 
     1. Cabeçalho fixo que encolhe ao rolar e publica a altura em --cab-h
-    2. Menu Atuação no computador (painel com os três grupos; Esc e clique fora fecham)
-    3. Menu do celular (foco preso, Esc fecha, aria-label "Fechar o menu", resto inerte)
+    2. Painéis do cabeçalho no computador (v2: "Plano de saúde" e "Família", data-painel-abrir;
+       um por vez; Esc, clique fora e Tab para fora fecham; o foco volta ao gatilho)
+    3. Menu do celular (foco preso, Esc fecha, aria-label "Fechar o menu", resto inerte; os grupos
+       Plano de saúde e Família são <details> nativos)
     4. Busca em todo o site (botão do cabeçalho e tecla "/"; lê /busca.json)
     5. Aviso de cookies (só com site.json medicao.ativa = true) e eventos neutros
     6. Formulário de contato (assunto e origem do endereço, máscara, validação que
        ensina, envio a /api/contato/ e, se falhar, a reserva na tela, com o foco nela:
        o WhatsApp como botão de um toque, com a mensagem neutra, e o e-mail)
-    7. Sanfona: a pergunta do endereço (#faq-...) abre sozinha
-    8. Índice "Nesta página": a parte atual destacada, a barra recolhível no celular
+    7. Âncora dentro de <details> fechado (v2): o endereço ou o link que aponta para dentro de um
+       .aprofundar, de um .tema-fam, de uma pergunta (#faq-...) ou de uma regra (#regra-...) abre todos
+       os <details> em volta do alvo, rola até ele e põe o foco nele; na impressão, tudo abre
+    8. Índice "Nesta página" do guia: a parte atual destacada (só no computador)
     9. Lista de documentos: marca, guarda no navegador, imprime e copia (data-unidade
        troca a palavra do contador: "item|itens" no roteiro para a conversa com o médico)
    10. Pílulas dos procedimentos (o que cada cirurgia é)
-   11. Regras numeradas da parte 02: recolhíveis no celular (a primeira aberta, e as que
-       têm data-regra-aberta); o link ou o endereço que aponta para dentro de uma regra fechada
-       abre a regra antes da rolagem
+   11. (v2: saiu o recolhimento das regras no celular; as regras moram no "Para aprofundar")
    12. Lista de guias: filtro por tema
    13. Modelo de mensagem: botão "Copiar texto"
    14. window.borelliAtualiza(raiz) e window.Borelli (utilitários para as ferramentas)
@@ -132,47 +134,67 @@
     medirTopo();
   }
 
-  /* ---------- 2. Menu Atuação no computador ----------
-     Sem JavaScript, "Atuação" é o link para /atuacao/. Com ele, abre o painel no lugar
-     (clique, Enter, Espaço ou seta para baixo); Esc, clique fora ou sair com o Tab fecham. */
-  var gatilhoAtuacao = $('[data-atuacao-abrir]');
-  var painelAtuacao = $('[data-atuacao-painel]');
-  if (gatilhoAtuacao && painelAtuacao) {
-    var itemAtuacao = gatilhoAtuacao.parentNode;
-    gatilhoAtuacao.setAttribute('role', 'button');
-    gatilhoAtuacao.setAttribute('aria-expanded', 'false');
-    var painelAberto = function () { return !painelAtuacao.hidden; };
-    var abrePainel = function (focarPrimeiro) {
-      medirTopo();
-      painelAtuacao.hidden = false;
-      gatilhoAtuacao.setAttribute('aria-expanded', 'true');
-      html.classList.add('painel-aberto');
-      if (focarPrimeiro) foca($('a[href]', painelAtuacao));
-    };
-    var fechaPainel = function (voltar) {
-      if (!painelAberto()) return;
-      painelAtuacao.hidden = true;
-      gatilhoAtuacao.setAttribute('aria-expanded', 'false');
-      html.classList.remove('painel-aberto');
-      if (voltar) foca(gatilhoAtuacao);
-    };
-    gatilhoAtuacao.addEventListener('click', function (e) {
+  /* ---------- 2. Painéis do cabeçalho no computador (v2) ----------
+     Sem JavaScript, "Plano de saúde" e "Família" são links (/atuacao/#saude e a página de Família). Com ele,
+     cada gatilho [data-painel-abrir="saude|familia"] abre o painel [data-painel] do mesmo nome, no lugar
+     (clique, Espaço ou seta para baixo); só um fica aberto. Esc, clique fora ou sair com o Tab fecham, e o foco
+     volta ao gatilho quando a pessoa estava dentro do painel. */
+  var gatilhosPainel = $$('[data-painel-abrir]');
+  var paineis = {};
+  gatilhosPainel.forEach(function (g) {
+    var nome = g.getAttribute('data-painel-abrir');
+    var p = $('[data-painel="' + nome + '"]');
+    if (p) paineis[nome] = { gatilho: g, painel: p, item: g.parentNode };
+  });
+  var painelAtual = null;
+  var fechaPainel = function (voltar) {
+    if (!painelAtual) return;
+    var at = paineis[painelAtual];
+    at.painel.hidden = true;
+    at.gatilho.setAttribute('aria-expanded', 'false');
+    html.classList.remove('painel-aberto');
+    painelAtual = null;
+    if (voltar) foca(at.gatilho);
+  };
+  var abrePainel = function (nome, focarPrimeiro) {
+    if (painelAtual === nome) return;
+    fechaPainel(false);
+    var at = paineis[nome];
+    medirTopo();
+    at.painel.hidden = false;
+    at.gatilho.setAttribute('aria-expanded', 'true');
+    html.classList.add('painel-aberto');
+    painelAtual = nome;
+    if (focarPrimeiro) foca($('a[href]', at.painel));
+  };
+  Object.keys(paineis).forEach(function (nome) {
+    var at = paineis[nome];
+    at.gatilho.setAttribute('role', 'button');
+    at.gatilho.setAttribute('aria-expanded', 'false');
+    at.gatilho.addEventListener('click', function (e) {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;   /* abrir em outra aba continua valendo */
       e.preventDefault();
-      if (painelAberto()) fechaPainel(false); else abrePainel(false);
+      if (painelAtual === nome) fechaPainel(false); else abrePainel(nome, false);
     });
-    gatilhoAtuacao.addEventListener('keydown', function (e) {
-      if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); if (painelAberto()) fechaPainel(false); else abrePainel(true); }
-      else if (e.key === 'ArrowDown') { e.preventDefault(); abrePainel(true); }
+    at.gatilho.addEventListener('keydown', function (e) {
+      if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); if (painelAtual === nome) fechaPainel(false); else abrePainel(nome, true); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); abrePainel(nome, true); }
     });
+    at.item.addEventListener('focusout', function (e) {
+      if (painelAtual === nome && e.relatedTarget && !at.item.contains(e.relatedTarget)) fechaPainel(false);
+    });
+    at.painel.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a[href]')) fechaPainel(false); });
+  });
+  if (gatilhosPainel.length) {
     doc.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && painelAberto()) { e.preventDefault(); fechaPainel(itemAtuacao.contains(doc.activeElement)); }
+      if (e.key === 'Escape' && painelAtual) {
+        e.preventDefault();
+        fechaPainel(paineis[painelAtual].item.contains(doc.activeElement));
+      }
     });
-    doc.addEventListener('click', function (e) { if (painelAberto() && !itemAtuacao.contains(e.target)) fechaPainel(false); });
-    itemAtuacao.addEventListener('focusout', function (e) {
-      if (e.relatedTarget && !itemAtuacao.contains(e.relatedTarget)) fechaPainel(false);
+    doc.addEventListener('click', function (e) {
+      if (painelAtual && !paineis[painelAtual].item.contains(e.target)) fechaPainel(false);
     });
-    painelAtuacao.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a[href]')) fechaPainel(false); });
     aoMudar(midia('(max-width: 1024px)'), function (m) { if (m.matches) fechaPainel(false); });
   }
 
@@ -182,7 +204,7 @@
   if (botaoMenu && menu) {
     var fundo = $$('body > main, body > footer, body > .pular');
     var focaveisMenu = function () {
-      return [botaoMenu].concat($$('a[href], button:not([disabled])', menu).filter(function (el) { return el.getClientRects().length > 0; }));
+      return [botaoMenu].concat($$('a[href], button:not([disabled]), summary', menu).filter(function (el) { return el.getClientRects().length > 0; }));
     };
     var tecladoMenu = function (e) {
       if (e.key === 'Escape') { e.preventDefault(); fecharMenu(true); return; }
@@ -193,20 +215,21 @@
       if (e.shiftKey && i <= 0) { e.preventDefault(); lista[lista.length - 1].focus(); }
       else if (!e.shiftKey && (i === lista.length - 1 || i === -1)) { e.preventDefault(); lista[0].focus(); }
     };
+    var aberto = function () { return menu.classList.contains('aberto'); };
     var abrirMenu = function () {
       medirTopo();
-      menu.hidden = false;
+      menu.classList.add('aberto');
       menu.scrollTop = 0;
       botaoMenu.setAttribute('aria-expanded', 'true');
       botaoMenu.setAttribute('aria-label', 'Fechar o menu');
       html.classList.add('menu-aberto');
       fundo.forEach(function (el) { el.setAttribute('inert', ''); });
       doc.addEventListener('keydown', tecladoMenu);
-      foca($('a[href], button', menu));
+      foca($('summary, a[href], button', menu));
     };
     var fecharMenu = function (devolverFoco) {
-      if (menu.hidden) return;
-      menu.hidden = true;
+      if (!aberto()) return;
+      menu.classList.remove('aberto');
       botaoMenu.setAttribute('aria-expanded', 'false');
       botaoMenu.setAttribute('aria-label', 'Abrir o menu');
       html.classList.remove('menu-aberto');
@@ -215,18 +238,17 @@
       if (devolverFoco) botaoMenu.focus();
     };
     botaoMenu.addEventListener('click', function () {
-      if (menu.hidden) abrirMenu(); else fecharMenu(false);
+      if (!aberto()) abrirMenu(); else fecharMenu(false);
     });
     menu.addEventListener('click', function (e) {
       if (e.target.closest && (e.target.closest('a[href]') || e.target.closest('[data-busca-abrir]'))) fecharMenu(false);
     });
-    /* "Atuação" dentro do menu abre as áreas no lugar; já vem aberto numa página de área */
-    $$('[data-menu-sub]', menu).forEach(function (b) {
-      var areas = doc.getElementById(b.getAttribute('aria-controls'));
-      if (!areas) return;
-      var marca = function (abre) { b.setAttribute('aria-expanded', abre ? 'true' : 'false'); areas.hidden = !abre; };
-      if ($('[aria-current]', areas) || /^\/atuacao\//.test(window.location.pathname)) { b.classList.add('atual'); }
-      b.addEventListener('click', function () { marca(b.getAttribute('aria-expanded') !== 'true'); });
+    /* Plano de saúde e Família são <details> nativos (abrem sem JavaScript e com teclado): só um aberto por vez */
+    var grupos = $$('details.menu-movel-grupo', menu);
+    grupos.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open) grupos.forEach(function (o) { if (o !== d) o.open = false; });
+      });
     });
     aoMudar(midia('(min-width: 1025px)'), function (m) { if (m.matches) fecharMenu(false); });
   }
@@ -288,7 +310,7 @@
       } else {
         anunciar(situacaoBusca, 'Nenhuma página encontrada. Tente outra palavra ou siga por um dos atalhos.');
         listaBusca.appendChild(itemBusca('/borelli-site-previa/guias/', 'Atalho', 'Todos os guias', ''));
-        listaBusca.appendChild(itemBusca('/borelli-site-previa/atuacao/', 'Atalho', 'Atuação do escritório', ''));
+        listaBusca.appendChild(itemBusca('/borelli-site-previa/atuacao/', 'Atalho', 'Todas as áreas', ''));
       }
     };
     var abrirBusca = function () {
@@ -593,27 +615,72 @@
   };
   $$('form[data-contato]').forEach(montarFormulario);
 
-  /* ---------- 7. Sanfona: a pergunta do endereço abre sozinha ----------
-     Um link para "#faq-junta" (ou o endereço com esse final) abre a pergunta e leva até ela. */
+  /* ---------- 7. Âncora dentro de <details> fechado (v2) ----------
+     Um link para "#faq-junta", "#regra-3", "#pensao" ou "#detalhe" (ou o endereço com esse final) abre o
+     <details> do próprio alvo e todos os <details> em volta dele (.aprofundar, .tema-fam, perguntas), rola até
+     o alvo e põe o foco no summary (ou no alvo). Âncora fora de <details>: o foco também vai para o alvo. Sem
+     JavaScript, o link leva ao summary, que abre com um toque. */
+  var abreAte = function (alvo) {
+    var abriu = false;
+    var el = alvo;
+    while (el && el !== doc.body) {
+      if (el.tagName === 'DETAILS' && !el.open) { el.open = true; abriu = true; }
+      el = el.parentElement;
+    }
+    return abriu;
+  };
   var abrirDoEndereco = function (hash, focar) {
     if (!hash || hash.length < 2) return;
     var alvo = null;
     try { alvo = doc.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { alvo = null; }
-    if (!alvo) return;
-    var det = alvo.tagName === 'DETAILS' ? alvo : alvo.closest && alvo.closest('details');
-    if (det && !det.open) det.open = true;
-    if (det && focar) setTimeout(function () { garanteVisivel(det, extraIndice()); foca($('summary', det)); }, 60);
+    if (!alvo || !alvo.closest) return;
+    /* fora de <details>: o navegador já rola; aqui só o foco vai para o alvo (seção 3.7), com tabindex=-1 quando
+       ele não é focável, para o Tab seguinte continuar dali e o leitor de tela anunciar onde chegou */
+    if (!alvo.closest('details')) {
+      if (!focar || alvo === html || alvo === doc.body) return;
+      if (!alvo.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA|SUMMARY)$/.test(alvo.tagName)) alvo.setAttribute('tabindex', '-1');
+      setTimeout(function () { foca(alvo); }, 40);
+      return;
+    }
+    var abriu = abreAte(alvo);
+    if (!focar && !abriu) return;
+    var det = alvo.tagName === 'DETAILS' ? alvo : null;
+    setTimeout(function () {
+      if (alvo.scrollIntoView) alvo.scrollIntoView({ block: 'start', behavior: poucoMovimento.matches || html.classList.contains('automatizado') ? 'auto' : 'smooth' });
+      if (focar) {
+        var f = det ? $('summary', det) : alvo;
+        if (f && !det && !f.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA|SUMMARY)$/.test(f.tagName)) f.setAttribute('tabindex', '-1');
+        foca(f);
+      }
+    }, 40);
   };
   window.addEventListener('hashchange', function () { abrirDoEndereco(window.location.hash, true); });
   doc.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="#"]');
-    if (a) abrirDoEndereco(a.getAttribute('href'), false);
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    var i = href.indexOf('#');
+    var caminho = href.slice(0, i);
+    if (caminho && caminho !== window.location.pathname) return;
+    /* o mesmo endereço de agora não dispara hashchange: aqui o foco também vai para o alvo */
+    abrirDoEndereco(href.slice(i), href.slice(i) === window.location.hash);
   });
   abrirDoEndereco(window.location.hash, true);
+  /* na impressão, o aprofundamento, as fontes, as seções legais e os temas saem abertos */
+  var abertosNaImpressao = [];
+  window.addEventListener('beforeprint', function () {
+    abertosNaImpressao = $$('details.aprofundar:not([open]), details.fontes:not([open]), details.legal-secao:not([open]), details.tema-fam:not([open])');
+    abertosNaImpressao.forEach(function (d) { d.open = true; });
+  });
+  window.addEventListener('afterprint', function () {
+    abertosNaImpressao.forEach(function (d) { d.open = false; });
+    abertosNaImpressao = [];
+  });
 
-  /* ---------- 8. Índice "Nesta página" ----------
-     Destaca a parte em leitura (aria-current="location"); no celular, o índice da página de área
-     vira uma barra presa abaixo do cabeçalho, com a parte atual escrita e a lista por cima do texto. */
+  /* ---------- 8. Índice "Nesta página" do guia ----------
+     Destaca a parte em leitura (aria-current="location") só quando o índice está à vista (no computador,
+     ao lado da coluna). Na v2 a área não tem índice nem barra de progresso; no celular, o índice do guia é
+     um <details> fechado, sem destaque. O botão e a barra (data-indice-botao, data-indice-barra) são da v1. */
   function extraIndice() {
     var barra = $('[data-indice-botao]');
     return barra && barra.offsetParent !== null ? barra.getBoundingClientRect().height : 0;
@@ -630,6 +697,7 @@
     var nome = function (a) { return a.textContent.replace(/\s+/g, ' ').trim(); };
     var mede = function () {
       pedido = false;
+      if (nav.offsetParent === null) return;   /* escondido (celular): sem destaque */
       var linha = alturaTopo() + window.innerHeight * 0.28;
       var idx = -1;
       alvos.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= linha) idx = i; });
@@ -832,93 +900,26 @@
     grupo.classList.add('proc-pronto');
   });
 
-  /* ---------- 11. Regras numeradas (parte 02 da área): recolhíveis no celular ----------
-     Até 640 px, o título de cada regra vira um botão que abre e fecha o texto dela (a primeira fica
-     aberta, e também a que tem data-regra-aberta no li.regra); "Onde está" continua à vista. No
-     computador, e sem JavaScript, tudo aberto, como no desenho do protótipo A. O texto continua inteiro
-     na página (busca, impressão, assistentes de IA). Um link da própria página que aponta para dentro de
-     uma regra fechada ("Veja na parte 02", a lista de situações da parte 01), ou o endereço que já chega
-     com essa âncora, abre a regra antes da rolagem: a pessoa chega ao texto, não só ao título.
-     O título da regra (h3.regra-t) não leva grifo nem span solto: no celular, os filhos dele passam para
-     o botão, que é uma grade de três colunas (número, texto e seta). */
-  var celular = midia('(max-width: 640px)');
-  var regras = [];
-  $$('ol.regras').forEach(function (lista, l) {
-    $$('li.regra', lista).forEach(function (li, i) {
-      if (li.parentNode !== lista) return;
-      var t = $('.regra-t', li);
-      var corpo = $('.regra-corpo', li);
-      if (!t || !corpo) return;
-      if (!corpo.id) corpo.id = 'regra-' + (l + 1) + '-' + (i + 1);
-      regras.push({ li: li, t: t, corpo: corpo, aberta: i === 0 || li.hasAttribute('data-regra-aberta'), botao: null });
-    });
-  });
-  var mostraRegra = function (r) {
-    Array.prototype.forEach.call(r.corpo.children, function (el) {
-      if (el.classList.contains('regra-onde')) return;
-      if (r.aberta) { el.hidden = false; el.removeAttribute('data-regra-oculta'); }
-      else { el.hidden = true; el.setAttribute('data-regra-oculta', ''); }
-    });
-    r.botao.setAttribute('aria-expanded', r.aberta ? 'true' : 'false');
-    r.li.classList.toggle('regra--fechada', !r.aberta);
-  };
-  var ligaRegra = function (r) {
-    if (r.botao) return;
-    var b = doc.createElement('button');
-    b.type = 'button';
-    b.className = 'regra-botao';
-    b.setAttribute('aria-controls', r.corpo.id);
-    while (r.t.firstChild) b.appendChild(r.t.firstChild);
-    r.t.appendChild(b);
-    r.t.classList.add('regra-t--botao');
-    b.addEventListener('click', function () { r.aberta = !r.aberta; mostraRegra(r); });
-    r.botao = b;
-    mostraRegra(r);
-  };
-  var desligaRegra = function (r) {
-    if (!r.botao) return;
-    while (r.botao.firstChild) r.t.insertBefore(r.botao.firstChild, r.botao);
-    r.t.removeChild(r.botao);
-    r.t.classList.remove('regra-t--botao');
-    r.botao = null;
-    $$('[data-regra-oculta]', r.corpo).forEach(function (el) { el.hidden = false; el.removeAttribute('data-regra-oculta'); });
-    r.li.classList.remove('regra--fechada');
-  };
-  var aplicaRegras = function () {
-    regras.forEach(function (r) { if (celular.matches) ligaRegra(r); else desligaRegra(r); });
-  };
-  /* abre a regra fechada que contém o alvo da âncora; devolve o alvo quando abriu */
-  var abreRegraDoAlvo = function (hash) {
-    if (!hash || hash.length < 2) return null;
-    var alvo = null;
-    try { alvo = doc.getElementById(decodeURIComponent(hash.replace(/^#/, ''))); } catch (e) { alvo = null; }
-    var li = alvo && alvo.closest ? alvo.closest('li.regra') : null;
-    if (!li) return null;
-    for (var k = 0; k < regras.length; k++) {
-      var r = regras[k];
-      if (r.li === li) {
-        if (!r.botao || r.aberta) return null;
-        r.aberta = true;
-        mostraRegra(r);
-        return alvo;
-      }
-    }
-    return null;
-  };
-  if (regras.length) {
-    aplicaRegras();
-    aoMudar(celular, aplicaRegras);
-    /* a impressão sai com tudo aberto, mesmo no celular */
-    window.addEventListener('beforeprint', function () { regras.forEach(function (r) { if (r.botao && !r.aberta) { r.aberta = true; mostraRegra(r); } }); });
-    /* o clique abre a regra antes de o navegador rolar até a âncora */
-    doc.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href^="#"]');
-      if (a) abreRegraDoAlvo(a.getAttribute('href'));
-    });
-    window.addEventListener('hashchange', function () { abreRegraDoAlvo(window.location.hash); });
-    /* o endereço que já chega com a âncora: a rolagem do navegador aconteceu com a regra fechada */
-    var chegou = abreRegraDoAlvo(window.location.hash);
-    if (chegou && chegou.scrollIntoView) chegou.scrollIntoView();
+  /* ---------- 11. (v2) ----------
+     O recolhimento das regras no celular saiu: as regras moram no "Para aprofundar" (details nativo), que a
+     seção 7 abre quando um link ou o endereço aponta para dentro dele. */
+
+  /* ---------- 11b. Rodapé no celular (v2) ----------
+     As duas listas de links do rodapé são <details> abertos no HTML (sem JavaScript, tudo aparece). Até 640 px,
+     elas fecham ao carregar (o rodapé cabe em uma tela) e abrem com um toque; no computador, ficam abertas. */
+  var gruposRodape = $$('[data-rodape-grupo]');
+  if (gruposRodape.length) {
+    var celularRodape = midia('(max-width: 640px)');
+    /* no computador o título não fecha a coluna: sai do Tab (o CSS já tira o clique) */
+    var ajustaRodape = function () {
+      gruposRodape.forEach(function (d) {
+        d.open = !celularRodape.matches;
+        var s = $('summary', d);
+        if (s) { if (celularRodape.matches) s.removeAttribute('tabindex'); else s.setAttribute('tabindex', '-1'); }
+      });
+    };
+    ajustaRodape();
+    aoMudar(celularRodape, ajustaRodape);
   }
 
   /* ---------- 12. Lista de guias: filtro por tema ---------- */

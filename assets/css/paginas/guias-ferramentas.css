@@ -32,58 +32,44 @@
 .guia-texto .termo:target{ background:linear-gradient(90deg,var(--grifo) 0 4px,transparent 4px); padding-left:var(--e-4); }
 
 /* ---------- 4. Carta anotada na largura da página ----------
-   No guia, a coluna de leitura tem 680 px. A carta em página dupla precisa da largura do .wrap: a coluna
+   No guia, a coluna de leitura tem 660 px e fica no centro do .wrap (v2). A carta em página dupla precisa da largura do .wrap: a coluna
    sai pela direita até a borda do conteúdo (100cqi = a largura do .wrap do corpo do guia). Sem suporte a
    container queries, a carta fica na coluna (o carta.js e o CSS do celular continuam valendo). */
 @media (min-width:1025px){
   .guia-corpo > .wrap{ container-type:inline-size; }
-  .guia-texto > .ferramenta.carta{ width:100cqi; max-width:none; }
+  .guia-texto > .ferramenta.carta{ width:min(100cqi,1200px); max-width:none; margin-left:calc((100% - min(100cqi,1200px)) / 2); }
   .guia-texto > .olho--cartaz{ max-width:var(--leitura); }
 }
 .guia-texto > .olho--cartaz{ margin-block:var(--e-7); }
 
-/* ---------- 5. Índice /guias/ ---------- */
-.gi-busca{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); column-gap:var(--e-6); row-gap:var(--e-4); align-items:end; margin-bottom:var(--e-7); padding-bottom:var(--e-6); border-bottom:1px solid var(--f-linha); }
-.gi-campo{ min-width:0; }
-.gi-campo-linha{ position:relative; }
-.gi-campo-linha .gi-campo-ic{ position:absolute; left:14px; top:50%; margin-top:-10px; color:var(--f-apoio); pointer-events:none; }
-.gi-campo-linha input{ padding-left:44px; min-height:56px; font-size:17px; background:var(--branco); }
-.gi-campo-linha input::-webkit-search-cancel-button{ cursor:pointer; }
-.gi-temas{ margin:0; min-width:0; }
-.gi-temas .pilula{ letter-spacing:.12em; }
-.gi-status{ grid-column:1 / -1; font-size:var(--t-apoio); line-height:1.5; color:var(--f-apoio); }
-.gi-atalho{ margin:0 0 var(--e-5); }
+/* ---------- 5. Índice /guias/ (v2) ----------
+   O botão de busca abre a busca do site (data-busca-abrir; sem JavaScript fica escondido). A faixa de
+   ferramentas, a lista de guias e o filtro por tema são do site.css (.faixa-ferramentas, .guias-linhas,
+   .filtro-temas). Aqui só o ritmo da página. */
+/* A coluna de leitura alinhada à esquerda, na mesma linha da abertura e do bloco final */
+.gi-col{ max-width:var(--leitura); }
+.gi-buscar{ display:flex; align-items:center; gap:12px; width:100%; min-height:56px; margin:0 0 var(--e-7); padding:10px 16px; border:1px solid var(--f-linha-destaque); background:var(--branco); font:300 17px/1.35 var(--texto); color:var(--f-apoio); text-align:left; cursor:pointer; }
+.gi-buscar .ic{ color:var(--f-titulo); }
+.gi-buscar:hover{ border-color:var(--f-titulo); }
+.gi-topo .c18-h2,.gi-guias .c18-h2,.gi-cliente .c18-h2{ margin-bottom:var(--e-5); }
+.gi-topo .faixa-ferramentas{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.gi-nota,.gi-apoio{ margin-top:var(--e-4); font-size:var(--t-apoio); line-height:1.5; color:var(--f-apoio); }
+.gi-apoio{ margin:calc(-1 * var(--e-3)) 0 var(--e-5); }
+.gi-guias .filtro-temas{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:var(--e-5); }
+.gi-guias .filtro-temas[hidden]{ display:none; }
+.gi-mais{ margin-top:var(--e-5); }
 
-.gi-grupos{ display:flex; flex-direction:column; gap:var(--e-8); }
-.gi-grupo-cab{ display:flex; align-items:baseline; justify-content:space-between; gap:var(--e-4); margin-bottom:var(--e-5); padding-bottom:var(--e-3); border-bottom:1px solid var(--f-linha-destaque); }
-.gi-grupo-t{ font:500 13px/1.4 var(--texto); letter-spacing:var(--track); text-transform:uppercase; color:var(--f-rotulo); }
-.gi-grupo-n{ font-size:var(--t-legenda); color:var(--f-apoio); font-variant-numeric:tabular-nums; white-space:nowrap; }
-.gi-lista .guia-cartao{ padding-top:var(--e-4); }
-.gi-lista .guia-cartao .intertitulo{ font-size:clamp(22px,.381vw + 20.5px,26px); line-height:1.18; }
-
-.gi-nada{ margin-top:var(--e-6); padding:var(--e-6); border:1px solid var(--f-linha); background:var(--branco); }
-.gi-nada p{ max-width:60ch; font-size:var(--t-corpo); line-height:1.6; color:var(--f-texto); }
-.gi-nada .btn{ margin-top:var(--e-4); }
-
-/* ---------- 6. Celular e tablet ---------- */
-@media (max-width:1024px){
-  .gi-busca{ grid-template-columns:minmax(0,1fr); }
-}
+/* ---------- 6. Celular ---------- */
 @media (max-width:640px){
-  .gi-procurar{ padding-top:var(--e-6); }
-  .gi-procurar .secao-cab-apoio{ display:none; }
-  .gi-busca{ margin-bottom:var(--e-6); padding-bottom:var(--e-5); }
-  .gi-temas{ gap:8px; }
-  .gi-temas .pilula{ white-space:normal; text-align:left; }
-  .gi-grupos{ gap:var(--e-7); }
-  .gi-nada{ padding:var(--e-5) var(--e-4); }
-  .gi-nada .btn{ width:100%; }
+  .gi-buscar{ margin-bottom:var(--e-6); font-size:16px; }
+  .gi-topo .faixa-ferramentas{ grid-template-columns:minmax(0,1fr); }
+  .gi-guias .filtro-temas .pilula{ white-space:normal; text-align:left; }
   .guia-texto .termo dt{ font-size:22px; }
   .guia-texto .termo-voce{ font-size:16px; }
 }
 
 /* ---------- 7. Impressão: a lista inteira, sem a busca ---------- */
 @media print{
-  .gi-busca,.gi-nada,.gi-atalho{ display:none!important; }
-  .gi-grupo[hidden],.gi-lista li[hidden]{ display:block!important; }
+  .gi-buscar,.gi-guias .filtro-temas{ display:none!important; }
+  .guias-linhas li[hidden]{ display:block!important; }
 }

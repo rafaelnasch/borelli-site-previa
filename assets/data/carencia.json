@@ -1,11 +1,11 @@
 {
  "ferramenta": "calculadora-de-carencias",
- "versao_dados": "2026-10-05",
+ "versao_dados": "2026-10-19",
  "conferido_em": "2026-10-05",
- "aviso": "Esta ferramenta mostra os prazos máximos de carência da Lei 9.656/1998 e o limite de 24 meses da cobertura parcial temporária. O seu contrato pode prever prazos menores, e é ele que vale dentro desse limite. Nos planos contratados antes de 2 de janeiro de 1999 e não adaptados à lei, vale o contrato. A ferramenta não analisa o seu caso. Conteúdo informativo. Não constitui promessa de resultado, prazo ou valor. Cada caso é analisado individualmente.",
+ "aviso": "O seu contrato pode prever prazos menores. Nos planos contratados antes de 2 de janeiro de 1999 e não adaptados à lei, vale o contrato.",
  "data_base": {
   "rotulo": "Data de início do plano",
-  "ajuda": "Use a data de início de vigência do contrato. Se a proposta foi assinada antes, confira as duas datas. Elas estão no contrato, na proposta de adesão ou na carteirinha.",
+  "ajuda": "Use a data de início de vigência, que está no contrato ou na carteirinha.",
   "pendencia": "[conferir antes de publicar] O escritório define se a contagem parte da assinatura da proposta ou do início de vigência (pendência F6).",
   "referencia": "STJ, Súmula 597 (\"contado da data da contratação\"); RN 558/2022, art. 2º, II (\"a partir da data da contratação ou adesão\")"
  },
@@ -15,29 +15,29 @@
    "prazo": 24,
    "unidade": "horas",
    "base_legal": "Lei 9.656/1998, art. 12, V, c; STJ, Súmula 597",
-   "observacao": "Emergência: risco imediato de vida ou de lesões irreparáveis, caracterizado em declaração do médico assistente. Urgência: acidentes pessoais ou complicações no processo gestacional (Lei 9.656/1998, art. 35-C). A regra da Súmula 597 foi levada pelo STJ a julgamento repetitivo, junto com o limite de tempo de internação (Tema 1.314). Até 5 de outubro de 2026 não havia decisão, e os recursos sobre o tema estavam suspensos. O que o plano cobre durante a carência, depois das 24 horas, depende do tipo de plano e tem regra própria."
+   "observacao": "Emergência: risco imediato de vida ou de lesões irreparáveis, descrito pelo seu médico. Urgência: acidentes pessoais ou complicações na gestação. O que o plano cobre durante a carência, depois das 24 horas, depende do tipo de plano."
   },
   {
    "tipo": "Parto a termo",
    "prazo": 300,
    "unidade": "dias",
    "base_legal": "Lei 9.656/1998, art. 12, V, a",
-   "observacao": "Parto no tempo esperado da gestação. Segundo a ANS, o prazo de 300 dias não se aplica a parto prematuro nem ao decorrente de complicações no processo gestacional. Complicações no processo gestacional são urgência (Lei 9.656/1998, art. 35-C, II). Vale para planos com obstetrícia."
+   "observacao": "Vale para planos com obstetrícia. Segundo a ANS, os 300 dias não valem para parto prematuro nem para complicações na gestação, que contam como urgência."
   },
   {
    "tipo": "Demais casos (consultas, exames, terapias, cirurgias e internações)",
    "prazo": 180,
    "unidade": "dias",
    "base_legal": "Lei 9.656/1998, art. 12, V, b",
-   "observacao": "Prazo máximo. O contrato pode prever menos. Se o procedimento for ligado a uma doença preexistente declarada e houver cobertura parcial temporária, veja o limite de 24 meses."
+   "observacao": "Prazo máximo. O contrato pode prever menos. Se o procedimento for ligado a uma doença preexistente declarada, veja a suspensão de até 24 meses."
   }
  ],
  "cobertura_parcial_temporaria": {
-  "tipo": "Cobertura parcial temporária (CPT) para doença ou lesão preexistente declarada",
+  "tipo": "Suspensão por doença preexistente declarada (cobertura parcial temporária)",
   "prazo_maximo": 24,
   "unidade": "meses",
   "base_legal": "Lei 9.656/1998, art. 11; RN ANS 558/2022, art. 2º, II, e art. 7º",
-  "observacao": "Para a doença declarada, só existe se a operadora ofereceu na contratação (RN 558/2022, art. 6º, § 2º). Na alegação de omissão, a operadora pode oferecer CPT pelos meses que faltam para completar 24 meses (art. 15, I). Suspende só cirurgias, leitos de alta tecnologia e procedimentos de alta complexidade ligados à doença declarada. Pode ser menor que 24 meses: confira a data de término na carteirinha (art. 13). Depois do prazo, a cobertura é integral e a operadora não pode mais alegar doença preexistente (art. 7º)."
+  "observacao": "Só existe se o plano ofereceu na contratação. Vale só para cirurgias, procedimentos complexos e leitos de alta tecnologia ligados à doença declarada. Pode ser menor que 24 meses: confira a data de término na carteirinha. Depois do prazo, a cobertura é integral."
  },
  "situacoes_sem_carencia": [
   {

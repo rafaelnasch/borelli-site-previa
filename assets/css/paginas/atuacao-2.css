@@ -7,7 +7,9 @@
    do cancelamento (.contraste--par) são do area.css (componentes da área).
 
     1. .rotulo-lista: o rótulo que abre uma lista dentro do texto da parte
-   ===================================================================== */
+   ===================================================================== 
+   LEGADO (v2, 18/10/2026): sai no fim do lote (as páginas da v2 usam o area.css e o site.css, seção 29).
+   */
 
 /* ---------- 1. Rótulo de lista ---------- */
 .parte-texto > .rotulo-lista{ margin-top:var(--e-6); }
