@@ -26,6 +26,7 @@
    12. Lista de guias: filtro por tema
    13. Modelo de mensagem: botão "Copiar texto"
    14. window.borelliAtualiza(raiz) e window.Borelli (utilitários para as ferramentas)
+   15. Vídeo do YouTube só depois do clique (data-video): antes disso, nenhuma chamada ao YouTube
 
    Nada aqui manda dado para terceiros. A medição só existe depois da escolha
    "Aceitar medição", e os eventos têm nomes neutros (contato_enviado,
@@ -972,6 +973,25 @@
         anunciar(aviso, 'Texto copiado. Troque o que está marcado antes de enviar.');
         setTimeout(function () { botao.removeAttribute('data-copiado'); botao.textContent = rotulo; }, 2400);
       }).catch(function () { anunciar(aviso, 'Não deu para copiar. Selecione o texto e copie.'); });
+    });
+  });
+
+  /* ---------- 15. Vídeo: a capa vira o player (youtube-nocookie) só no clique ---------- */
+  $$('[data-video]').forEach(function (caixa) {
+    var capa = $('.video-capa', caixa);
+    var id = caixa.getAttribute('data-video');
+    if (!capa || !/^[A-Za-z0-9_-]{6,20}$/.test(id)) return;
+    capa.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault();
+      var f = doc.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = caixa.getAttribute('data-video-titulo') || 'Vídeo';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      capa.replaceWith(f);
+      f.focus();
     });
   });
 
